@@ -5,6 +5,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowRight, ArrowDown, Cpu, TrendingUp, Database, MapPin, Clock, Briefcase, Heart, Users, Award, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Testimonials } from '../components/Testimonials'
+import { CoverageMap } from '../components/CoverageMap'
 import { jobs, pillars } from '../data/content'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -323,13 +324,18 @@ export function Home() {
         </section>
       </div>
 
-      {/* ── 7. REVIEWS ── */}
+      {/* ── 7. COVERAGE MAP ── */}
       <div className="stack-card" style={{zIndex: 7}}>
+        <CoverageMap />
+      </div>
+
+      {/* ── 8. REVIEWS ── */}
+      <div className="stack-card" style={{zIndex: 8}}>
         <Testimonials />
       </div>
 
       {/* ── CTA / CONTACT ── */}
-      <div className="stack-card" style={{zIndex: 8}} id="contact">
+      <div className="stack-card" style={{zIndex: 9}} id="contact">
         <section className="contact-strip">
           <div className="contact-video-bg" aria-hidden>
             <video autoPlay muted loop playsInline preload="none" className="contact-video-bg__vid">
