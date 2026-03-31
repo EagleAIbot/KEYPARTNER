@@ -6,12 +6,8 @@ const MAP_VIDEO = 'https://assets.mixkit.co/videos/49878/49878-720.mp4'
 
 const MAP_W = 960
 const MAP_H = 460
-const PROJ_SCALE = 220
+const PROJ_SCALE = 148
 const PROJ_CENTER = [81, 5]
-
-const CROP_X = 105
-const CROP_W = 750
-const CROP_VB = `${CROP_X} 0 ${CROP_W} ${MAP_H}`
 
 const HIGHLIGHTED = new Set([
   'United Kingdom',
@@ -79,7 +75,6 @@ export function CoverageMap() {
           projectionConfig={{ scale: PROJ_SCALE, center: PROJ_CENTER }}
           width={MAP_W}
           height={MAP_H}
-          viewBox={CROP_VB}
           style={{ width: '100%', height: 'auto', display: 'block' }}
         >
           <Geographies geography={GEO_URL}>
