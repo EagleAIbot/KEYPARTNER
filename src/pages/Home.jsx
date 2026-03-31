@@ -7,12 +7,15 @@ import { ArrowRight, ArrowDown, Cpu, TrendingUp, Database, MapPin, Clock, Briefc
 import { Testimonials } from '../components/Testimonials'
 import { CoverageMap } from '../components/CoverageMap'
 import { jobs, pillars } from '../data/content'
+import { useIsMobile } from '../hooks/useIsMobile'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const HERO_VIDEO = 'https://assets.mixkit.co/videos/49288/49288-720.mp4'
 const HERO_VIDEO_FALLBACK = 'https://assets.mixkit.co/videos/5499/5499-720.mp4'
+const HERO_VIDEO_MOBILE = 'https://assets.mixkit.co/videos/29949/29949-720.mp4'
 const VIDEO_BREAK_SRC = 'https://assets.mixkit.co/videos/46078/46078-720.mp4'
+const VIDEO_BREAK_MOBILE = 'https://assets.mixkit.co/videos/23726/23726-720.mp4'
 const EXCEL_VIDEO_SRC = 'https://assets.mixkit.co/videos/11001/11001-720.mp4'
 const CONTACT_VIDEO_SRC = 'https://assets.mixkit.co/videos/15795/15795-720.mp4'
 const KNOWN_FOR_IMG = 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1600&q=80'
@@ -125,6 +128,8 @@ const knownFor = [
 const pillarIcons = { technology: Cpu, commercial: TrendingUp, 'data-ai': Database }
 
 export function Home() {
+  const isMobile = useIsMobile()
+
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (prefersReduced) {
@@ -150,9 +155,9 @@ export function Home() {
       {/* ── 1. HERO ── */}
       <section className="hero hero--dark">
         <div className="hero-video-bg" aria-hidden>
-          <video autoPlay muted loop playsInline preload="auto" className="hero-video-bg__vid">
-            <source src={HERO_VIDEO} type="video/mp4" />
-            <source src={HERO_VIDEO_FALLBACK} type="video/mp4" />
+          <video key={isMobile ? 'hero-mob' : 'hero-desk'} autoPlay muted loop playsInline preload="auto" className="hero-video-bg__vid">
+            <source src={isMobile ? HERO_VIDEO_MOBILE : HERO_VIDEO} type="video/mp4" />
+            {!isMobile && <source src={HERO_VIDEO_FALLBACK} type="video/mp4" />}
           </video>
           <div className="hero-video-bg__overlay" />
         </div>
@@ -201,8 +206,8 @@ export function Home() {
       <div className="stack-card" style={{zIndex: 3}}>
         <section className="video-break" aria-label="Our approach">
           <div className="video-break__media">
-            <video autoPlay muted loop playsInline preload="none" className="video-break__vid">
-              <source src={VIDEO_BREAK_SRC} type="video/mp4" />
+            <video key={isMobile ? 'vb-mob' : 'vb-desk'} autoPlay muted loop playsInline preload="none" className="video-break__vid">
+              <source src={isMobile ? VIDEO_BREAK_MOBILE : VIDEO_BREAK_SRC} type="video/mp4" />
             </video>
             <div className="video-break__overlay" aria-hidden />
           </div>

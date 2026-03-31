@@ -3,11 +3,17 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowRight, MapPin, Clock, Briefcase, Mail, Phone } from 'lucide-react'
 import { jobs } from '../data/content'
+import { useIsMobile } from '../hooks/useIsMobile'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const JOBS_HERO_VIDEOS = [
+const JOBS_HERO_VIDEOS_DESKTOP = [
   'https://assets.mixkit.co/videos/6779/6779-720.mp4',
+  'https://assets.mixkit.co/videos/5434/5434-720.mp4',
+  'https://assets.mixkit.co/videos/48114/48114-720.mp4',
+]
+const JOBS_HERO_VIDEOS_MOBILE = [
+  'https://assets.mixkit.co/videos/36958/36958-720.mp4',
   'https://assets.mixkit.co/videos/5434/5434-720.mp4',
   'https://assets.mixkit.co/videos/48114/48114-720.mp4',
 ]
@@ -17,6 +23,8 @@ const JOBS_CTA_VIDEO  = 'https://assets.mixkit.co/videos/49470/49470-720.mp4'
 const JOBS_LISTINGS_IMG = 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80'
 
 export function Jobs() {
+  const isMobile = useIsMobile()
+  const JOBS_HERO_VIDEOS = isMobile ? JOBS_HERO_VIDEOS_MOBILE : JOBS_HERO_VIDEOS_DESKTOP
   const [activeVid, setActiveVid] = useState(0)
 
   useEffect(() => {
