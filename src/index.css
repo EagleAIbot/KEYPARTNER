@@ -1252,6 +1252,188 @@ button:focus-visible {
   font-weight: 800;
 }
 
+/* ---- Jobs Page: listings ---- */
+.jobs-listings-section {
+  padding: var(--section-pad) 0;
+  background: var(--brand-white);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+.jobs-listings-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.91);
+  z-index: 1;
+}
+.jobs-listings-inner {
+  position: relative;
+  z-index: 2;
+}
+.jobs-listings-header {
+  margin-bottom: 48px;
+}
+.jobs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.job-listing-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+  background: var(--brand-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  transition: box-shadow 0.25s var(--ease-out), transform 0.25s var(--ease-out), border-color 0.25s;
+}
+.job-listing-card:hover {
+  box-shadow: 0 12px 40px rgba(26,92,54,0.12);
+  transform: translateY(-2px);
+  border-color: rgba(52,168,101,0.3);
+}
+.job-listing-card__left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.job-listing-card__badges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.job-listing-type {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: var(--surface-muted);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+}
+.job-listing-card__title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+.job-listing-card__meta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.job-listing-card__meta span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.job-listing-card__meta svg { color: var(--brand-accent); }
+.job-listing-card__right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+}
+.job-listing-card__salary {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--brand-green);
+  white-space: nowrap;
+}
+.job-listing-card__apply {
+  white-space: nowrap;
+  padding: 10px 20px;
+  font-size: 0.85rem;
+}
+
+/* ---- Jobs Page: bottom CTA ---- */
+.jobs-cta-section {
+  padding: var(--section-pad) 0;
+  background: linear-gradient(150deg, var(--green-900) 0%, #082318 60%, #0a2e1a 100%);
+  position: relative;
+  overflow: hidden;
+}
+.jobs-cta-video-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.jobs-cta-vid {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.35;
+}
+.jobs-cta-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(150deg, rgba(8,22,14,0.88) 0%, rgba(8,35,24,0.86) 60%, rgba(10,46,26,0.9) 100%);
+}
+.jobs-cta-content {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+}
+.jobs-cta-eyebrow {
+  color: var(--green-300) !important;
+  margin-bottom: 20px;
+}
+.jobs-cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+  color: var(--brand-white);
+  margin-bottom: 20px;
+}
+.jobs-cta-sub {
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  color: rgba(255,255,255,0.7);
+  line-height: 1.7;
+  font-weight: 500;
+  margin-bottom: 36px;
+}
+.jobs-cta-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.jobs-cta-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (max-width: 700px) {
+  .job-listing-card {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .job-listing-card__right {
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+}
+
 /* ---- Page heroes ---- */
 .page-hero {
   padding: calc(72px + var(--section-pad)) 0 var(--section-pad);
