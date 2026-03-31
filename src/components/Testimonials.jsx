@@ -1,5 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
+import { Link } from 'react-router-dom'
+import { ArrowRight } from 'lucide-react'
 import { testimonials } from '../data/content'
 
 export function Testimonials() {
@@ -35,12 +37,16 @@ export function Testimonials() {
   return (
     <section className="testimonials-section">
       <div className="container">
-        <p className="eyebrow" data-reveal>In their words</p>
-        <h2 className="section-title" data-reveal>Trusted by hiring managers &amp; candidates</h2>
+        <p className="eyebrow" data-reveal>Reviews</p>
+        <h2 className="section-title" data-reveal>What Do Our Partners Say?</h2>
 
         <div className="tabs" data-reveal>
-          <button className={`tab-btn${active === 'clients' ? ' active' : ''}`} onClick={() => setActive('clients')}>Hiring Managers</button>
-          <button className={`tab-btn${active === 'candidates' ? ' active' : ''}`} onClick={() => setActive('candidates')}>Candidates</button>
+          <button className={`tab-btn${active === 'clients' ? ' active' : ''}`} onClick={() => setActive('clients')}>
+            Clients
+          </button>
+          <button className={`tab-btn${active === 'candidates' ? ' active' : ''}`} onClick={() => setActive('candidates')}>
+            Candidates
+          </button>
         </div>
 
         <div className="embla" ref={emblaRef} data-reveal>
@@ -69,6 +75,13 @@ export function Testimonials() {
               aria-label={`Go to testimonial ${i + 1}`}
             />
           ))}
+        </div>
+
+        <div className="testimonials-cta" data-reveal>
+          <Link to={active === 'clients' ? '/hire' : '/candidates'} className="btn btn-testimonial-cta">
+            {active === 'clients' ? 'Work with us' : 'Find your next role'}
+            <ArrowRight size={16} strokeWidth={2.25} />
+          </Link>
         </div>
       </div>
     </section>

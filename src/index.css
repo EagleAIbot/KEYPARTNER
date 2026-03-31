@@ -643,6 +643,231 @@ button:focus-visible {
   pointer-events: none;
 }
 
+/* ---- Type cursor (hero typewriter) ---- */
+.type-cursor {
+  display: inline-block;
+  font-weight: 300;
+  color: var(--brand-green);
+  animation: cursor-blink 0.75s step-end infinite;
+  margin-left: 1px;
+}
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ---- Video break ---- */
+.video-break {
+  position: relative;
+  min-height: min(68vh, 620px);
+  background: var(--green-900);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+.video-break__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.video-break__vid {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.5;
+}
+.video-break__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10,46,26,0.25) 0%,
+    rgba(10,46,26,0.55) 55%,
+    rgba(10,46,26,0.9) 100%
+  );
+}
+.video-break__content {
+  position: relative;
+  z-index: 2;
+  padding-top: clamp(80px, 16vw, 160px);
+  padding-bottom: clamp(60px, 9vw, 100px);
+}
+.video-break__eyebrow {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--green-300);
+  margin-bottom: 22px;
+}
+.video-break__heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5.8vw, 5rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+  color: var(--brand-white);
+  margin-bottom: 22px;
+  max-width: 14em;
+}
+.video-break__heading em {
+  color: var(--green-300);
+  font-style: italic;
+}
+.video-break__sub {
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  font-weight: 500;
+  color: rgba(255,255,255,0.7);
+  max-width: 36rem;
+  line-height: 1.72;
+}
+
+/* ---- What We're Known For ---- */
+.known-for-section {
+  padding: var(--section-pad) 0;
+  background: var(--brand-white);
+}
+.known-for-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.known-for-card {
+  padding: 40px 34px;
+  background: var(--surface-muted);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: box-shadow 0.3s var(--ease-out), transform 0.3s var(--ease-out), border-color 0.3s;
+}
+.known-for-card:hover {
+  box-shadow: 0 16px 48px rgba(26,92,54,0.1);
+  transform: translateY(-3px);
+  border-color: rgba(52,168,101,0.35);
+}
+.kf-num {
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--brand-accent);
+}
+.kf-icon-wrap {
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, var(--green-100) 0%, rgba(52,168,101,0.12) 100%);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand-green);
+}
+.kf-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+}
+.kf-body {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.72;
+  font-weight: 500;
+  flex: 1;
+}
+
+/* ---- Where We Excel ---- */
+.excel-section {
+  padding: var(--section-pad) 0;
+  background: linear-gradient(165deg, var(--green-900) 0%, var(--green-800) 55%, #0a2e1a 100%);
+  position: relative;
+  overflow: hidden;
+}
+.excel-section::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: min(60vw, 580px);
+  height: min(60vw, 580px);
+  background: radial-gradient(circle, rgba(93,198,138,0.1) 0%, transparent 65%);
+  pointer-events: none;
+}
+.excel-eyebrow { color: var(--green-300) !important; }
+.excel-title { color: var(--brand-white) !important; }
+.excel-sub { color: rgba(255,255,255,0.6) !important; }
+.excel-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 56px;
+}
+.excel-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-lg);
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  backdrop-filter: blur(8px);
+  transition: background 0.3s var(--ease-out), border-color 0.3s, transform 0.3s var(--ease-out), box-shadow 0.3s;
+}
+.excel-card:hover {
+  background: rgba(255,255,255,0.09);
+  border-color: rgba(93,198,138,0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+}
+.excel-card__icon {
+  width: 58px;
+  height: 58px;
+  background: rgba(93,198,138,0.14);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--green-300);
+  border: 1px solid rgba(93,198,138,0.2);
+}
+.excel-card__title {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--brand-white);
+}
+.excel-card__body {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.68);
+  line-height: 1.72;
+  font-weight: 500;
+  flex: 1;
+}
+.excel-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.excel-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  background: rgba(93,198,138,0.11);
+  color: var(--green-300);
+  border-radius: 99px;
+  border: 1px solid rgba(93,198,138,0.18);
+}
+.excel-link {
+  color: var(--green-300) !important;
+}
+.excel-link:hover { color: rgba(163,240,192,1) !important; }
+
 /* ---- Why KP ---- */
 .why-section { padding: var(--section-pad) 0; background: var(--brand-white); }
 .section-header { margin-bottom: 56px; }
@@ -829,6 +1054,25 @@ button:focus-visible {
 .embla-dots { display: flex; gap: 8px; margin-top: 32px; }
 .embla-dot { width: 8px; height: 8px; border-radius: 99px; background: rgba(255,255,255,0.25); border: none; transition: all 0.2s; }
 .embla-dot.active { background: var(--brand-white); width: 24px; }
+.testimonials-cta { margin-top: 44px; display: flex; justify-content: center; }
+.btn-testimonial-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 15px 32px;
+  border-radius: var(--radius-pill);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: var(--brand-white);
+  color: var(--green-900);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.14);
+  transition: transform 0.25s var(--ease-out), box-shadow 0.25s;
+}
+.btn-testimonial-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 36px rgba(0,0,0,0.22);
+}
 
 /* ---- Promise ---- */
 .promise-section { padding: var(--section-pad) 0; background: var(--brand-white); }
@@ -1092,6 +1336,8 @@ button:focus-visible {
   .team-grid { grid-template-columns: 1fr 1fr; }
   .spec-detail-grid { grid-template-columns: 1fr; gap: 40px; }
   .form-grid { grid-template-columns: 1fr; gap: 48px; }
+  .known-for-grid { grid-template-columns: 1fr 1fr; }
+  .excel-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 768px) {
   .nav--float { padding: 0; }
@@ -1112,6 +1358,8 @@ button:focus-visible {
   .why-grid { grid-template-columns: 1fr; }
   .specialisms-grid { grid-template-columns: 1fr; }
   .jobs-grid { grid-template-columns: 1fr; }
+  .known-for-grid { grid-template-columns: 1fr; }
+  .excel-grid { grid-template-columns: 1fr; }
   .hero-collage {
     grid-template-columns: 1fr 1fr;
     min-height: 280px;
@@ -1119,6 +1367,7 @@ button:focus-visible {
   }
   .hero-collage__main img { min-height: 260px; }
   .editorial-break__media img { height: 42vh; min-height: 280px; }
+  .video-break__heading { font-size: clamp(2rem, 8vw, 2.8rem); }
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
   .team-grid { grid-template-columns: 1fr; }
   .values-grid { grid-template-columns: 1fr; }
