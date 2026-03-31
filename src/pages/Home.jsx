@@ -13,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger)
 const HERO_VIDEO = 'https://assets.mixkit.co/videos/49288/49288-720.mp4'
 const HERO_VIDEO_FALLBACK = 'https://assets.mixkit.co/videos/5499/5499-720.mp4'
 const VIDEO_BREAK_SRC = 'https://assets.mixkit.co/videos/46078/46078-720.mp4'
-const EXCEL_VIDEO_SRC = 'https://assets.mixkit.co/videos/34980/34980-720.mp4'
+const EXCEL_VIDEO_SRC = 'https://assets.mixkit.co/videos/11001/11001-720.mp4'
 const CONTACT_VIDEO_SRC = 'https://assets.mixkit.co/videos/15795/15795-720.mp4'
 const KNOWN_FOR_IMG = 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1600&q=80'
 
