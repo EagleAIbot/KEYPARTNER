@@ -46,7 +46,10 @@ function CyclingText() {
 
   return (
     <span className="hero-cycle-word">
-      {displayed}<span className="type-cursor" aria-hidden>|</span>
+      <span className="hero-cycle-sizer" aria-hidden>Relationships</span>
+      <span className="hero-cycle-visible">
+        {displayed}<span className="type-cursor" aria-hidden>|</span>
+      </span>
     </span>
   )
 }
@@ -158,7 +161,7 @@ export function Home() {
 
         <div className="container hero-dark-content">
           <h1 className="hero-dark-title hero-ani-2">
-            A Business Built On<br /><CyclingText />
+            A Business Built On <CyclingText />
           </h1>
           <p className="hero-dark-sub hero-ani-3">
             Key Partnership Recruitment connects IT and commercial talent with high-growth businesses across the UK and Asia-Pacific.
