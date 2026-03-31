@@ -9,10 +9,16 @@ import { jobs, pillars } from '../data/content'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const heroImg = 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=85&auto=format&fit=crop'
 const HERO_VIDEO = 'https://assets.mixkit.co/videos/49288/49288-720.mp4'
 const HERO_VIDEO_FALLBACK = 'https://assets.mixkit.co/videos/5499/5499-720.mp4'
-const VIDEO_SRC = 'https://videos.pexels.com/video-files/3253655/3253655-hd_1280_720_25fps.mp4'
+// Colleagues shaking hands — warm, relationship-led
+const VIDEO_BREAK_SRC = 'https://assets.mixkit.co/videos/46744/46744-720.mp4'
+// City sunrise timelapse — atmospheric backdrop for dark "Where We Excel" section
+const EXCEL_VIDEO_SRC = 'https://assets.mixkit.co/videos/34980/34980-720.mp4'
+// Handshake silhouette in skyscraper — cinematic CTA backdrop
+const CONTACT_VIDEO_SRC = 'https://assets.mixkit.co/videos/15795/15795-720.mp4'
+// Professional handshake — subtle texture behind "What We're Known For"
+const KNOWN_FOR_IMG = 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1600&q=80'
 
 const CYCLE_WORDS = ['Relationships', 'Trust', 'Experience', 'Success']
 
@@ -198,7 +204,7 @@ export function Home() {
         <section className="video-break" aria-label="Our people">
           <div className="video-break__media">
             <video autoPlay muted loop playsInline preload="none" className="video-break__vid">
-              <source src={VIDEO_SRC} type="video/mp4" />
+              <source src={VIDEO_BREAK_SRC} type="video/mp4" />
             </video>
             <div className="video-break__overlay" aria-hidden />
           </div>
@@ -216,7 +222,8 @@ export function Home() {
 
       {/* ── 4. WHAT WE'RE KNOWN FOR ── */}
       <div className="stack-card" style={{zIndex: 4}}>
-        <section className="known-for-section">
+        <section className="known-for-section" style={{backgroundImage: `url(${KNOWN_FOR_IMG})`}}>
+          <div className="known-for-bg-overlay" aria-hidden />
           <div className="container">
             <div className="section-header">
               <div className="section-divider" data-reveal />
@@ -243,6 +250,12 @@ export function Home() {
       {/* ── 5. WHERE WE EXCEL ── */}
       <div className="stack-card" style={{zIndex: 5}}>
         <section className="excel-section">
+          <div className="excel-video-bg" aria-hidden>
+            <video autoPlay muted loop playsInline preload="none" className="excel-video-bg__vid">
+              <source src={EXCEL_VIDEO_SRC} type="video/mp4" />
+            </video>
+            <div className="excel-video-bg__overlay" />
+          </div>
           <div className="container">
             <div className="section-divider white" data-reveal />
             <p className="eyebrow excel-eyebrow" data-reveal>Specialisms</p>
@@ -282,6 +295,12 @@ export function Home() {
       {/* ── CTA / CONTACT ── */}
       <div className="stack-card" style={{zIndex: 7}} id="contact">
         <section className="contact-strip">
+          <div className="contact-video-bg" aria-hidden>
+            <video autoPlay muted loop playsInline preload="none" className="contact-video-bg__vid">
+              <source src={CONTACT_VIDEO_SRC} type="video/mp4" />
+            </video>
+            <div className="contact-video-bg__overlay" />
+          </div>
           <div className="container contact-strip__grid">
             <div className="contact-strip__col">
               <p className="eyebrow contact-eyebrow">Hiring?</p>
