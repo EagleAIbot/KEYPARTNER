@@ -1434,7 +1434,40 @@ button:focus-visible {
   .hero-dark-stat { min-width: 100px; max-width: none; }
 }
 
-/* ---- Jobs carousel section ---- */
+/* ---- Stacked card panels (scroll-over effect) ---- */
+.stack-card {
+  position: relative;
+  border-radius: 28px 28px 0 0;
+  margin-top: -28px;
+  overflow: hidden;
+  /* upward shadow creates the "lifted card" depth between panels */
+  box-shadow:
+    0 -2px 0 rgba(255,255,255,0.06),
+    0 -12px 40px rgba(0,0,0,0.18),
+    0 -32px 80px rgba(0,0,0,0.1);
+}
+
+/* Remove double-rounding: sections inside stack-card don't need their own radius */
+.stack-card .jobs-carousel-section,
+.stack-card .video-break,
+.stack-card .known-for-section,
+.stack-card .excel-section,
+.stack-card .testimonials-section,
+.stack-card .cta-band {
+  border-radius: 0;
+  margin-top: 0;
+}
+
+/* Jobs carousel and known-for are light cards */
+.stack-card:nth-child(2),
+.stack-card:nth-child(4) {
+  box-shadow:
+    0 -2px 0 rgba(0,0,0,0.04),
+    0 -12px 40px rgba(0,0,0,0.12),
+    0 -32px 80px rgba(0,0,0,0.06);
+}
+
+/* ---- Stacked card panels ---- */
 .jobs-carousel-section {
   padding: var(--section-pad) 0;
   background: var(--brand-white);
