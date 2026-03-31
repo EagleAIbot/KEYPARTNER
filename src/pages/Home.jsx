@@ -13,9 +13,8 @@ gsap.registerPlugin(ScrollTrigger)
 
 const HERO_VIDEO = 'https://assets.mixkit.co/videos/49288/49288-720.mp4'
 const HERO_VIDEO_FALLBACK = 'https://assets.mixkit.co/videos/5499/5499-720.mp4'
-const HERO_VIDEO_MOBILE = 'https://assets.mixkit.co/videos/29949/29949-720.mp4'
+const HERO_VIDEO_MOBILE = 'https://assets.mixkit.co/videos/49288/49288-720.mp4'
 const VIDEO_BREAK_SRC = 'https://assets.mixkit.co/videos/46078/46078-720.mp4'
-const VIDEO_BREAK_MOBILE = 'https://assets.mixkit.co/videos/23726/23726-720.mp4'
 const EXCEL_VIDEO_SRC = 'https://assets.mixkit.co/videos/11001/11001-720.mp4'
 const CONTACT_VIDEO_SRC = 'https://assets.mixkit.co/videos/15795/15795-720.mp4'
 const KNOWN_FOR_IMG = 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1600&q=80'
@@ -166,7 +165,7 @@ export function Home() {
 
         <div className="container hero-dark-content">
           <h1 className="hero-dark-title hero-ani-2">
-            A Business Built On <CyclingText />
+            A Business Built<br className="hero-title-br" /> On <CyclingText />
           </h1>
           <p className="hero-dark-sub hero-ani-3">
             Key Partnership Recruitment connects IT and commercial talent with high-growth businesses across the UK and Asia-Pacific.
@@ -206,8 +205,8 @@ export function Home() {
       <div className="stack-card" style={{zIndex: 3}}>
         <section className="video-break" aria-label="Our approach">
           <div className="video-break__media">
-            <video key={isMobile ? 'vb-mob' : 'vb-desk'} autoPlay muted loop playsInline preload="none" className="video-break__vid">
-              <source src={isMobile ? VIDEO_BREAK_MOBILE : VIDEO_BREAK_SRC} type="video/mp4" />
+            <video autoPlay muted loop playsInline preload="none" className="video-break__vid">
+              <source src={VIDEO_BREAK_SRC} type="video/mp4" />
             </video>
             <div className="video-break__overlay" aria-hidden />
           </div>

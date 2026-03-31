@@ -1895,6 +1895,7 @@ button:focus-visible {
   color: var(--brand-white);
   margin-bottom: 28px;
 }
+.hero-title-br { display: none; }
 .hero-cycle-word {
   display: inline-block;
   position: relative;
@@ -2165,6 +2166,7 @@ button:focus-visible {
 
   /* ── Mobile spacing & typography ── */
   :root { --section-pad: 52px; }
+  .hero-title-br    { display: block; }
   .hero-dark-title  { font-size: clamp(2rem, 9vw, 2.8rem); line-height: 1.05; }
   .hero-dark-sub    { font-size: 0.95rem; }
   .section-title    { font-size: clamp(1.6rem, 6vw, 2rem); }
@@ -2193,5 +2195,6 @@ button:focus-visible {
   .coverage-map-wrap               { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .coverage-map-wrap svg           { min-width: 500px; }
   .coverage-header                 { padding: 0 16px; }
-  .meet-photo-frame                { aspect-ratio: 4/3; max-height: 280px; }
+  .meet-photo-frame                { aspect-ratio: 3/4; max-height: 340px; }
+  .meet-photo-frame img            { object-position: 50% 8%; }
 }
