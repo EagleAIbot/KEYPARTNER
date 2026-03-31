@@ -95,7 +95,7 @@ export function About() {
           <h2 className="section-title" data-reveal>Meet the People Behind Key Partnership</h2>
           <div className="team-grid" style={{ marginTop: 48 }}>
             {[
-              { name: 'Matt', role: 'Senior Recruitment Consultant', bio: 'The driving force behind hundreds of successful placements. Matt\'s reputation for communication, technical understanding, and genuine care for both clients and candidates is reflected in every review on this site.', photo: '/KEYPARTNER/matt.jpg' },
+              { name: 'Matt', role: 'Senior Recruitment Consultant', bio: 'The driving force behind hundreds of successful placements. Matt\'s reputation for communication, technical understanding, and genuine care for both clients and candidates is reflected in every review on this site.', photo: `${import.meta.env.BASE_URL}matt.jpg` },
               { name: 'The Team', role: 'Key Partnership Recruitment', bio: 'We\'re a small, focused team that punches above its weight. No anonymous operators — when you work with Key Partnership, you deal with people who know your name and your requirements.', initial: 'KP' },
             ].map(m => (
               <div key={m.name} className="team-card" data-reveal>

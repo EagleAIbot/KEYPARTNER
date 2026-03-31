@@ -10,6 +10,8 @@ const navLinks = [
   { to: '/about', label: 'About' },
 ]
 
+const base = import.meta.env.BASE_URL
+
 export function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
@@ -42,7 +44,7 @@ export function Nav() {
         <div className="nav-shell">
           <div className="nav-inner">
             <Link to="/" className="nav-logo" aria-label="Key Partnership home">
-              <img src="/logo-white.webp" alt="Key Partnership Recruitment" />
+              <img src={`${base}logo-white.webp`} alt="Key Partnership Recruitment" />
             </Link>
             <nav className="nav-links" aria-label="Primary">
               <div className="nav-rail">
@@ -72,7 +74,7 @@ export function Nav() {
         <div className="drawer-overlay" onClick={() => setOpen(false)} />
         <div className="drawer-panel">
           <div className="drawer-header">
-            <img src="/logo-white.webp" alt="" style={{ height: 28, filter: 'brightness(0) saturate(100%) invert(21%) sepia(60%) saturate(600%) hue-rotate(110deg) brightness(80%)' }} />
+            <img src={`${base}logo-white.webp`} alt="" style={{ height: 28, filter: 'brightness(0) saturate(100%) invert(21%) sepia(60%) saturate(600%) hue-rotate(110deg) brightness(80%)' }} />
             <button type="button" className="drawer-close" onClick={() => setOpen(false)} aria-label="Close menu">
               <X size={22} />
             </button>
