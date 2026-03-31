@@ -26,9 +26,9 @@ const FLIGHT_PATHS = [
   { from: [151.2, -33.9],to: [174.8, -36.9] },
 ]
 
-// Plane path matches actual projected marker positions (viewBox "-90 0 960 460", center [87,5]):
-// UK(201,144) → UAE(319,215) → SG(441,251) → SYD(520,314) → AKL(571,326)
-const PLANE_PATH = 'M 201,144 C 248,183 292,210 319,215 C 370,233 413,247 441,251 C 477,282 504,310 520,314 L 571,326'
+// Plane path using actual projected SVG positions (measured from live page):
+// UK(245,130) → UAE(383,180) → SG(500,240) → SYD(615,324) → AKL(673,330)
+const PLANE_PATH = 'M 245,130 C 300,152 352,172 383,180 C 430,204 468,232 500,240 C 550,280 590,316 615,324 L 673,330'
 
 export function CoverageMap() {
   return (
@@ -55,7 +55,7 @@ export function CoverageMap() {
         <ComposableMap
           projection="geoNaturalEarth1"
           projectionConfig={{ scale: 148, center: [87, 5] }}
-          viewBox="-90 0 960 460"
+          viewBox="-20 0 960 460"
           style={{ width: '100%', height: 'auto', display: 'block' }}
         >
           <Geographies geography={GEO_URL}>
