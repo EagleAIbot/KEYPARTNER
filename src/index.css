@@ -659,7 +659,7 @@ button:focus-visible {
 /* ---- Video break ---- */
 .video-break {
   position: relative;
-  min-height: min(68vh, 620px);
+  min-height: min(50vh, 440px);
   background: var(--green-900);
   display: flex;
   flex-direction: column;
@@ -1896,10 +1896,9 @@ button:focus-visible {
   margin-bottom: 28px;
 }
 .hero-cycle-word {
-  display: block;
+  display: inline;
   color: var(--green-300);
   font-style: italic;
-  min-height: 1.1em;
 }
 .hero-dark-sub {
   font-size: clamp(1rem, 1.25vw, 1.15rem);
@@ -1930,15 +1929,15 @@ button:focus-visible {
 .hero-dark-stats {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 44px;
+  gap: 16px;
+  margin-top: 48px;
   list-style: none;
   padding: 0;
 }
 .hero-dark-stat {
   flex: 1 1 0;
   min-width: 0;
-  padding: 20px 22px;
+  padding: 26px 28px;
   border-radius: var(--radius-lg);
   background: rgba(0,0,0,0.35);
   border: 1px solid rgba(255,255,255,0.18);
@@ -1953,7 +1952,7 @@ button:focus-visible {
 .hero-dark-stat__num {
   display: block;
   font-family: var(--font-display);
-  font-size: 1.7rem;
+  font-size: 2.1rem;
   font-weight: 800;
   letter-spacing: -0.04em;
   color: var(--green-300);
@@ -1961,16 +1960,16 @@ button:focus-visible {
 }
 .hero-dark-stat__label {
   display: block;
-  margin-top: 6px;
-  font-size: 0.74rem;
+  margin-top: 8px;
+  font-size: 0.82rem;
   font-weight: 700;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255,255,255,0.88);
   line-height: 1.35;
 }
 .hero-dark-stat__detail {
   display: block;
-  margin-top: 4px;
-  font-size: 0.68rem;
+  margin-top: 5px;
+  font-size: 0.72rem;
   font-weight: 400;
   color: rgba(255,255,255,0.55);
   line-height: 1.3;
