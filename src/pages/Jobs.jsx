@@ -49,7 +49,7 @@ export function Jobs() {
           </h1>
           <p className="hero-dark-sub hero-ani-3">
             Technology, Commercial &amp; Data/AI roles across the UK.<br />
-            No fluff — just the right opportunity at the right time.
+            No fluff, just the right opportunity at the right time.
           </p>
           <div className="hero-actions hero-ani-4">
             <a href="#listings" className="btn btn-hero-primary">

@@ -95,7 +95,7 @@ export function SpecialismsList() {
         <div className="container">
           <p className="eyebrow">Expertise</p>
           <h1>Three Pillars.<br />Deep Expertise.</h1>
-          <p>Software Development, Enterprise IT, and BI & Data. We cover the full technology talent spectrum — from Graduates to C-suite, across every major technology stack.</p>
+          <p>Software Development, Enterprise IT, and BI & Data. We cover the full technology talent spectrum, from Graduates to C-suite, across every major technology stack.</p>
         </div>
       </section>
       <section style={{ padding: 'var(--section-pad) 0', background: 'var(--brand-white)' }}>

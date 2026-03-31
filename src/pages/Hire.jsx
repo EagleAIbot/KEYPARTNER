@@ -27,7 +27,7 @@ export function Hire() {
         <div className="container">
           <p className="eyebrow">For Employers</p>
           <h1>Hire Tech Talent,<br />Done Right</h1>
-          <p>Stop being flooded with irrelevant profiles. Key Partnership presents a tailored shortlist of engaged, fully-qualified technology professionals — fast.</p>
+          <p>Stop being flooded with irrelevant profiles. Key Partnership presents a tailored shortlist of engaged, fully-qualified technology professionals, fast.</p>
           <div className="page-hero-actions">
             <a href="#submit" className="btn btn-primary">Submit a Vacancy <ArrowRight size={16} /></a>
             <a href="tel:01327493143" className="btn btn-secondary">Call 01327 493 143</a>
@@ -63,10 +63,10 @@ export function Hire() {
             <div data-reveal style={{ background: 'var(--green-50)', borderRadius: 20, padding: 40, border: '1px solid var(--border)' }}>
               <p className="eyebrow" style={{ marginBottom: 12 }}>The Key Partnership difference</p>
               <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: 20 }}>
-                We keep a <strong style={{ color: 'var(--text-primary)' }}>small, highly engaged client portfolio</strong> so we understand your business inside out — your culture, your technical requirements, your growth ambitions.
+                We keep a <strong style={{ color: 'var(--text-primary)' }}>small, highly engaged client portfolio</strong> so we understand your business inside out: your culture, your technical requirements, your growth ambitions.
               </p>
               <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: 1.7 }}>
-                Our consultants breathe tech recruiting. Pre-built talent pools mean we respond with the right people quickly — we've filled urgent roles within 7 days.
+                Our consultants breathe tech recruiting. Pre-built talent pools mean we respond with the right people quickly. We've filled urgent roles within 7 days.
               </p>
             </div>
           </div>
@@ -83,9 +83,9 @@ export function Hire() {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24 }}>
             {[
-              { num: '01', title: 'Book a call', body: 'Get in touch and we\'ll schedule a conversation with our team — same day if urgent.' },
+              { num: '01', title: 'Book a call', body: 'Get in touch and we\'ll schedule a conversation with our team, same day if urgent.' },
               { num: '02', title: 'Understand your needs', body: 'We dig into the role, your stack, your culture, and your growth aspirations. Not just a job description.' },
-              { num: '03', title: 'Agree a strategy', body: 'We agree exactly how we\'ll find your talent, timelines, market data, and pricing — complete transparency.' },
+              { num: '03', title: 'Agree a strategy', body: 'We agree exactly how we\'ll find your talent, timelines, market data, and pricing. Complete transparency.' },
               { num: '04', title: 'Start hiring', body: 'Sit back. We handle the search, screening, and shortlisting. You focus on choosing the right person.' },
             ].map(s => (
               <div key={s.num} className="card" data-reveal style={{ textAlign: 'center' }}>
@@ -107,7 +107,7 @@ export function Hire() {
               <p className="eyebrow" data-reveal>Sectors We Serve</p>
               <h2 className="section-title" data-reveal>Sector Agnostic. Technology Focused.</h2>
               <p style={{ color: 'var(--text-muted)', marginBottom: 32, lineHeight: 1.7 }} data-reveal>
-                We recruit across industries. What unites our clients is a need for world-class technology talent — and an appreciation for a recruiter who genuinely understands what that means.
+                We recruit across industries. What unites our clients is a need for world-class technology talent, and an appreciation for a recruiter who genuinely understands what that means.
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 {sectors.map(s => (
@@ -120,9 +120,9 @@ export function Hire() {
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
               {[
-                { icon: Clock, title: '7-day placements', body: 'From initial call to signed offer — we\'ve done it repeatedly.' },
+                { icon: Clock, title: '7-day placements', body: 'From initial call to signed offer. We\'ve done it repeatedly.' },
                 { icon: Shield, title: 'Money-back guarantee', body: 'Every placement is backed by a replacement guarantee. Quality is non-negotiable.' },
-                { icon: TrendingUp, title: 'Market intelligence', body: 'We share salary benchmarks, availability data, and competitor insight — so you make the right decisions.' },
+                { icon: TrendingUp, title: 'Market intelligence', body: 'We share salary benchmarks, availability data, and competitor insight, so you make the right decisions.' },
               ].map(c => (
                 <div key={c.title} className="card" data-reveal style={{ display: 'flex', gap: 20, alignItems: 'flex-start' }}>
                   <div style={{ width: 44, height: 44, minWidth: 44, background: 'var(--green-100)', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--brand-green)' }}>
@@ -150,7 +150,7 @@ export function Hire() {
           <div className="form-grid">
             <div className="form-card" data-reveal>
               <h3>Start the conversation</h3>
-              <p className="form-sub">No obligation, no hard sell — just a genuine conversation about how we can help.</p>
+              <p className="form-sub">No obligation, no hard sell, just a genuine conversation about how we can help.</p>
               <form action={`mailto:info@ourkeypartnership.co.uk?subject=New%20Vacancy%20Enquiry`} method="get">
                 <div className="form-row">
                   <div className="form-field">
@@ -204,7 +204,7 @@ export function Hire() {
               ))}
               <div style={{ marginTop: 24, padding: 24, background: 'var(--brand-white)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--border)' }}>
                 <p style={{ fontSize: '0.9rem', fontWeight: 700, marginBottom: 8 }}>Replacement guarantee</p>
-                <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>Every hire is backed by our guarantee. If something doesn't work out, we put it right — at no extra cost.</p>
+                <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>Every hire is backed by our guarantee. If something doesn't work out, we put it right, at no extra cost.</p>
               </div>
             </div>
           </div>

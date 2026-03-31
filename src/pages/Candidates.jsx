@@ -24,7 +24,7 @@ export function Candidates() {
         <div className="container">
           <p className="eyebrow">For Candidates</p>
           <h1>Find Your Next<br />Tech Career</h1>
-          <p>We&apos;re on your side. From first conversation to first day in the new role — and beyond. Key Partnership gives you the guidance, prep, and honest communication that most recruiters never bother with.</p>
+          <p>We&apos;re on your side. From first conversation to first day in the new role, and beyond. Key Partnership gives you the guidance, prep, and honest communication that most recruiters never bother with.</p>
           <div className="page-hero-actions">
             <a href="#submit" className="btn btn-primary">Submit Your CV <ArrowRight size={16} /></a>
             <Link to="/jobs" className="btn btn-secondary">Browse Jobs</Link>
@@ -44,12 +44,12 @@ export function Candidates() {
                 Type "why are recruiters so" on Google and you'll see: <em>fake, pushy, slow, vague</em>. Those searches come from real experiences.
               </p>
               <p style={{ color: 'var(--text-muted)', lineHeight: 1.7 }}>
-                We're working to change that. Our candidates are also our clients — and without you, we have no business. Expect honest advice, real feedback, and a consultant who's <strong style={{ color: 'var(--text-primary)' }}>actually on your side</strong>.
+                We're working to change that. Our candidates are also our clients, and without you, we have no business. Expect honest advice, real feedback, and a consultant who's <strong style={{ color: 'var(--text-primary)' }}>actually on your side</strong>.
               </p>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }} data-reveal>
               {[
-                'Honest, transparent advice — no false expectations',
+                'Honest, transparent advice, no false expectations',
                 'Detailed feedback after every interview, guaranteed',
                 'Technical knowledge that matches your expertise',
                 'CV workshops and tailored interview prep',
@@ -75,9 +75,9 @@ export function Candidates() {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24 }}>
             {[
-              { num: '01', title: 'We listen', body: 'Our consultants are job counsellors. We take the time to understand your situation, motivations, and goals — not just your skill set.' },
+              { num: '01', title: 'We listen', body: 'Our consultants are job counsellors. We take the time to understand your situation, motivations, and goals, not just your skill set.' },
               { num: '02', title: 'We consult', body: 'Market data on demand for your skills. CV workshops. Role alignment to clients who share your values. Real, actionable advice.' },
-              { num: '03', title: 'We prepare', body: 'Interview prep for every candidate — role insight, company briefings, practice interviews, and strategy. Even if you\'re not interviewing with our client.' },
+              { num: '03', title: 'We prepare', body: 'Interview prep for every candidate: role insight, company briefings, practice interviews, and strategy. Even if you\'re not interviewing with our client.' },
               { num: '04', title: 'We deliver', body: 'We manage the offer, guide you through onboarding, and check in throughout your first six months. Your success is our success.' },
             ].map(s => (
               <div key={s.num} className="card" data-reveal style={{ textAlign: 'center' }}>
@@ -96,7 +96,7 @@ export function Candidates() {
           <div style={{ textAlign: 'center', maxWidth: 600, margin: '0 auto 56px' }} data-reveal>
             <div className="section-divider" style={{ margin: '0 auto 24px' }} />
             <h2 className="section-title">Submit Your CV</h2>
-            <p style={{ color: 'var(--text-muted)' }}>Takes 60 seconds. We'll be in touch with a real conversation — no automated nonsense.</p>
+            <p style={{ color: 'var(--text-muted)' }}>Takes 60 seconds. We'll be in touch with a real conversation, no automated nonsense.</p>
           </div>
           <div className="form-grid">
             <div className="form-card" data-reveal>

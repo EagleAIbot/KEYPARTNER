@@ -62,7 +62,7 @@ function JobsCarousel() {
             <div className="section-divider" data-reveal />
             <p className="eyebrow" data-reveal>Opportunities</p>
             <h2 className="section-title" data-reveal>Latest Vacancies</h2>
-            <p className="section-subtitle" data-reveal>Find your next role — updated regularly with new opportunities.</p>
+            <p className="section-subtitle" data-reveal>Find your next role, updated regularly with new opportunities.</p>
           </div>
           <div className="jobs-carousel-controls">
             <button className="carousel-btn" onClick={() => emblaApi?.scrollPrev()} aria-label="Previous">
@@ -102,13 +102,13 @@ const knownFor = [
   {
     num: '01',
     title: 'Relationships, Not Transactions',
-    body: 'We work as partners, not suppliers. That means honest conversations, clear expectations, and a focus on long-term fit — not quick placements.',
+    body: 'We work as partners, not suppliers. That means honest conversations, clear expectations, and a focus on long-term fit, not quick placements.',
     Icon: Heart,
   },
   {
     num: '02',
     title: 'A Select Client Portfolio',
-    body: 'We intentionally keep our client base small. It allows us to properly understand your business — how you operate, how your teams work, and what "good" really looks like. We don\'t just fill roles. We represent you in the market.',
+    body: 'We intentionally keep our client base small. It allows us to properly understand your business: how you operate, how your teams work, and what "good" really looks like. We don\'t just fill roles. We represent you in the market.',
     Icon: Users,
   },
   {
@@ -209,7 +209,7 @@ export function Home() {
               Recruitment done<br />the <em>right way.</em>
             </h2>
             <p className="video-break__sub" data-reveal>
-              Five years of delivering the right hires — with relationships at the core.
+              Five years of delivering the right hires, with relationships at the core.
             </p>
           </div>
           <div className="video-break__scroll-hint" aria-hidden>
@@ -228,7 +228,7 @@ export function Home() {
               <p className="eyebrow" data-reveal>Our Philosophy</p>
               <h2 className="section-title" data-reveal>What We're Known For</h2>
               <p className="section-subtitle" data-reveal>
-                We don't operate like a traditional recruitment agency. No CV blasting. No shortcuts with an aim of generating a 'quick fee'. Most of our time is spent headhunting — identifying and engaging the right people, not just the available ones. It's a more deliberate approach, but it's what delivers better hires.
+                We don't operate like a traditional recruitment agency. No CV blasting. No shortcuts with an aim of generating a 'quick fee'. Most of our time is spent headhunting, identifying and engaging the right people, not just the available ones. It's a more deliberate approach, but it's what delivers better hires.
               </p>
             </div>
             <div className="known-for-grid">
@@ -288,7 +288,7 @@ export function Home() {
           <div className="container meet-grid">
             <div className="meet-photo-col" data-reveal>
               <div className="meet-photo-frame">
-                <img src={`${import.meta.env.BASE_URL}matt.jpg`} alt="Matt Stimpson — Founder, Key Partnership Recruitment" />
+                <img src={`${import.meta.env.BASE_URL}matt.jpg`} alt="Matt Stimpson, Founder, Key Partnership Recruitment" />
               </div>
             </div>
             <div className="meet-text-col">
@@ -297,13 +297,13 @@ export function Home() {
               <h2 className="meet-name" data-reveal>Matt Stimpson</h2>
               <p className="meet-role" data-reveal>Founder &amp; Managing Director</p>
               <p className="meet-bio" data-reveal>
-                Matt brings close to a decade of experience recruiting and headhunting for ambitious businesses — from SMEs through to FTSE 250 and Fortune 500 organisations.
+                Matt brings close to a decade of experience recruiting and headhunting for ambitious businesses, from SMEs through to FTSE 250 and Fortune 500 organisations.
               </p>
               <p className="meet-bio" data-reveal>
                 He entered the industry at 16, quickly establishing himself as one of the UK's top-performing early careers recruiters, including recognition as the UK Recruitment Apprentice of the Year by the Recruitment &amp; Employment Confederation (REC).
               </p>
               <p className="meet-bio" data-reveal>
-                Matt founded Key Partnership with a clear approach — recruitment works better when it's built on genuine relationships, not volume. That same approach underpins everything today: a selective client base, a headhunting-led model, and a focus on delivering the right hires, not just available candidates.
+                Matt founded Key Partnership with a clear approach. Recruitment works better when it's built on genuine relationships, not volume. That same approach underpins everything today: a selective client base, a headhunting-led model, and a focus on delivering the right hires, not just available candidates.
               </p>
               <div className="meet-actions" data-reveal>
                 <a href="mailto:info@ourkeypartnership.co.uk" className="btn btn-green">

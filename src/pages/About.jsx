@@ -40,7 +40,7 @@ export function About() {
             <p className="eyebrow">Our Mission</p>
             <h2 className="section-title">To help great companies find Simply Great People</h2>
             <p style={{ color: 'var(--text-muted)', lineHeight: 1.75, marginBottom: 20 }}>
-              At Key Partnership, we do things differently. While our competitors scatter their attention across vast client lists, we deliberately keep our portfolio small. That means we genuinely understand your business — not just the job spec.
+              At Key Partnership, we do things differently. While our competitors scatter their attention across vast client lists, we deliberately keep our portfolio small. That means we genuinely understand your business, not just the job spec.
             </p>
             <p style={{ color: 'var(--text-muted)', lineHeight: 1.75 }}>
               We cover Software Development, Enterprise IT, and BI & Data, working with everyone from household brands and Fortune 500 companies to innovative start-ups building the technologies of tomorrow.
@@ -71,8 +71,8 @@ export function About() {
           <div className="values-grid">
             {[
               { num: '01', title: 'Positivity', body: 'Being engaged, open-minded, and facing challenges in a process-driven and focused manner. We bring energy to every interaction.' },
-              { num: '02', title: 'Curiosity', body: 'Curiosity is core to Key Partnership. We are dedicated to self-learning and improvement — we won\'t stop until we get to the bottom of what you need.' },
-              { num: '03', title: 'Commercial Mindset', body: 'Our team is commercially-minded and action-oriented. We aim to deliver only the best quality service — not just any candidate, the right candidate.' },
+              { num: '02', title: 'Curiosity', body: 'Curiosity is core to Key Partnership. We are dedicated to self-learning and improvement. We won\'t stop until we get to the bottom of what you need.' },
+              { num: '03', title: 'Commercial Mindset', body: 'Our team is commercially-minded and action-oriented. We aim to deliver only the best quality service, not just any candidate, the right candidate.' },
               { num: '04', title: 'Getting Things Done', body: 'We thrive on taking ownership of work and staying focused on delivering the best results. We follow our processes closely and continuously improve them.' },
             ].map(v => (
               <div key={v.num} className="value-card" data-reveal>
@@ -96,7 +96,7 @@ export function About() {
           <div className="team-grid" style={{ marginTop: 48 }}>
             {[
               { name: 'Matt', role: 'Senior Recruitment Consultant', bio: 'The driving force behind hundreds of successful placements. Matt\'s reputation for communication, technical understanding, and genuine care for both clients and candidates is reflected in every review on this site.', photo: `${import.meta.env.BASE_URL}matt.jpg` },
-              { name: 'The Team', role: 'Key Partnership Recruitment', bio: 'We\'re a small, focused team that punches above its weight. No anonymous operators — when you work with Key Partnership, you deal with people who know your name and your requirements.', initial: 'KP' },
+              { name: 'The Team', role: 'Key Partnership Recruitment', bio: 'We\'re a small, focused team that punches above its weight. No anonymous operators. When you work with Key Partnership, you deal with people who know your name and your requirements.', initial: 'KP' },
             ].map(m => (
               <div key={m.name} className="team-card" data-reveal>
                 <div className="team-photo">
@@ -120,7 +120,7 @@ export function About() {
       <section className="cta-band">
         <div className="container" data-reveal>
           <h2>Ready to work together?</h2>
-          <p>Whether you're hiring or looking for your next move — we'd love to have a conversation.</p>
+          <p>Whether you're hiring or looking for your next move, we'd love to have a conversation.</p>
           <div className="cta-band-actions">
             <Link to="/hire#submit" className="btn btn-primary">I'm Hiring <ArrowRight size={16} /></Link>
             <Link to="/candidates#submit" className="btn btn-secondary">I'm Looking for Work</Link>

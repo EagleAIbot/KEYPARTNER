@@ -2,7 +2,7 @@ export const pillars = [
   {
     slug: 'technology',
     title: 'Technology',
-    short: 'From software engineering to infrastructure, we support hiring across the full tech stack — from graduate level through to CTO. We work across modern engineering environments.',
+    short: 'From software engineering to infrastructure, we support hiring across the full tech stack, from graduate level through to CTO. We work across modern engineering environments.',
     tags: ['Software Development', 'DevOps & Cloud', 'Platform & Infrastructure'],
   },
   {
@@ -42,14 +42,14 @@ export const testimonials = {
       company: "Hospitality Tech Vendor",
     },
     {
-      quote: "Reliable, professional and efficient — a Valued Partnership. We both work well together to ensure our applicants are managed through the process in the best way.",
+      quote: "Reliable, professional and efficient. A Valued Partnership. We both work well together to ensure our applicants are managed through the process in the best way.",
       author: "Chief Operating Officer",
       company: "Payment Tech Business",
     },
   ],
   candidates: [
     {
-      quote: "His guidance and regular contact made such a difference — without a doubt the best service I have received. We spoke straight after both my interviews, and I felt he was with me every step of the way.",
+      quote: "His guidance and regular contact made such a difference. Without a doubt the best service I have received. We spoke straight after both my interviews, and I felt he was with me every step of the way.",
       author: "Business Intelligence Developer",
       company: "London, UK",
     },
@@ -59,7 +59,7 @@ export const testimonials = {
       company: "Milton Keynes, UK",
     },
     {
-      quote: "The most dedicated recruiter I've worked with. What stood out was his thoroughness — checking in at every stage so I always knew exactly where I stood. He made the process both easy and enjoyable.",
+      quote: "The most dedicated recruiter I've worked with. What stood out was his thoroughness, checking in at every stage so I always knew exactly where I stood. He made the process both easy and enjoyable.",
       author: "Java Developer",
       company: "UK",
     },
@@ -69,7 +69,7 @@ export const testimonials = {
       company: "Bedford, UK",
     },
     {
-      quote: "Rarely do you find a recruiter that puts you first and focuses on helping you put your best foot forward. Key Partnership is a fresh breath of air in a stereotyped industry — determined, resourceful, an absolute pleasure.",
+      quote: "Rarely do you find a recruiter that puts you first and focuses on helping you put your best foot forward. Key Partnership is a fresh breath of air in a stereotyped industry. Determined, resourceful, an absolute pleasure.",
       author: "Web Developer",
       company: "Cardiff",
     },
@@ -97,7 +97,7 @@ export const jobs = [
   },
   {
     id: 3,
-    title: "BI Developer — Power BI",
+    title: "BI Developer, Power BI",
     discipline: "BI & Data",
     location: "Northampton",
     type: "Hybrid",
@@ -120,7 +120,7 @@ export const specialisms = [
     slug: 'software-development',
     title: 'Software Development',
     short: 'Full-stack recruitment from Graduate to Architect, across every major technology.',
-    description: `In a world where technology governs our every move, companies need to stay one step ahead. Key Partnership covers the full Software Development Lifecycle — back-end, front-end, full stack, architects, testers, and product managers.
+    description: `In a world where technology governs our every move, companies need to stay one step ahead. Key Partnership covers the full Software Development Lifecycle: back-end, front-end, full stack, architects, testers, and product managers.
 
 We understand the technology deeply and have in-depth, technical conversations with developers. We present code samples, personal projects and GitHub repositories so clients can assess ability beyond a CV.`,
     signs: [
@@ -135,7 +135,7 @@ We understand the technology deeply and have in-depth, technical conversations w
   {
     slug: 'enterprise-it',
     title: 'Enterprise IT',
-    short: 'IT support, infrastructure, MSPs and technology rollouts — from SMEs to Fortune 500.',
+    short: 'IT support, infrastructure, MSPs and technology rollouts, from SMEs to Fortune 500.',
     description: `As your business grows, your technology must grow in parallel. Key Partnership recruits for both businesses with internal IT functions and Managed Service Providers delivering services to their customers.
 
 We have built Industry Accredited Technology Teams for Fortune 500 companies and small-to-medium enterprises alike.`,
@@ -152,7 +152,7 @@ We have built Industry Accredited Technology Teams for Fortune 500 companies and
     slug: 'bi-data',
     title: 'BI & Data',
     short: 'BI developers, DBAs, data architects and visualisation specialists.',
-    description: `Companies make decisions through data. Key Partnership recruits across the full data stack — visualisation, warehousing, database management, and data integration — so your stakeholders can make the right calls quickly.`,
+    description: `Companies make decisions through data. Key Partnership recruits across the full data stack: visualisation, warehousing, database management, and data integration — so your stakeholders can make the right calls quickly.`,
     signs: [
       'Unclear how much budget you have available',
       'Competitors edging closer in sales performance',

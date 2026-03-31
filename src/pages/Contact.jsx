@@ -23,7 +23,7 @@ export function Contact() {
         <div className="container">
           <p className="eyebrow">Get In Touch</p>
           <h1>Let's Have a<br />Conversation</h1>
-          <p>No hard sell. No script. Just a genuine conversation about how we can help — whether you're hiring or looking for your next role.</p>
+          <p>No hard sell. No script. Just a genuine conversation about how we can help, whether you're hiring or looking for your next role.</p>
         </div>
       </section>
 
