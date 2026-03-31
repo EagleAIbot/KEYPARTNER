@@ -723,6 +723,105 @@ button:focus-visible {
   max-width: 36rem;
   line-height: 1.72;
 }
+.video-break__scroll-hint {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.45);
+  animation: scrollBounce 2.2s ease-in-out infinite;
+  z-index: 3;
+}
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.45; }
+  50% { transform: translateX(-50%) translateY(8px); opacity: 0.85; }
+}
+
+/* ---- Meet the Founder ---- */
+.meet-section {
+  padding: var(--section-pad) 0;
+  background: var(--brand-white);
+}
+.meet-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(48px, 8vw, 100px);
+  align-items: center;
+}
+.meet-photo-col {
+  position: relative;
+}
+.meet-photo-frame {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: var(--surface-muted);
+  box-shadow: 0 32px 80px rgba(26,92,54,0.18);
+}
+.meet-photo-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(52,168,101,0.18);
+  pointer-events: none;
+}
+.meet-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+.meet-text-col {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.meet-name {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+  color: var(--text-primary);
+  margin: 0;
+}
+.meet-role {
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--brand-accent);
+  margin-top: -8px;
+}
+.meet-bio {
+  font-size: clamp(0.95rem, 1.2vw, 1.08rem);
+  color: var(--text-muted);
+  line-height: 1.78;
+  font-weight: 500;
+}
+.meet-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+.meet-linkedin {
+  color: var(--text-primary) !important;
+}
+
+@media (max-width: 860px) {
+  .meet-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .meet-photo-frame {
+    aspect-ratio: 3 / 2;
+    max-height: 420px;
+  }
+}
 
 /* ---- What We're Known For ---- */
 .known-for-section {
@@ -1804,6 +1903,7 @@ button:focus-visible {
 /* Remove double-rounding: sections inside stack-card don't need their own radius */
 .stack-card .jobs-carousel-section,
 .stack-card .video-break,
+.stack-card .meet-section,
 .stack-card .known-for-section,
 .stack-card .excel-section,
 .stack-card .testimonials-section,

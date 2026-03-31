@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import useEmblaCarousel from 'embla-carousel-react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowRight, Cpu, TrendingUp, Database, MapPin, Clock, Briefcase, Heart, Users, Award, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ArrowRight, ArrowDown, Cpu, TrendingUp, Database, MapPin, Clock, Briefcase, Heart, Users, Award, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Testimonials } from '../components/Testimonials'
 import { jobs, pillars } from '../data/content'
 
@@ -217,11 +217,47 @@ export function Home() {
               Five years of doing things properly — relationships first, placements second.
             </p>
           </div>
+          <div className="video-break__scroll-hint" aria-hidden>
+            <ArrowDown size={18} />
+          </div>
         </section>
       </div>
 
-      {/* ── 4. WHAT WE'RE KNOWN FOR ── */}
+      {/* ── 4. MEET MATT ── */}
       <div className="stack-card" style={{zIndex: 4}}>
+        <section className="meet-section">
+          <div className="container meet-grid">
+            <div className="meet-photo-col" data-reveal>
+              <div className="meet-photo-frame">
+                <img src={`${import.meta.env.BASE_URL}matt.jpg`} alt="Matt Rockell — Founder, Key Partnership Recruitment" />
+              </div>
+            </div>
+            <div className="meet-text-col">
+              <div className="section-divider" data-reveal />
+              <p className="eyebrow" data-reveal>The Person Behind It</p>
+              <h2 className="meet-name" data-reveal>Matt Rockell</h2>
+              <p className="meet-role" data-reveal>Founder &amp; Director · Key Partnership Recruitment</p>
+              <p className="meet-bio" data-reveal>
+                I started Key Partnership in 2020 with one simple belief — recruitment works better when it's built on genuine relationships. Not volume, not velocity. Just doing it properly.
+              </p>
+              <p className="meet-bio" data-reveal>
+                Five years on, that belief hasn't changed. We work with a deliberately select group of clients across Technology, Commercial, and Data &amp; AI, and we take every brief personally. You'll always speak directly to me.
+              </p>
+              <div className="meet-actions" data-reveal>
+                <a href="mailto:info@ourkeypartnership.co.uk" className="btn btn-green">
+                  Say hello <ArrowRight size={15} />
+                </a>
+                <a href="https://linkedin.com/in/matt-rockell" target="_blank" rel="noreferrer" className="btn btn-outline meet-linkedin">
+                  LinkedIn
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      {/* ── 5. WHAT WE'RE KNOWN FOR ── */}
+      <div className="stack-card" style={{zIndex: 5}}>
         <section className="known-for-section" style={{backgroundImage: `url(${KNOWN_FOR_IMG})`}}>
           <div className="known-for-bg-overlay" aria-hidden />
           <div className="container">
@@ -247,8 +283,8 @@ export function Home() {
         </section>
       </div>
 
-      {/* ── 5. WHERE WE EXCEL ── */}
-      <div className="stack-card" style={{zIndex: 5}}>
+      {/* ── 6. WHERE WE EXCEL ── */}
+      <div className="stack-card" style={{zIndex: 6}}>
         <section className="excel-section">
           <div className="excel-video-bg" aria-hidden>
             <video autoPlay muted loop playsInline preload="none" className="excel-video-bg__vid">
@@ -287,13 +323,13 @@ export function Home() {
         </section>
       </div>
 
-      {/* ── 6. REVIEWS ── */}
-      <div className="stack-card" style={{zIndex: 6}}>
+      {/* ── 7. REVIEWS ── */}
+      <div className="stack-card" style={{zIndex: 7}}>
         <Testimonials />
       </div>
 
       {/* ── CTA / CONTACT ── */}
-      <div className="stack-card" style={{zIndex: 7}} id="contact">
+      <div className="stack-card" style={{zIndex: 8}} id="contact">
         <section className="contact-strip">
           <div className="contact-video-bg" aria-hidden>
             <video autoPlay muted loop playsInline preload="none" className="contact-video-bg__vid">
