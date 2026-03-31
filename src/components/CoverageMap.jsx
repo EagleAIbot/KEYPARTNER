@@ -27,9 +27,9 @@ const FLIGHT_PATHS = [
 ]
 
 // Approximate projected coords for the plane motion path
-// geoNaturalEarth1, center [75,5], scale 148, viewBox 960×460
-// UK(308,144) → UAE(431,190) → SG(554,250) → SYD(667,332) → AKL(723,337)
-const PLANE_PATH = 'M 308,144 C 350,162 400,180 431,190 C 478,210 522,238 554,250 C 602,285 642,325 667,332 L 723,337'
+// geoNaturalEarth1, center [87,5], scale 148, viewBox 960×460
+// UK(281,134) → UAE(401,179) → SG(523,240) → SYD(637,323) → AKL(693,327)
+const PLANE_PATH = 'M 281,134 C 322,153 368,170 401,179 C 452,200 492,228 523,240 C 572,279 616,317 637,323 L 693,327'
 
 export function CoverageMap() {
   return (
@@ -55,7 +55,7 @@ export function CoverageMap() {
       <div className="coverage-map-wrap" data-reveal>
         <ComposableMap
           projection="geoNaturalEarth1"
-          projectionConfig={{ scale: 148, center: [75, 5] }}
+          projectionConfig={{ scale: 148, center: [87, 5] }}
           viewBox="0 0 960 460"
           style={{ width: '100%', height: 'auto', display: 'block' }}
         >
