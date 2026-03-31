@@ -1896,9 +1896,10 @@ button:focus-visible {
   margin-bottom: 28px;
 }
 .hero-cycle-word {
-  display: inline;
+  display: block;
   color: var(--green-300);
   font-style: italic;
+  min-height: 1.15em;
 }
 .hero-dark-sub {
   font-size: clamp(1rem, 1.25vw, 1.15rem);

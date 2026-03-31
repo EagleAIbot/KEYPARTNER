@@ -158,7 +158,7 @@ export function Home() {
 
         <div className="container hero-dark-content">
           <h1 className="hero-dark-title hero-ani-2">
-            A Business Built On <CyclingText />
+            A Business Built On<br /><CyclingText />
           </h1>
           <p className="hero-dark-sub hero-ani-3">
             Key Partnership Recruitment connects IT and commercial talent with high-growth businesses across the UK and Asia-Pacific.
