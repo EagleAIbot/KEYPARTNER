@@ -1,7 +1,7 @@
-# Publishes ./dist to branch "gh-pages". In repo Settings → Pages, set source to:
-#   Deploy from a branch → Branch: gh-pages / folder: / (root)
-# Site URL: https://eagleaibot.github.io/KEYPARTNER/
-name: Deploy to GitHub Pages
+# Publishes ./dist to branch "gh-pages" (NOT the GitHub "Actions" Pages API).
+# Settings → Pages → Source: Deploy from a branch → gh-pages / (root)
+# https://eagleaibot.github.io/KEYPARTNER/
+name: Pages — build & push gh-pages
 
 on:
   push:
@@ -17,6 +17,7 @@ concurrency:
 
 jobs:
   build-deploy:
+    name: Build and publish
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
