@@ -1,18 +1,20 @@
-# Publishes ./dist to branch "gh-pages" (NOT the GitHub "Actions" Pages API).
-# Settings → Pages → Source: Deploy from a branch → gh-pages / (root)
+# Builds the site and commits the output to docs/ on main.
+# GitHub Pages: Settings → Pages → Deploy from a branch → main /docs
 # https://eagleaibot.github.io/KEYPARTNER/
-name: Pages — build & push gh-pages
+name: Pages — build into docs/
 
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - 'docs/**'
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: gh-pages-deploy
+  group: pages-docs-main
   cancel-in-progress: true
 
 jobs:
@@ -21,6 +23,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
       - uses: actions/setup-node@v4
         with:
@@ -30,9 +34,11 @@ jobs:
       - run: npm ci
       - run: npm run build
 
-      - name: Push dist to gh-pages branch
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Write site to docs/ on main
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          force_orphan: true
+          branch: main
+          folder: dist
+          target-folder: docs
+          clean: true
+          commit-message: 'chore(pages): publish site to docs/'
