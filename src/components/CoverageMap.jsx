@@ -54,12 +54,12 @@ export function CoverageMap() {
                   <Geography
                     key={geo.rsmKey}
                     geography={geo}
-                    fill={hi ? 'rgba(52,168,101,0.82)' : 'rgba(93,198,138,0.07)'}
-                    stroke={hi ? 'rgba(93,198,138,0.45)' : 'rgba(93,198,138,0.18)'}
+                    fill={hi ? 'rgba(52,168,101,0.85)' : '#e8ede9'}
+                    stroke={hi ? 'rgba(52,168,101,0.5)' : '#cdd9ce'}
                     strokeWidth={0.5}
                     style={{
                       default: { outline: 'none' },
-                      hover:   { outline: 'none', fill: hi ? '#5dc68a' : 'rgba(93,198,138,0.13)' },
+                      hover:   { outline: 'none', fill: hi ? '#34a865' : '#dce8dd' },
                       pressed: { outline: 'none' },
                     }}
                   />
@@ -74,7 +74,7 @@ export function CoverageMap() {
               key={i}
               from={from}
               to={to}
-              stroke="rgba(93,198,138,0.5)"
+              stroke="rgba(52,168,101,0.6)"
               strokeWidth={1.4}
               strokeDasharray="5 4"
               strokeLinecap="round"
@@ -94,7 +94,7 @@ export function CoverageMap() {
                 style={{
                   fontFamily: 'inherit',
                   fontSize: 9,
-                  fill: 'rgba(255,255,255,0.75)',
+                  fill: 'rgba(30,60,35,0.75)',
                   fontWeight: 700,
                   letterSpacing: '0.04em',
                   textTransform: 'uppercase',

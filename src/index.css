@@ -1354,18 +1354,18 @@ button:focus-visible {
 /* ---- Coverage Map ---- */
 .coverage-section {
   padding: var(--section-pad) 0 clamp(40px, 6vw, 80px);
-  background: linear-gradient(165deg, var(--green-900) 0%, var(--green-800) 55%, #0a2e1a 100%);
+  background: var(--brand-white);
   position: relative;
   overflow: hidden;
 }
 .coverage-header {
   margin-bottom: clamp(32px, 5vw, 56px);
 }
-.coverage-eyebrow { color: var(--green-300) !important; }
-.coverage-title   { color: var(--brand-white) !important; }
+.coverage-eyebrow { color: var(--brand-accent) !important; }
+.coverage-title   { color: var(--text-primary) !important; }
 .coverage-sub {
   font-size: clamp(0.95rem, 1.2vw, 1.1rem);
-  color: rgba(255,255,255,0.65);
+  color: var(--text-muted);
   font-weight: 500;
   line-height: 1.7;
   max-width: 560px;
@@ -1408,9 +1408,9 @@ button:focus-visible {
   font-weight: 700;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  color: var(--green-300);
-  background: rgba(93,198,138,0.1);
-  border: 1px solid rgba(93,198,138,0.25);
+  color: var(--brand-green);
+  background: var(--green-100);
+  border: 1px solid rgba(52,168,101,0.25);
   padding: 6px 16px;
   border-radius: var(--radius-pill);
 }
