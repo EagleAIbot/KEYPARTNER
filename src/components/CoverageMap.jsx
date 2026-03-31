@@ -1,7 +1,13 @@
 import { ComposableMap, Geographies, Geography, Marker, Line } from 'react-simple-maps'
+import { geoNaturalEarth1 } from 'd3-geo'
 
 const GEO_URL = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json'
 const MAP_VIDEO = 'https://assets.mixkit.co/videos/49878/49878-720.mp4'
+
+const MAP_W = 960
+const MAP_H = 460
+const PROJ_SCALE = 148
+const PROJ_CENTER = [81, 5]
 
 const HIGHLIGHTED = new Set([
   'United Kingdom',
@@ -26,9 +32,22 @@ const FLIGHT_PATHS = [
   { from: [151.2, -33.9],to: [174.8, -36.9] },
 ]
 
-// Plane path using actual projected SVG positions (measured from screenshot, viewBox "-95 0 960 460"):
-// UK(196,112) → UAE(322,187) → SG(437,267) → SYD(524,353) → AKL(578,380)
-const PLANE_PATH = 'M 196,112 C 245,148 290,178 322,187 C 375,215 415,254 437,267 C 480,307 508,342 524,353 L 578,380'
+const proj = geoNaturalEarth1()
+  .scale(PROJ_SCALE)
+  .center(PROJ_CENTER)
+  .translate([MAP_W / 2, MAP_H / 2])
+
+const pts = MARKERS.map(m => {
+  const [x, y] = proj(m.coordinates)
+  return { x: Math.round(x * 10) / 10, y: Math.round(y * 10) / 10 }
+})
+
+let PLANE_PATH = `M ${pts[0].x},${pts[0].y}`
+for (let i = 1; i < pts.length; i++) {
+  const p = pts[i - 1], c = pts[i]
+  const cpx = (p.x + c.x) / 2
+  PLANE_PATH += ` C ${cpx},${p.y} ${cpx},${c.y} ${c.x},${c.y}`
+}
 
 export function CoverageMap() {
   return (
@@ -50,12 +69,12 @@ export function CoverageMap() {
         </p>
       </div>
 
-      {/* Full-bleed map — outside container on purpose */}
       <div className="coverage-map-wrap" data-reveal>
         <ComposableMap
           projection="geoNaturalEarth1"
-          projectionConfig={{ scale: 148, center: [87, 5] }}
-          viewBox="-95 0 960 460"
+          projectionConfig={{ scale: PROJ_SCALE, center: PROJ_CENTER }}
+          width={MAP_W}
+          height={MAP_H}
           style={{ width: '100%', height: 'auto', display: 'block' }}
         >
           <Geographies geography={GEO_URL}>
@@ -80,7 +99,6 @@ export function CoverageMap() {
             }
           </Geographies>
 
-          {/* Dashed flight-path lines */}
           {FLIGHT_PATHS.map(({ from, to }, i) => (
             <Line
               key={i}
@@ -95,24 +113,17 @@ export function CoverageMap() {
             />
           ))}
 
-          {/* Hidden motion path — plane follows this */}
           <defs>
             <path id="planePath" d={PLANE_PATH} />
           </defs>
 
-          {/* ✈ Plane flying the route */}
           <text fontSize={15} textAnchor="middle" style={{ userSelect: 'none' }}>
             ✈
-            <animateMotion
-              dur="9s"
-              repeatCount="indefinite"
-              rotate="auto"
-            >
+            <animateMotion dur="9s" repeatCount="indefinite" rotate="auto">
               <mpath href="#planePath" />
             </animateMotion>
           </text>
 
-          {/* Pulsing marker dots */}
           {MARKERS.map(({ name, coordinates, label, anchor, dy }) => (
             <Marker key={name} coordinates={coordinates}>
               <circle r={9} fill="rgba(52,168,101,0.18)" className="coverage-pulse-ring" />
