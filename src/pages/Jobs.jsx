@@ -1,9 +1,8 @@
 import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowRight, MapPin, Clock, Briefcase } from 'lucide-react'
-import { jobs, specialisms } from '../data/content'
+import { jobs } from '../data/content'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -23,11 +22,13 @@ export function Jobs() {
     <>
       <section className="page-hero">
         <div className="container">
-          <p className="eyebrow">Browse Opportunities</p>
-          <h1>Current Vacancies</h1>
-          <p>We work exclusively in technology recruitment — Software Development, Enterprise IT, and BI & Data. If you don't see your ideal role here, submit your CV and we'll find it for you.</p>
+          <p className="eyebrow">Current Opportunities</p>
+          <h1>Latest Vacancies</h1>
+          <p>Technology, Commercial, and Data &amp; AI roles across the UK. Don't see your role? Send your CV and we'll find it.</p>
           <div className="page-hero-actions">
-            <Link to="/candidates" className="btn btn-primary">Submit Your CV <ArrowRight size={16} /></Link>
+            <a href="mailto:info@ourkeypartnership.co.uk?subject=CV Submission" className="btn btn-primary">
+              Submit Your CV <ArrowRight size={16} />
+            </a>
           </div>
         </div>
       </section>
@@ -59,8 +60,10 @@ export function Jobs() {
           <div style={{ maxWidth: 800, margin: '48px auto 0' }} data-reveal>
             <div className="jobs-coming">
               <h3>More roles added weekly</h3>
-              <p>These are just our featured listings. We work on exclusive mandates not always advertised publicly — submit your CV and we'll match you to something great.</p>
-              <Link to="/candidates" className="btn btn-green">Submit Your CV <ArrowRight size={16} /></Link>
+              <p>We work on exclusive mandates not always advertised publicly — send your CV and we'll be in touch when the right brief lands.</p>
+              <a href="mailto:info@ourkeypartnership.co.uk?subject=CV Submission" className="btn btn-green">
+                Submit Your CV <ArrowRight size={16} />
+              </a>
             </div>
           </div>
         </div>

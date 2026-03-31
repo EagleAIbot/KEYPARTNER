@@ -2,14 +2,6 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X, Phone } from 'lucide-react'
 
-const navLinks = [
-  { to: '/hire', label: 'Hire Talent' },
-  { to: '/candidates', label: 'Find Work' },
-  { to: '/specialisms', label: 'Specialisms' },
-  { to: '/jobs', label: 'Jobs' },
-  { to: '/about', label: 'About' },
-]
-
 const base = import.meta.env.BASE_URL
 
 export function Nav() {
@@ -46,23 +38,18 @@ export function Nav() {
             <Link to="/" className="nav-logo" aria-label="Key Partnership home">
               <img src={`${base}logo-white.webp`} alt="Key Partnership Recruitment" />
             </Link>
+
             <nav className="nav-links" aria-label="Primary">
               <div className="nav-rail">
-                {navLinks.map(l => (
-                  <Link
-                    key={l.to}
-                    to={l.to}
-                    className={pathname === l.to || (l.to !== '/' && pathname.startsWith(l.to)) ? 'active' : ''}
-                  >
-                    {l.label}
-                  </Link>
-                ))}
+                <Link to="/jobs" className={pathname === '/jobs' ? 'active' : ''}>Jobs</Link>
+                <a href="#contact">Contact</a>
               </div>
               <a href="tel:01327493143" className="nav-phone" aria-label="Call Key Partnership">
                 <Phone size={15} strokeWidth={2.25} />
               </a>
-              <Link to="/contact" className="btn btn-green nav-cta">Get in Touch</Link>
+              <a href="mailto:info@ourkeypartnership.co.uk" className="btn btn-green nav-cta">Get In Touch</a>
             </nav>
+
             <button type="button" className="nav-menu-btn" onClick={() => setOpen(true)} aria-label="Open menu">
               <Menu size={24} />
             </button>
@@ -80,14 +67,13 @@ export function Nav() {
             </button>
           </div>
           <div className="drawer-links">
-            {navLinks.map(l => (
-              <Link key={l.to} to={l.to}>{l.label}</Link>
-            ))}
+            <Link to="/jobs" onClick={() => setOpen(false)}>Jobs</Link>
+            <a href="#contact" onClick={() => setOpen(false)}>Contact</a>
           </div>
           <a href="tel:01327493143" className="drawer-phone">
             <Phone size={16} /> 01327 493 143
           </a>
-          <Link to="/contact" className="btn btn-green drawer-cta">Get in Touch</Link>
+          <a href="mailto:info@ourkeypartnership.co.uk" className="btn btn-green drawer-cta">Get In Touch</a>
         </div>
       </div>
     </>

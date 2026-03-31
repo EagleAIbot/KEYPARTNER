@@ -279,22 +279,33 @@ export function Home() {
         <Testimonials />
       </div>
 
-      {/* ── CTA BAND ── */}
-      <div className="stack-card" style={{zIndex: 7}}>
-        <section className="cta-band" aria-labelledby="cta-heading">
-          <div className="container">
-            <div className="cta-panel" data-reveal>
-              <div className="cta-panel__sheen" aria-hidden />
-              <div className="cta-panel__inner">
-                <p className="cta-panel__eyebrow">Start a conversation</p>
-                <h2 id="cta-heading">Ready for your next great hire?</h2>
-                <p className="cta-panel__lede">One specialist or a full squad — we build shortlists you can defend in a steering meeting.</p>
-                <div className="cta-panel__actions">
-                  <Link to="/hire" className="btn btn-cta-primary">Start hiring <ArrowRight size={17} strokeWidth={2.25} /></Link>
-                  <Link to="/contact" className="btn btn-cta-secondary">Talk to the team</Link>
-                </div>
-                <a href="tel:01327493143" className="cta-panel__tel">Prefer the phone? <strong>01327 493 143</strong></a>
-              </div>
+      {/* ── CTA / CONTACT ── */}
+      <div className="stack-card" style={{zIndex: 7}} id="contact">
+        <section className="contact-strip">
+          <div className="container contact-strip__grid">
+            <div className="contact-strip__col">
+              <p className="eyebrow contact-eyebrow">Hiring?</p>
+              <h3 className="contact-col-title">Submit a vacancy</h3>
+              <p className="contact-col-body">Tell us what you need. We'll respond the same day.</p>
+              <a href="mailto:info@ourkeypartnership.co.uk?subject=New Vacancy" className="btn btn-cta-primary">
+                Email us
+              </a>
+            </div>
+            <div className="contact-strip__divider" aria-hidden />
+            <div className="contact-strip__col">
+              <p className="eyebrow contact-eyebrow">Looking for work?</p>
+              <h3 className="contact-col-title">Send your CV</h3>
+              <p className="contact-col-body">We'll match you when the right brief lands. No spam, ever.</p>
+              <a href="mailto:info@ourkeypartnership.co.uk?subject=CV Submission" className="btn btn-cta-primary">
+                Submit your CV
+              </a>
+            </div>
+            <div className="contact-strip__divider" aria-hidden />
+            <div className="contact-strip__col">
+              <p className="eyebrow contact-eyebrow">Just talk</p>
+              <h3 className="contact-col-title">Pick up the phone</h3>
+              <p className="contact-col-body">Prefer a conversation? So do we.</p>
+              <a href="tel:01327493143" className="btn btn-cta-primary">01327 493 143</a>
             </div>
           </div>
         </section>
