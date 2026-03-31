@@ -34,6 +34,11 @@ jobs:
       - run: npm ci
       - run: npm run build
 
+      - name: Verify build is a static site (not dev index.html)
+        run: |
+          grep -qE '/KEYPARTNER/assets/' dist/index.html || { echo 'dist/index.html must load hashed bundles under /KEYPARTNER/assets/'; sed -n '1,40p' dist/index.html; exit 1; }
+          grep -q 'src/main.jsx' dist/index.html && { echo 'dist/index.html must not reference /src/main.jsx'; exit 1; } || true
+
       - name: Write site to docs/ on main
         uses: JamesIves/github-pages-deploy-action@v4
         with:
