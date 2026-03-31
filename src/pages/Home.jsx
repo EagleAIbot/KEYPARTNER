@@ -229,13 +229,13 @@ export function Home() {
           <div className="container meet-grid">
             <div className="meet-photo-col" data-reveal>
               <div className="meet-photo-frame">
-                <img src={`${import.meta.env.BASE_URL}matt.jpg`} alt="Matt Rockell — Founder, Key Partnership Recruitment" />
+                <img src={`${import.meta.env.BASE_URL}matt.jpg`} alt="Matt Stimpson — Founder, Key Partnership Recruitment" />
               </div>
             </div>
             <div className="meet-text-col">
               <div className="section-divider" data-reveal />
               <p className="eyebrow" data-reveal>The Person Behind It</p>
-              <h2 className="meet-name" data-reveal>Matt Rockell</h2>
+              <h2 className="meet-name" data-reveal>Matt Stimpson</h2>
               <p className="meet-role" data-reveal>Founder &amp; Director · Key Partnership Recruitment</p>
               <p className="meet-bio" data-reveal>
                 I started Key Partnership in 2020 with one simple belief — recruitment works better when it's built on genuine relationships. Not volume, not velocity. Just doing it properly.
