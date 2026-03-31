@@ -1392,11 +1392,9 @@ button:focus-visible {
 }
 .coverage-map-wrap {
   width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 var(--container-pad, 24px);
   position: relative;
   z-index: 2;
+  line-height: 0;
 }
 /* Animated dashed arc — draw on from left */
 .coverage-arc {

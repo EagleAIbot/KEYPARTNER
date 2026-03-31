@@ -1,7 +1,6 @@
 import { ComposableMap, Geographies, Geography, Marker, Line } from 'react-simple-maps'
 
 const GEO_URL = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json'
-// Aerial city at night — free commercial licence
 const MAP_VIDEO = 'https://assets.mixkit.co/videos/49878/49878-720.mp4'
 
 const HIGHLIGHTED = new Set([
@@ -13,25 +12,28 @@ const HIGHLIGHTED = new Set([
 ])
 
 const MARKERS = [
-  { name: 'UK',        coordinates: [-1.5,   52.5],  label: 'United Kingdom',      anchor: 'middle', dy: -12 },
-  { name: 'UAE',       coordinates: [55.3,   25.2],  label: 'UAE',                 anchor: 'middle', dy: -12 },
-  { name: 'Singapore', coordinates: [103.8,   1.3],  label: 'Singapore',           anchor: 'middle', dy: -12 },
-  { name: 'Sydney',    coordinates: [151.2, -33.9],  label: 'Sydney',              anchor: 'middle', dy: -12 },
-  { name: 'Auckland',  coordinates: [174.8, -36.9],  label: 'Auckland',            anchor: 'start',  dy: -12 },
+  { name: 'UK',        coordinates: [-1.5,   52.5],  label: 'United Kingdom', anchor: 'middle', dy: -13 },
+  { name: 'UAE',       coordinates: [55.3,   25.2],  label: 'UAE',            anchor: 'middle', dy: -13 },
+  { name: 'Singapore', coordinates: [103.8,   1.3],  label: 'Singapore',      anchor: 'middle', dy: -13 },
+  { name: 'Sydney',    coordinates: [151.2, -33.9],  label: 'Sydney',         anchor: 'middle', dy: -13 },
+  { name: 'Auckland',  coordinates: [174.8, -36.9],  label: 'Auckland',       anchor: 'start',  dy: -13 },
 ]
 
-// Great-circle flight paths connecting the offices
 const FLIGHT_PATHS = [
-  { from: [-1.5, 52.5],  to: [55.3,   25.2]  }, // UK → UAE
-  { from: [55.3, 25.2],  to: [103.8,   1.3]  }, // UAE → Singapore
-  { from: [103.8, 1.3],  to: [151.2, -33.9]  }, // Singapore → Sydney
-  { from: [151.2, -33.9],to: [174.8, -36.9]  }, // Sydney → Auckland
+  { from: [-1.5,  52.5], to: [55.3,  25.2] },
+  { from: [55.3,  25.2], to: [103.8,  1.3] },
+  { from: [103.8,  1.3], to: [151.2, -33.9] },
+  { from: [151.2, -33.9],to: [174.8, -36.9] },
 ]
+
+// Approximate projected coords for the plane motion path
+// geoNaturalEarth1, center [75,5], scale 148, viewBox 960×460
+// UK(308,144) → UAE(431,190) → SG(554,250) → SYD(667,332) → AKL(723,337)
+const PLANE_PATH = 'M 308,144 C 350,162 400,180 431,190 C 478,210 522,238 554,250 C 602,285 642,325 667,332 L 723,337'
 
 export function CoverageMap() {
   return (
     <section className="coverage-section">
-      {/* Video background */}
       <div className="coverage-video-bg" aria-hidden>
         <video autoPlay muted loop playsInline preload="none" className="coverage-video-bg__vid">
           <source src={MAP_VIDEO} type="video/mp4" />
@@ -49,11 +51,12 @@ export function CoverageMap() {
         </p>
       </div>
 
+      {/* Full-bleed map — outside container on purpose */}
       <div className="coverage-map-wrap" data-reveal>
         <ComposableMap
           projection="geoNaturalEarth1"
           projectionConfig={{ scale: 148, center: [75, 5] }}
-          viewBox="0 0 960 480"
+          viewBox="0 0 960 460"
           style={{ width: '100%', height: 'auto', display: 'block' }}
         >
           <Geographies geography={GEO_URL}>
@@ -78,13 +81,13 @@ export function CoverageMap() {
             }
           </Geographies>
 
-          {/* Animated great-circle flight paths */}
+          {/* Dashed flight-path lines */}
           {FLIGHT_PATHS.map(({ from, to }, i) => (
             <Line
               key={i}
               from={from}
               to={to}
-              stroke="rgba(93,198,138,0.6)"
+              stroke="rgba(93,198,138,0.55)"
               strokeWidth={1.4}
               strokeDasharray="5 4"
               strokeLinecap="round"
@@ -92,6 +95,23 @@ export function CoverageMap() {
               style={{ animationDelay: `${i * 0.4}s` }}
             />
           ))}
+
+          {/* Hidden motion path — plane follows this */}
+          <defs>
+            <path id="planePath" d={PLANE_PATH} />
+          </defs>
+
+          {/* ✈ Plane flying the route */}
+          <text fontSize={15} textAnchor="middle" style={{ userSelect: 'none' }}>
+            ✈
+            <animateMotion
+              dur="9s"
+              repeatCount="indefinite"
+              rotate="auto"
+            >
+              <mpath href="#planePath" />
+            </animateMotion>
+          </text>
 
           {/* Pulsing marker dots */}
           {MARKERS.map(({ name, coordinates, label, anchor, dy }) => (
@@ -120,14 +140,8 @@ export function CoverageMap() {
 
       <div className="container coverage-tags-row" data-reveal>
         {[
-          'South Northamptonshire',
-          'London',
-          'Home Counties',
-          'UK-Wide',
-          'UAE',
-          'Singapore',
-          'Australia',
-          'New Zealand',
+          'South Northamptonshire', 'London', 'Home Counties',
+          'UK-Wide', 'UAE', 'Singapore', 'Australia', 'New Zealand',
         ].map(loc => (
           <span key={loc} className="coverage-tag">{loc}</span>
         ))}
