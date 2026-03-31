@@ -42,7 +42,6 @@ export function Nav() {
             <nav className="nav-links" aria-label="Primary">
               <div className="nav-rail">
                 <Link to="/jobs" className={pathname === '/jobs' ? 'active' : ''}>Jobs</Link>
-                <a href="#contact">Contact</a>
               </div>
               <a href="tel:01327493143" className="nav-phone" aria-label="Call Key Partnership">
                 <Phone size={15} strokeWidth={2.25} />
@@ -68,7 +67,6 @@ export function Nav() {
           </div>
           <div className="drawer-links">
             <Link to="/jobs" onClick={() => setOpen(false)}>Jobs</Link>
-            <a href="#contact" onClick={() => setOpen(false)}>Contact</a>
           </div>
           <a href="tel:01327493143" className="drawer-phone">
             <Phone size={16} /> 01327 493 143

@@ -11,8 +11,8 @@ gsap.registerPlugin(ScrollTrigger)
 
 const HERO_VIDEO = 'https://assets.mixkit.co/videos/49288/49288-720.mp4'
 const HERO_VIDEO_FALLBACK = 'https://assets.mixkit.co/videos/5499/5499-720.mp4'
-// Colleagues shaking hands — warm, relationship-led
-const VIDEO_BREAK_SRC = 'https://assets.mixkit.co/videos/46744/46744-720.mp4'
+// Man concentrating on screen in the dark — cinematic screen-glow close-up
+const VIDEO_BREAK_SRC = 'https://assets.mixkit.co/videos/46078/46078-720.mp4'
 // City sunrise timelapse — atmospheric backdrop for dark "Where We Excel" section
 const EXCEL_VIDEO_SRC = 'https://assets.mixkit.co/videos/34980/34980-720.mp4'
 // Handshake silhouette in skyscraper — cinematic CTA backdrop
