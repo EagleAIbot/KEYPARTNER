@@ -10,6 +10,8 @@ import { jobs, pillars } from '../data/content'
 gsap.registerPlugin(ScrollTrigger)
 
 const heroImg = 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=85&auto=format&fit=crop'
+const HERO_VIDEO = 'https://assets.mixkit.co/videos/49288/49288-720.mp4'
+const HERO_VIDEO_FALLBACK = 'https://assets.mixkit.co/videos/5499/5499-720.mp4'
 const VIDEO_SRC = 'https://videos.pexels.com/video-files/3253655/3253655-hd_1280_720_25fps.mp4'
 
 const CYCLE_WORDS = ['Relationships', 'Trust', 'Experience', 'Success']
@@ -140,56 +142,49 @@ export function Home() {
     <>
       {/* ── 1. HERO ── */}
       <section className="hero hero--dark">
+        {/* Video background */}
+        <div className="hero-video-bg" aria-hidden>
+          <video autoPlay muted loop playsInline preload="auto" className="hero-video-bg__vid">
+            <source src={HERO_VIDEO} type="video/mp4" />
+            <source src={HERO_VIDEO_FALLBACK} type="video/mp4" />
+          </video>
+          <div className="hero-video-bg__overlay" />
+        </div>
+
         <div className="hero-dark-grain" aria-hidden />
-        <div className="hero-dark-glow" aria-hidden />
-        <div className="container hero-dark-grid">
 
-          <div className="hero-dark-copy">
-            <p className="eyebrow hero-dark-eyebrow hero-ani-1">
-              Award-Winning · UK · Asia-Pacific
-            </p>
-            <h1 className="hero-dark-title hero-ani-2">
-              A Business<br />Built On<br />
-              <CyclingText />
-            </h1>
-            <p className="hero-dark-sub hero-ani-3">
-              Key Partnership Recruitment is an Award-Winning Recruitment Business. We connect standout Talent with partners across the UK and into Asia-Pacific.
-            </p>
-            <div className="hero-actions hero-ani-4">
-              <Link to="/hire" className="btn btn-hero-primary">
-                Hire talent <ArrowRight size={16} strokeWidth={2.25} />
-              </Link>
-              <Link to="/jobs" className="btn btn-dark-outline">Find work</Link>
-            </div>
-
-            <ul className="hero-dark-stats hero-ani-4" aria-label="Key results">
-              <li className="hero-dark-stat">
-                <span className="hero-dark-stat__num">5★</span>
-                <span className="hero-dark-stat__label">Reviews</span>
-              </li>
-              <li className="hero-dark-stat">
-                <span className="hero-dark-stat__num">100%</span>
-                <span className="hero-dark-stat__label">Client Retention</span>
-              </li>
-              <li className="hero-dark-stat">
-                <span className="hero-dark-stat__num">10 Days</span>
-                <span className="hero-dark-stat__label">Avg. Placement</span>
-              </li>
-            </ul>
+        <div className="container hero-dark-content">
+          <p className="eyebrow hero-dark-eyebrow hero-ani-1">
+            Award-Winning · UK · Asia-Pacific
+          </p>
+          <h1 className="hero-dark-title hero-ani-2">
+            A Business<br />Built On<br />
+            <CyclingText />
+          </h1>
+          <p className="hero-dark-sub hero-ani-3">
+            Key Partnership Recruitment is an Award-Winning Recruitment Business. We connect standout Talent with partners across the UK and into Asia-Pacific.
+          </p>
+          <div className="hero-actions hero-ani-4">
+            <Link to="/hire" className="btn btn-hero-primary">
+              Hire talent <ArrowRight size={16} strokeWidth={2.25} />
+            </Link>
+            <Link to="/jobs" className="btn btn-dark-outline">Find work</Link>
           </div>
 
-          <div className="hero-dark-visual hero-ani-5">
-            <div className="hero-dark-img-frame">
-              <img
-                src={heroImg}
-                width={900}
-                height={1100}
-                alt="Team collaborating in a meeting"
-                loading="eager"
-                decoding="async"
-              />
-            </div>
-          </div>
+          <ul className="hero-dark-stats hero-ani-4" aria-label="Key results">
+            <li className="hero-dark-stat">
+              <span className="hero-dark-stat__num">5★</span>
+              <span className="hero-dark-stat__label">Reviews</span>
+            </li>
+            <li className="hero-dark-stat">
+              <span className="hero-dark-stat__num">100%</span>
+              <span className="hero-dark-stat__label">Client Retention</span>
+            </li>
+            <li className="hero-dark-stat">
+              <span className="hero-dark-stat__num">10 Days</span>
+              <span className="hero-dark-stat__label">Avg. Placement</span>
+            </li>
+          </ul>
         </div>
       </section>
 
