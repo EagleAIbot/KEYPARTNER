@@ -116,7 +116,7 @@ export function CoverageMap() {
             <path id="planePath" d={PLANE_PATH} />
           </defs>
 
-          <text fontSize={15} textAnchor="middle" style={{ userSelect: 'none' }}>
+          <text fontSize={24} textAnchor="middle" fill="#fff" style={{ userSelect: 'none' }}>
             ✈
             <animateMotion dur="9s" repeatCount="indefinite" rotate="auto">
               <mpath href="#planePath" />
@@ -147,14 +147,7 @@ export function CoverageMap() {
         </ComposableMap>
       </div>
 
-      <div className="container coverage-tags-row" data-reveal>
-        {[
-          'South Northamptonshire', 'London', 'Home Counties',
-          'UK-Wide', 'UAE', 'Singapore', 'Australia', 'New Zealand',
-        ].map(loc => (
-          <span key={loc} className="coverage-tag">{loc}</span>
-        ))}
-      </div>
+      
     </section>
   )
 }
