@@ -3,19 +3,19 @@ export const pillars = [
     slug: 'technology',
     title: 'Technology',
     short: 'Software development, engineering, DevOps, and infrastructure — Graduate to CTO. We cover the full technology stack across every major language and platform.',
-    tech: ['Java', '.NET', 'Node.js', 'React', 'AWS', 'DevOps', 'TypeScript', 'Python', 'Infrastructure', 'Cloud'],
+    tags: [],
   },
   {
     slug: 'commercial',
     title: 'Commercial',
-    short: 'Sales, pre-sales, account management, and commercial leadership within technology businesses. The people who open doors and keep clients coming back.',
-    tech: ['Business Development', 'Account Management', 'Pre-Sales', 'Sales Engineering', 'Customer Success', 'Commercial Analysis'],
+    short: 'Sales and commercial professionals within technology businesses — the people who open doors and keep clients coming back.',
+    tags: ['Account Management', 'Bid & Tender Management', 'Business Development & Sales', 'Customer Success'],
   },
   {
     slug: 'data-ai',
     title: 'Data & AI',
     short: 'BI, data engineering, analytics, and AI/ML — from raw data to actionable decisions. Specialists who turn complexity into competitive advantage.',
-    tech: ['Power BI', 'Tableau', 'SQL Server', 'Python', 'Machine Learning', 'Data Engineering', 'ETL', 'AI/ML', 'Analytics'],
+    tags: [],
   },
 ]
 
