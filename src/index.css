@@ -1936,7 +1936,7 @@ button:focus-visible {
 .hero-dark-stat {
   flex: 1 1 auto;
   min-width: 120px;
-  max-width: 180px;
+  max-width: 200px;
   padding: 18px 20px;
   border-radius: var(--radius-lg);
   background: rgba(255,255,255,0.08);
@@ -1965,6 +1965,14 @@ button:focus-visible {
   font-weight: 600;
   color: rgba(255,255,255,0.48);
   line-height: 1.35;
+}
+.hero-dark-stat__detail {
+  display: block;
+  margin-top: 3px;
+  font-size: 0.65rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.3);
+  line-height: 1.3;
 }
 
 @media (max-width: 768px) {

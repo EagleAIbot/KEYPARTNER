@@ -2,20 +2,20 @@ export const pillars = [
   {
     slug: 'technology',
     title: 'Technology',
-    short: 'Software development, engineering, DevOps, and infrastructure — Graduate to CTO. We cover the full technology stack across every major language and platform.',
-    tags: [],
+    short: 'From software engineering to infrastructure, we support hiring across the full tech stack — from graduate level through to CTO. We work across modern engineering environments.',
+    tags: ['Software Development', 'DevOps & Cloud', 'Platform & Infrastructure'],
   },
   {
     slug: 'commercial',
     title: 'Commercial',
-    short: 'Sales and commercial professionals within technology businesses — the people who open doors and keep clients coming back.',
-    tags: ['Account Management', 'Bid & Tender Management', 'Business Development & Sales', 'Customer Success'],
+    short: 'We place the people who drive revenue and build lasting client relationships within technology businesses.',
+    tags: ['Account Management', 'Business Development & Sales', 'Customer Success', 'Bid & Tender Management'],
   },
   {
     slug: 'data-ai',
     title: 'Data & AI',
-    short: 'BI, data engineering, analytics, and AI/ML — from raw data to actionable decisions. Specialists who turn complexity into competitive advantage.',
-    tags: [],
+    short: 'From data foundations to advanced AI, we connect businesses with specialists who turn data into decisions.',
+    tags: ['Data Engineering', 'BI & Analytics', 'AI & Machine Learning'],
   },
 ]
 

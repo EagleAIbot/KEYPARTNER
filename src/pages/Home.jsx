@@ -12,13 +12,9 @@ gsap.registerPlugin(ScrollTrigger)
 
 const HERO_VIDEO = 'https://assets.mixkit.co/videos/49288/49288-720.mp4'
 const HERO_VIDEO_FALLBACK = 'https://assets.mixkit.co/videos/5499/5499-720.mp4'
-// Man concentrating on screen in the dark — cinematic screen-glow close-up
 const VIDEO_BREAK_SRC = 'https://assets.mixkit.co/videos/46078/46078-720.mp4'
-// City sunrise timelapse — atmospheric backdrop for dark "Where We Excel" section
 const EXCEL_VIDEO_SRC = 'https://assets.mixkit.co/videos/34980/34980-720.mp4'
-// Handshake silhouette in skyscraper — cinematic CTA backdrop
 const CONTACT_VIDEO_SRC = 'https://assets.mixkit.co/videos/15795/15795-720.mp4'
-// Professional handshake — subtle texture behind "What We're Known For"
 const KNOWN_FOR_IMG = 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1600&q=80'
 
 const CYCLE_WORDS = ['Relationships', 'Trust', 'Experience', 'Success']
@@ -66,6 +62,7 @@ function JobsCarousel() {
             <div className="section-divider" data-reveal />
             <p className="eyebrow" data-reveal>Opportunities</p>
             <h2 className="section-title" data-reveal>Latest Vacancies</h2>
+            <p className="section-subtitle" data-reveal>Find your next role — updated regularly with new opportunities.</p>
           </div>
           <div className="jobs-carousel-controls">
             <button className="carousel-btn" onClick={() => emblaApi?.scrollPrev()} aria-label="Previous">
@@ -104,20 +101,20 @@ function JobsCarousel() {
 const knownFor = [
   {
     num: '01',
-    title: 'Relationships First.',
-    body: 'We recruit talent the way we would want to be recruited. Honest briefings, expert market insight, and always a focus on identifying the right candidate for your business. Fit over fast-fee, always.',
+    title: 'Relationships, Not Transactions',
+    body: 'We work as partners, not suppliers. That means honest conversations, clear expectations, and a focus on long-term fit — not quick placements.',
     Icon: Heart,
   },
   {
     num: '02',
-    title: 'A Purposely Select Client Portfolio.',
-    body: 'Unlike the majority of competition, we deliberately network with a select Client portfolio. Every requirement gets our full attention. We get to know our Clients\u2019 culture and team inside out, and almost become an extension of your business.',
+    title: 'A Select Client Portfolio',
+    body: 'We intentionally keep our client base small. It allows us to properly understand your business — how you operate, how your teams work, and what "good" really looks like. We don\'t just fill roles. We represent you in the market.',
     Icon: Users,
   },
   {
     num: '03',
     title: 'Quality Over Quantity. Every Single Time.',
-    body: 'We only present several exceptional candidates for each vacancy we represent. Fewer introductions, more time saved, better outcomes.',
+    body: 'We don\'t rely on job boards or inbound applicants. We proactively identify and approach the talent other recruiters simply cannot reach. Fewer CVs. Better candidates.',
     Icon: Award,
   },
 ]
@@ -149,7 +146,6 @@ export function Home() {
     <>
       {/* ── 1. HERO ── */}
       <section className="hero hero--dark">
-        {/* Video background */}
         <div className="hero-video-bg" aria-hidden>
           <video autoPlay muted loop playsInline preload="auto" className="hero-video-bg__vid">
             <source src={HERO_VIDEO} type="video/mp4" />
@@ -161,35 +157,34 @@ export function Home() {
         <div className="hero-dark-grain" aria-hidden />
 
         <div className="container hero-dark-content">
-          <p className="eyebrow hero-dark-eyebrow hero-ani-1">
-            Award-Winning · UK · Asia-Pacific
-          </p>
           <h1 className="hero-dark-title hero-ani-2">
-            A Business<br />Built On<br />
+            A Business Built On<br />
             <CyclingText />
           </h1>
           <p className="hero-dark-sub hero-ani-3">
-            Key Partnership Recruitment is an Award-Winning Recruitment Business. We connect standout Talent with partners across the UK and into Asia-Pacific.
+            Key Partnership Recruitment connects IT and commercial talent with high-growth businesses across the UK and Asia-Pacific.
           </p>
-          <div className="hero-actions hero-ani-4">
-            <Link to="/hire" className="btn btn-hero-primary">
-              Hire talent <ArrowRight size={16} strokeWidth={2.25} />
-            </Link>
-            <Link to="/jobs" className="btn btn-dark-outline">Find work</Link>
-          </div>
 
           <ul className="hero-dark-stats hero-ani-4" aria-label="Key results">
             <li className="hero-dark-stat">
-              <span className="hero-dark-stat__num">5★</span>
-              <span className="hero-dark-stat__label">Reviews</span>
+              <span className="hero-dark-stat__num">95%</span>
+              <span className="hero-dark-stat__label">Offer Acceptance Rate</span>
+              <span className="hero-dark-stat__detail">Candidates aligned from the outset</span>
             </li>
             <li className="hero-dark-stat">
-              <span className="hero-dark-stat__num">100%</span>
-              <span className="hero-dark-stat__label">Client Retention</span>
+              <span className="hero-dark-stat__num">90%</span>
+              <span className="hero-dark-stat__label">12-Month Retention</span>
+              <span className="hero-dark-stat__detail">Placements that are made to last</span>
             </li>
             <li className="hero-dark-stat">
-              <span className="hero-dark-stat__num">10 Days</span>
-              <span className="hero-dark-stat__label">Avg. Placement</span>
+              <span className="hero-dark-stat__num">80%</span>
+              <span className="hero-dark-stat__label">Repeat Client Partnerships</span>
+              <span className="hero-dark-stat__detail">Long-term relationships, not one-off hires</span>
+            </li>
+            <li className="hero-dark-stat">
+              <span className="hero-dark-stat__num">500+</span>
+              <span className="hero-dark-stat__label">Roles Delivered</span>
+              <span className="hero-dark-stat__detail">Across IT &amp; Commercial markets</span>
             </li>
           </ul>
         </div>
@@ -202,7 +197,7 @@ export function Home() {
 
       {/* ── 3. VIDEO BREAK ── */}
       <div className="stack-card" style={{zIndex: 3}}>
-        <section className="video-break" aria-label="Our people">
+        <section className="video-break" aria-label="Our approach">
           <div className="video-break__media">
             <video autoPlay muted loop playsInline preload="none" className="video-break__vid">
               <source src={VIDEO_BREAK_SRC} type="video/mp4" />
@@ -210,12 +205,11 @@ export function Home() {
             <div className="video-break__overlay" aria-hidden />
           </div>
           <div className="container video-break__content">
-            <p className="video-break__eyebrow" data-reveal>South Northamptonshire · Home Counties · Nationwide</p>
             <h2 className="video-break__heading" data-reveal>
               Recruitment done<br />the <em>right way.</em>
             </h2>
             <p className="video-break__sub" data-reveal>
-              Five years of doing things properly — relationships first, placements second.
+              Five years of delivering the right hires — with relationships at the core.
             </p>
           </div>
           <div className="video-break__scroll-hint" aria-hidden>
@@ -224,41 +218,8 @@ export function Home() {
         </section>
       </div>
 
-      {/* ── 4. MEET MATT ── */}
+      {/* ── 4. WHAT WE'RE KNOWN FOR ── */}
       <div className="stack-card" style={{zIndex: 4}}>
-        <section className="meet-section">
-          <div className="container meet-grid">
-            <div className="meet-photo-col" data-reveal>
-              <div className="meet-photo-frame">
-                <img src={`${import.meta.env.BASE_URL}matt.jpg`} alt="Matt Stimpson — Founder, Key Partnership Recruitment" />
-              </div>
-            </div>
-            <div className="meet-text-col">
-              <div className="section-divider" data-reveal />
-              <p className="eyebrow" data-reveal>The Person Behind It</p>
-              <h2 className="meet-name" data-reveal>Matt Stimpson</h2>
-              <p className="meet-role" data-reveal>Founder &amp; Director · Key Partnership Recruitment</p>
-              <p className="meet-bio" data-reveal>
-                I started Key Partnership in 2020 with one simple belief — recruitment works better when it's built on genuine relationships. Not volume, not velocity. Just doing it properly.
-              </p>
-              <p className="meet-bio" data-reveal>
-                Five years on, that belief hasn't changed. We work with a deliberately select group of clients across Technology, Commercial, and Data &amp; AI, and we take every brief personally. You'll always speak directly to me.
-              </p>
-              <div className="meet-actions" data-reveal>
-                <a href="mailto:info@ourkeypartnership.co.uk" className="btn btn-green">
-                  Say hello <ArrowRight size={15} />
-                </a>
-                <a href="https://www.linkedin.com/in/mattstimpson/" target="_blank" rel="noreferrer" className="btn btn-outline meet-linkedin">
-                  LinkedIn
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-
-      {/* ── 5. WHAT WE'RE KNOWN FOR ── */}
-      <div className="stack-card" style={{zIndex: 5}}>
         <section className="known-for-section" style={{backgroundImage: `url(${KNOWN_FOR_IMG})`}}>
           <div className="known-for-bg-overlay" aria-hidden />
           <div className="container">
@@ -267,7 +228,7 @@ export function Home() {
               <p className="eyebrow" data-reveal>Our Philosophy</p>
               <h2 className="section-title" data-reveal>What We're Known For</h2>
               <p className="section-subtitle" data-reveal>
-                Our reputation has been built over 5 successful years of business, where we have developed a truly unique reputation within the industry.
+                We don't operate like a traditional recruitment agency. No CV blasting. No shortcuts with an aim of generating a 'quick fee'. Most of our time is spent headhunting — identifying and engaging the right people, not just the available ones. It's a more deliberate approach, but it's what delivers better hires.
               </p>
             </div>
             <div className="known-for-grid">
@@ -284,8 +245,8 @@ export function Home() {
         </section>
       </div>
 
-      {/* ── 6. WHERE WE EXCEL ── */}
-      <div className="stack-card" style={{zIndex: 6}}>
+      {/* ── 5. WHERE WE EXCEL ── */}
+      <div className="stack-card" style={{zIndex: 5}}>
         <section className="excel-section">
           <div className="excel-video-bg" aria-hidden>
             <video autoPlay muted loop playsInline preload="none" className="excel-video-bg__vid">
@@ -297,9 +258,6 @@ export function Home() {
             <div className="section-divider white" data-reveal />
             <p className="eyebrow excel-eyebrow" data-reveal>Specialisms</p>
             <h2 className="section-title excel-title" data-reveal>Where We Excel</h2>
-            <p className="section-subtitle excel-sub" data-reveal>
-              Three core areas, with networks of highly-engaged candidates in each.
-            </p>
             <div className="excel-grid">
               {pillars.map(p => {
                 const Icon = pillarIcons[p.slug] || Cpu
@@ -319,6 +277,42 @@ export function Home() {
                   </div>
                 )
               })}
+            </div>
+          </div>
+        </section>
+      </div>
+
+      {/* ── 6. THE PERSON BEHIND IT ── */}
+      <div className="stack-card" style={{zIndex: 6}}>
+        <section className="meet-section">
+          <div className="container meet-grid">
+            <div className="meet-photo-col" data-reveal>
+              <div className="meet-photo-frame">
+                <img src={`${import.meta.env.BASE_URL}matt.jpg`} alt="Matt Stimpson — Founder, Key Partnership Recruitment" />
+              </div>
+            </div>
+            <div className="meet-text-col">
+              <div className="section-divider" data-reveal />
+              <p className="eyebrow" data-reveal>The Person Behind It</p>
+              <h2 className="meet-name" data-reveal>Matt Stimpson</h2>
+              <p className="meet-role" data-reveal>Founder &amp; Managing Director</p>
+              <p className="meet-bio" data-reveal>
+                Matt brings close to a decade of experience recruiting and headhunting for ambitious businesses — from SMEs through to FTSE 250 and Fortune 500 organisations.
+              </p>
+              <p className="meet-bio" data-reveal>
+                He entered the industry at 16, quickly establishing himself as one of the UK's top-performing early careers recruiters, including recognition as the UK Recruitment Apprentice of the Year by the Recruitment &amp; Employment Confederation (REC).
+              </p>
+              <p className="meet-bio" data-reveal>
+                Matt founded Key Partnership with a clear approach — recruitment works better when it's built on genuine relationships, not volume. That same approach underpins everything today: a selective client base, a headhunting-led model, and a focus on delivering the right hires, not just available candidates.
+              </p>
+              <div className="meet-actions" data-reveal>
+                <a href="mailto:info@ourkeypartnership.co.uk" className="btn btn-green">
+                  Say hello <ArrowRight size={15} />
+                </a>
+                <a href="https://www.linkedin.com/in/mattstimpson/" target="_blank" rel="noreferrer" className="btn btn-outline meet-linkedin">
+                  LinkedIn
+                </a>
+              </div>
             </div>
           </div>
         </section>
