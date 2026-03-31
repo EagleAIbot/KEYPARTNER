@@ -247,7 +247,7 @@ export function Home() {
                 <a href="mailto:info@ourkeypartnership.co.uk" className="btn btn-green">
                   Say hello <ArrowRight size={15} />
                 </a>
-                <a href="https://linkedin.com/in/matt-rockell" target="_blank" rel="noreferrer" className="btn btn-outline meet-linkedin">
+                <a href="https://www.linkedin.com/in/mattstimpson/" target="_blank" rel="noreferrer" className="btn btn-outline meet-linkedin">
                   LinkedIn
                 </a>
               </div>
