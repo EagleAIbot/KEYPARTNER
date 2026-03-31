@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowRight, MapPin, Clock, Briefcase, Mail, Phone } from 'lucide-react'
@@ -6,14 +6,24 @@ import { jobs } from '../data/content'
 
 gsap.registerPlugin(ScrollTrigger)
 
-// Top-view business meeting (overhead, visually unique)
-const JOBS_HERO_VIDEO = 'https://assets.mixkit.co/videos/5537/5537-720.mp4'
+const JOBS_HERO_VIDEOS = [
+  'https://assets.mixkit.co/videos/6779/6779-720.mp4',
+  'https://assets.mixkit.co/videos/5434/5434-720.mp4',
+  'https://assets.mixkit.co/videos/48114/48114-720.mp4',
+]
 // Interviewer listening to applicant — perfect for "submit your CV" CTA
 const JOBS_CTA_VIDEO  = 'https://assets.mixkit.co/videos/49470/49470-720.mp4'
 // Modern open-plan office — subtle texture behind listings
 const JOBS_LISTINGS_IMG = 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80'
 
 export function Jobs() {
+  const [activeVid, setActiveVid] = useState(0)
+
+  useEffect(() => {
+    const id = setInterval(() => setActiveVid(i => (i + 1) % JOBS_HERO_VIDEOS.length), 8000)
+    return () => clearInterval(id)
+  }, [])
+
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       gsap.set('[data-reveal]', { opacity: 1, y: 0 })
@@ -35,9 +45,21 @@ export function Jobs() {
       {/* ── HERO ── */}
       <section className="hero hero--dark">
         <div className="hero-video-bg" aria-hidden>
-          <video autoPlay muted loop playsInline preload="auto" className="hero-video-bg__vid">
-            <source src={JOBS_HERO_VIDEO} type="video/mp4" />
-          </video>
+          {JOBS_HERO_VIDEOS.map((src, i) => (
+            <video
+              key={src}
+              autoPlay muted loop playsInline preload={i === 0 ? 'auto' : 'none'}
+              className="hero-video-bg__vid"
+              style={{
+                opacity: i === activeVid ? 1 : 0,
+                transition: 'opacity 1.5s ease-in-out',
+                position: i === 0 ? 'relative' : 'absolute',
+                inset: i === 0 ? undefined : 0,
+              }}
+            >
+              <source src={src} type="video/mp4" />
+            </video>
+          ))}
           <div className="hero-video-bg__overlay" />
         </div>
         <div className="hero-dark-grain" aria-hidden />
