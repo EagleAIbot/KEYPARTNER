@@ -95,12 +95,15 @@ export function About() {
           <h2 className="section-title" data-reveal>Meet the People Behind Key Partnership</h2>
           <div className="team-grid" style={{ marginTop: 48 }}>
             {[
-              { name: 'Matt', role: 'Senior Recruitment Consultant', bio: 'The driving force behind hundreds of successful placements. Matt\'s reputation for communication, technical understanding, and genuine care for both clients and candidates is reflected in every review on this site.', initial: 'M' },
+              { name: 'Matt', role: 'Senior Recruitment Consultant', bio: 'The driving force behind hundreds of successful placements. Matt\'s reputation for communication, technical understanding, and genuine care for both clients and candidates is reflected in every review on this site.', photo: '/KEYPARTNER/matt.jpg' },
               { name: 'The Team', role: 'Key Partnership Recruitment', bio: 'We\'re a small, focused team that punches above its weight. No anonymous operators — when you work with Key Partnership, you deal with people who know your name and your requirements.', initial: 'KP' },
             ].map(m => (
               <div key={m.name} className="team-card" data-reveal>
                 <div className="team-photo">
-                  <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, color: 'var(--brand-green)' }}>{m.initial}</span>
+                  {m.photo
+                    ? <img src={m.photo} alt={m.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
+                    : <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, color: 'var(--brand-green)' }}>{m.initial}</span>
+                  }
                 </div>
                 <div className="team-info">
                   <h3>{m.name}</h3>
