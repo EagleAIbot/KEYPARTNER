@@ -1,6 +1,8 @@
 import { ComposableMap, Geographies, Geography, Marker, Line } from 'react-simple-maps'
 
 const GEO_URL = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json'
+// Aerial city at night — free commercial licence
+const MAP_VIDEO = 'https://assets.mixkit.co/videos/49878/49878-720.mp4'
 
 const HIGHLIGHTED = new Set([
   'United Kingdom',
@@ -29,6 +31,14 @@ const FLIGHT_PATHS = [
 export function CoverageMap() {
   return (
     <section className="coverage-section">
+      {/* Video background */}
+      <div className="coverage-video-bg" aria-hidden>
+        <video autoPlay muted loop playsInline preload="none" className="coverage-video-bg__vid">
+          <source src={MAP_VIDEO} type="video/mp4" />
+        </video>
+        <div className="coverage-video-bg__overlay" />
+      </div>
+
       <div className="container coverage-header">
         <div className="section-divider white" data-reveal />
         <p className="eyebrow coverage-eyebrow" data-reveal>Our Reach</p>
@@ -54,12 +64,12 @@ export function CoverageMap() {
                   <Geography
                     key={geo.rsmKey}
                     geography={geo}
-                    fill={hi ? 'rgba(52,168,101,0.85)' : '#e8ede9'}
-                    stroke={hi ? 'rgba(52,168,101,0.5)' : '#cdd9ce'}
+                    fill={hi ? 'rgba(52,168,101,0.85)' : 'rgba(0,40,20,0.45)'}
+                    stroke={hi ? 'rgba(93,198,138,0.5)' : 'rgba(93,198,138,0.15)'}
                     strokeWidth={0.5}
                     style={{
                       default: { outline: 'none' },
-                      hover:   { outline: 'none', fill: hi ? '#34a865' : '#dce8dd' },
+                      hover:   { outline: 'none', fill: hi ? '#5dc68a' : 'rgba(0,50,25,0.55)' },
                       pressed: { outline: 'none' },
                     }}
                   />
@@ -74,7 +84,7 @@ export function CoverageMap() {
               key={i}
               from={from}
               to={to}
-              stroke="rgba(52,168,101,0.6)"
+              stroke="rgba(93,198,138,0.6)"
               strokeWidth={1.4}
               strokeDasharray="5 4"
               strokeLinecap="round"
@@ -94,7 +104,7 @@ export function CoverageMap() {
                 style={{
                   fontFamily: 'inherit',
                   fontSize: 9,
-                  fill: 'rgba(30,60,35,0.75)',
+                  fill: 'rgba(255,255,255,0.75)',
                   fontWeight: 700,
                   letterSpacing: '0.04em',
                   textTransform: 'uppercase',
