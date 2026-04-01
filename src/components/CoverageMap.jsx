@@ -64,7 +64,7 @@ export function CoverageMap() {
         <p className="eyebrow coverage-eyebrow" data-reveal>Our Reach</p>
         <h2 className="section-title coverage-title" data-reveal>Where We Place Talent</h2>
         <p className="coverage-sub" data-reveal>
-          Based in Milton Keynes, at the heart of the UK's tech corridor. We work with clients across the UK and internationally.
+          Based in Milton Keynes, positioned within the UK's tech corridor, we partner with clients across the UK and international markets.
         </p>
       </div>
 

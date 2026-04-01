@@ -1918,8 +1918,16 @@ button:focus-visible {
   font-weight: 500;
   color: rgba(255,255,255,0.72);
   max-width: 36rem;
-  margin-bottom: 36px;
-  line-height: 1.72;
+  margin-bottom: 16px;
+  line-height: 1.65;
+}
+.hero-dark-intro {
+  font-size: clamp(0.88rem, 1.1vw, 1rem);
+  font-weight: 500;
+  color: rgba(255,255,255,0.55);
+  max-width: 36rem;
+  margin-bottom: 28px;
+  line-height: 1.6;
 }
 .btn-dark-outline {
   display: inline-flex;
@@ -1990,7 +1998,13 @@ button:focus-visible {
 
 @media (max-width: 768px) {
   .hero-dark-title { font-size: clamp(2.6rem, 10vw, 3.4rem); }
-  .hero-dark-stats { display: grid; grid-template-columns: 1fr 1fr; }
+  .hero-dark-stats { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .hero-dark-stats li:nth-child(4),
+  .hero-dark-stats li:nth-child(5) { grid-column: span 1; }
+}
+@media (max-width: 500px) {
+  .hero-dark-stats { grid-template-columns: 1fr 1fr; }
+  .hero-dark-stats li:last-child { grid-column: 1 / -1; }
 }
 
 /* ---- Stacked card panels (scroll-over effect) ---- */

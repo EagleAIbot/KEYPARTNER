@@ -67,7 +67,7 @@ function JobsCarousel() {
             <div className="section-divider" data-reveal />
             <p className="eyebrow" data-reveal>Opportunities</p>
             <h2 className="section-title" data-reveal>Latest Vacancies</h2>
-            <p className="section-subtitle" data-reveal>Find your next role, updated regularly with new opportunities.</p>
+            <p className="section-subtitle" data-reveal>Find your next role, updated regularly with our latest vacancies.</p>
           </div>
           <div className="jobs-carousel-controls">
             <button className="carousel-btn" onClick={() => emblaApi?.scrollPrev()} aria-label="Previous">
@@ -168,7 +168,10 @@ export function Home() {
             A Business Built<br className="hero-title-br" /> On <CyclingText />
           </h1>
           <p className="hero-dark-sub hero-ani-3">
-            Key Partnership Recruitment connects IT and commercial talent with high-growth businesses across the UK and Asia-Pacific.
+            Key Partnership Recruitment connects IT and commercial talent with high-growth businesses across the UK, UAE &amp; Asia-Pacific.
+          </p>
+          <p className="hero-dark-intro hero-ani-3">
+            We partner with our clients on a retained or exclusive basis, delivering consistently high-quality outcomes:
           </p>
 
           <ul className="hero-dark-stats hero-ani-4" aria-label="Key results">
@@ -191,6 +194,11 @@ export function Home() {
               <span className="hero-dark-stat__num">500+</span>
               <span className="hero-dark-stat__label">Roles Delivered</span>
               <span className="hero-dark-stat__detail">Across IT &amp; Commercial markets</span>
+            </li>
+            <li className="hero-dark-stat">
+              <span className="hero-dark-stat__num">5+</span>
+              <span className="hero-dark-stat__label">Years in Business</span>
+              <span className="hero-dark-stat__detail">Successful trade since 2019</span>
             </li>
           </ul>
         </div>
@@ -215,7 +223,7 @@ export function Home() {
               Recruitment done<br />the <em>right way.</em>
             </h2>
             <p className="video-break__sub" data-reveal>
-              Five years of delivering the right hires, with relationships at the core.
+              Five years of delivering the right hires for our Clients, with long-term relationships at the core.
             </p>
           </div>
           <div className="video-break__scroll-hint" aria-hidden>
@@ -303,13 +311,13 @@ export function Home() {
               <h2 className="meet-name" data-reveal>Matt Stimpson</h2>
               <p className="meet-role" data-reveal>Founder &amp; Managing Director</p>
               <p className="meet-bio" data-reveal>
-                Matt brings close to a decade of experience recruiting and headhunting for ambitious businesses, from SMEs through to FTSE 250 and Fortune 500 organisations.
+                Matt brings close to a decade of experience in recruitment and executive search, partnering with ambitious organisations ranging from high-growth SMEs to FTSE 250 and Fortune 500 businesses.
               </p>
               <p className="meet-bio" data-reveal>
-                He entered the industry at 16, quickly establishing himself as one of the UK's top-performing early careers recruiters, including recognition as the UK Recruitment Apprentice of the Year by the Recruitment &amp; Employment Confederation (REC).
+                He entered the industry at 16, quickly establishing himself as one of the UK's top-performing early careers recruiters, earning recognition as UK Recruitment Apprentice of the Year by the Recruitment &amp; Employment Confederation (REC).
               </p>
               <p className="meet-bio" data-reveal>
-                Matt founded Key Partnership with a clear approach. Recruitment works better when it's built on genuine relationships, not volume. That same approach underpins everything today: a selective client base, a headhunting-led model, and a focus on delivering the right hires, not just available candidates.
+                Matt founded Key Partnership with a clear belief: recruitment delivers better outcomes when built on genuine relationships, not volume. That philosophy continues to define the business today — a selective client base, a headhunting-led approach, and a focus on delivering the right hires, not just the most available candidates.
               </p>
               <div className="meet-actions" data-reveal>
                 <a href="mailto:info@ourkeypartnership.co.uk" className="btn btn-green">

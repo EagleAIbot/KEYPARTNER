@@ -22,29 +22,34 @@ export const pillars = [
 export const testimonials = {
   clients: [
     {
-      quote: "Matt has helped me with my recruiting needs as Head of Development. After trying a few agencies I was able to leave the rest up to him. Excellent communication, quickly understands requirements, respectful of our budget. I confidently and highly recommend him.",
-      author: "Software Development Manager",
-      company: "Retail Technology Company",
+      quote: "We've partnered with Key Partnership Recruitment for over two years, and throughout that time they've been an exceptional support to our business. Matt operates as a true extension of our team, ensuring every candidate is engaged, aligned to our values, and genuinely excited about our brand. When we renewed our PSL, there was no question that Key Partnership would remain a key partner to us. Every hiring manager Matt works with has complete confidence that he's acting in our best interests.",
+      author: "Talent Acquisition Lead",
+      company: "£200M+ UK Retailer",
     },
     {
-      quote: "We had an urgent requirement that another agency couldn't fill. Matt responded the same day with candidates, 2 of which were an excellent fit. Thanks to his persistence and great networking, we filled the vacancy within 7 days. Exactly what we asked for.",
-      author: "Director",
-      company: "Software Company, Milton Keynes",
-    },
-    {
-      quote: "Recruitment was a dreaded task. Our adverts generated spam, so it was a huge relief to partner with Matt and receive well-vetted candidates with the right skills and a genuine desire to work for us because of what we do.",
+      quote: "Recruitment for us used to be a dreaded task. Our job adverts would go live, and the inevitable spam would arrive shortly after. So, it was a huge relief to be able to partner with Matt from Key Partnership. All of a sudden, we began to receive well-vetted candidates, with the right skills and clear desire to work for us.",
       author: "Head of Software Development",
-      company: "Occupational Health Firm",
+      company: "£100M Healthcare Business",
     },
     {
-      quote: "Matt has provided us with an exceptional and very successful service. He understands our business and requirements and uses that knowledge to search for the right candidates. We are never disappointed with the CVs he provides.",
+      quote: "Partnering with Matt from Key Partnership on a retainer basis has been a game-changer for our business. Key Partnership always delivers top-tier candidates who are perfectly aligned to not just our requirements, but also our company culture. The recruitment process has been seamless, saving us valuable time and resource as we scale at pace. We highly recommend Key Partnership to any organisation looking for a reliable and efficient recruitment partner.",
+      author: "Head of People",
+      company: "£5M SaaS Scale-Up",
+    },
+    {
+      quote: "We first started working with Key Partnership about a year ago, when we had an urgent requirement that another agency just couldn't fill. Matt responded the same day with 2 candidates who were both an excellent fit. Thanks to Matt's great networking skills, we had this vacancy filled within 5 days. The hardest part was trying to choose which candidate to hire. Exactly what we wanted.",
       author: "Managing Director",
-      company: "Hospitality Tech Vendor",
+      company: "Hospitality Tech Business",
     },
     {
-      quote: "Reliable, professional and efficient. A Valued Partnership. We both work well together to ensure our applicants are managed through the process in the best way.",
-      author: "Chief Operating Officer",
-      company: "Payment Tech Business",
+      quote: "Throughout my long career, I've worked with many recruiters who simply place a candidate to get their quota. Matt does not work this way. He has the perfect balance of client and candidate interests at heart. Reliable, professional, and a valued partner of our business.",
+      author: "Chief Operations Officer",
+      company: "Australian Software Business",
+    },
+    {
+      quote: "After trying various agencies, Key Partnership was recommended to me. I met with Matt, and was able to leave the rest up to him. He is an excellent communicator, is respectful of our budget, and provides excellent candidate options. I can confidently recommend Key Partnership Recruitment.",
+      author: "Head of Product",
+      company: "Financial Technology Business",
     },
   ],
   candidates: [
@@ -72,6 +77,41 @@ export const testimonials = {
       quote: "Rarely do you find a recruiter that puts you first and focuses on helping you put your best foot forward. Key Partnership is a fresh breath of air in a stereotyped industry. Determined, resourceful, an absolute pleasure.",
       author: "Web Developer",
       company: "Cardiff",
+    },
+    {
+      quote: "Key Partnership Recruitment is an amazing company who landed me my first job in IT. They helped in every aspect of the application process. I highly recommend them!",
+      author: "IT Graduate",
+      company: "UK",
+    },
+    {
+      quote: "Matt is a fantastic and supportive headhunter who clearly works very hard on behalf of both his clients and candidates. He communicates really well, gets in touch regularly throughout the onboarding process, and is ready to help with anything.",
+      author: "Bid Manager",
+      company: "UK",
+    },
+    {
+      quote: "Matt from Key Partnership was instrumental in securing me my latest role. His dedication and expertise made a real difference.",
+      author: "Front End Developer",
+      company: "UK",
+    },
+    {
+      quote: "Matt has been absolutely brilliant, right from our initial discussions about the role, through to placing me. Matt is NOT like any other recruiter I've dealt with before. He is always available, helped me with my presentation, and was in touch regularly when I started my job. Thanks so much!",
+      author: "Client Relationship Manager",
+      company: "UK",
+    },
+    {
+      quote: "Matt is incredibly helpful and supportive, and has made what can be a stressful experience searching for a new job feel like a breeze.",
+      author: "Head of Bids",
+      company: "UK",
+    },
+    {
+      quote: "Key Partnership is the best recruitment company I've worked with so far. Very professional and helpful throughout the whole process. Always available to talk. It's been a great pleasure working with Matt.",
+      author: "BI Analyst",
+      company: "UK",
+    },
+    {
+      quote: "Working with KPR has been an absolute pleasure, one of the best, if not the best, recruiting experiences I have ever had. Personable, informed, organised and efficient. Highly recommend working with Matt.",
+      author: "EPOS Engineer",
+      company: "UK",
     },
   ],
 }
