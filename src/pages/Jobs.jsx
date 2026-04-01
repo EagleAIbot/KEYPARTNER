@@ -160,7 +160,7 @@ export function Jobs() {
         <div className="container jobs-cta-content">
           <p className="eyebrow jobs-cta-eyebrow" data-reveal>Don't see your role?</p>
           <h2 className="jobs-cta-title" data-reveal>
-            We work on exclusive briefs<br />not always advertised publicly.
+            We also work on exclusive briefs<br />not always advertised publicly.
           </h2>
           <p className="jobs-cta-sub" data-reveal>
             Send us your CV and we'll be in touch the moment the right brief lands. No spam, ever.

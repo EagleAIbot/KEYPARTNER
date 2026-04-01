@@ -64,8 +64,6 @@ function JobsCarousel() {
       <div className="container">
         <div className="jobs-carousel-header">
           <div>
-            <div className="section-divider" data-reveal />
-            <p className="eyebrow" data-reveal>Opportunities</p>
             <h2 className="section-title" data-reveal>Latest Vacancies</h2>
             <p className="section-subtitle" data-reveal>Find your next role, updated regularly with our latest vacancies.</p>
           </div>
