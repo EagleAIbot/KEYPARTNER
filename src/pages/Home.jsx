@@ -178,27 +178,22 @@ export function Home() {
             <li className="hero-dark-stat">
               <span className="hero-dark-stat__num">95%</span>
               <span className="hero-dark-stat__label">Offer Acceptance Rate</span>
-              <span className="hero-dark-stat__detail">Candidates aligned from the outset</span>
             </li>
             <li className="hero-dark-stat">
               <span className="hero-dark-stat__num">90%</span>
               <span className="hero-dark-stat__label">12-Month Retention</span>
-              <span className="hero-dark-stat__detail">Placements that are made to last</span>
             </li>
             <li className="hero-dark-stat">
               <span className="hero-dark-stat__num">80%</span>
               <span className="hero-dark-stat__label">Repeat Client Partnerships</span>
-              <span className="hero-dark-stat__detail">Long-term relationships, not one-off hires</span>
             </li>
             <li className="hero-dark-stat">
               <span className="hero-dark-stat__num">500+</span>
               <span className="hero-dark-stat__label">Roles Delivered</span>
-              <span className="hero-dark-stat__detail">Across IT &amp; Commercial markets</span>
             </li>
             <li className="hero-dark-stat">
               <span className="hero-dark-stat__num">5+</span>
               <span className="hero-dark-stat__label">Years in Business</span>
-              <span className="hero-dark-stat__detail">Successful trade since 2019</span>
             </li>
           </ul>
         </div>

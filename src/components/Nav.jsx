@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, Phone } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 
 const base = import.meta.env.BASE_URL
 
@@ -43,9 +43,6 @@ export function Nav() {
               <div className="nav-rail">
                 <Link to="/jobs" className={pathname === '/jobs' ? 'active' : ''}>Jobs</Link>
               </div>
-              <a href="tel:01327493143" className="nav-phone" aria-label="Call Key Partnership">
-                <Phone size={15} strokeWidth={2.25} />
-              </a>
               <a href="mailto:info@ourkeypartnership.co.uk" className="btn btn-green nav-cta">Get In Touch</a>
             </nav>
 
@@ -68,9 +65,6 @@ export function Nav() {
           <div className="drawer-links">
             <Link to="/jobs" onClick={() => setOpen(false)}>Jobs</Link>
           </div>
-          <a href="tel:01327493143" className="drawer-phone">
-            <Phone size={16} /> 01327 493 143
-          </a>
           <a href="mailto:info@ourkeypartnership.co.uk" className="btn btn-green drawer-cta">Get In Touch</a>
         </div>
       </div>
