@@ -6,6 +6,8 @@ import { Testimonials } from '../components/Testimonials'
 
 gsap.registerPlugin(ScrollTrigger)
 
+const HIRE_HERO_VIDEO = 'https://assets.mixkit.co/videos/49470/49470-720.mp4'
+
 export function Hire() {
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -21,13 +23,26 @@ export function Hire() {
   return (
     <>
       {/* ── HERO ── */}
-      <section className="page-hero">
-        <div className="container">
-          <p className="eyebrow">For Our Clients</p>
-          <h1>A more focused approach<br />to hiring</h1>
-          <p>We partner with a select group of businesses to deliver permanent and fixed-term hires across Technology, Data &amp; AI, and Commercial functions. Our model is simple. Fewer clients, more focus, better hires.</p>
-          <div className="page-hero-actions">
-            <a href="mailto:info@ourkeypartnership.co.uk?subject=New Vacancy Enquiry" className="btn btn-primary">Discuss your hiring needs <ArrowRight size={16} /></a>
+      <section className="hero hero--dark">
+        <div className="hero-video-bg" aria-hidden>
+          <video autoPlay muted loop playsInline preload="auto" className="hero-video-bg__vid">
+            <source src={HIRE_HERO_VIDEO} type="video/mp4" />
+          </video>
+          <div className="hero-video-bg__overlay" />
+        </div>
+        <div className="hero-dark-grain" aria-hidden />
+        <div className="container hero-dark-content">
+          <p className="eyebrow hero-dark-eyebrow hero-ani-1">For Our Clients</p>
+          <h1 className="hero-dark-title hero-ani-2">
+            A more focused<br />approach to hiring
+          </h1>
+          <p className="hero-dark-sub hero-ani-3">
+            We partner with a select group of businesses to deliver permanent and fixed-term hires across Technology, Data &amp; AI, and Commercial functions. Fewer clients, more focus, better hires.
+          </p>
+          <div className="hero-actions hero-ani-4">
+            <a href="mailto:info@ourkeypartnership.co.uk?subject=New Vacancy Enquiry" className="btn btn-hero-primary">
+              Discuss your hiring needs <ArrowRight size={16} />
+            </a>
           </div>
         </div>
       </section>
