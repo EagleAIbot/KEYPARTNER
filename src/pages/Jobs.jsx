@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowRight, MapPin, Clock, Briefcase, Mail, Phone } from 'lucide-react'
+import { ArrowRight, MapPin, Clock, Briefcase, Mail } from 'lucide-react'
 import { jobs } from '../data/content'
 import { useIsMobile } from '../hooks/useIsMobile'
 
@@ -78,13 +78,9 @@ export function Jobs() {
             Your Next Move<br />Starts Here.
           </h1>
           <p className="hero-dark-sub hero-ani-3">
-            Technology, Commercial &amp; Data/AI roles across the UK.<br />
-            No fluff, just the right opportunity at the right time.
+            Technology, Commercial &amp; Data/AI roles across the UK, UAE and Australia.
           </p>
           <div className="hero-actions hero-ani-4">
-            <a href="#listings" className="btn btn-hero-primary">
-              Browse roles <ArrowRight size={16} strokeWidth={2.25} />
-            </a>
             <a href="mailto:info@ourkeypartnership.co.uk?subject=CV Submission" className="btn btn-dark-outline">
               Submit your CV
             </a>
@@ -115,9 +111,7 @@ export function Jobs() {
         <div className="jobs-listings-overlay" aria-hidden />
         <div className="container jobs-listings-inner">
           <div className="jobs-listings-header" data-reveal>
-            <div className="section-divider" />
-            <p className="eyebrow">Open Roles</p>
-            <h2 className="section-title">Latest Vacancies</h2>
+            <h2 className="section-title" style={{textAlign:'center'}}>Latest Vacancies</h2>
           </div>
 
           <div className="jobs-list">
@@ -163,14 +157,11 @@ export function Jobs() {
             We also work on exclusive briefs<br />not always advertised publicly.
           </h2>
           <p className="jobs-cta-sub" data-reveal>
-            Send us your CV and we'll be in touch the moment the right brief lands. No spam, ever.
+            Send us your CV and we'll be in touch the moment the right brief lands.
           </p>
           <div className="jobs-cta-actions" data-reveal>
             <a href="mailto:info@ourkeypartnership.co.uk?subject=CV Submission" className="btn btn-hero-primary">
               <Mail size={15} /> Submit your CV
-            </a>
-            <a href="tel:01327493143" className="btn btn-dark-outline">
-              <Phone size={15} /> 01327 493 143
             </a>
           </div>
         </div>

@@ -1,12 +1,10 @@
 import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowRight, CheckCircle2, Clock, Shield, TrendingUp, Phone, Mail, Upload } from 'lucide-react'
+import { ArrowRight, CheckCircle2, Users, Search, Star, Clock, BarChart2, Handshake } from 'lucide-react'
+import { Testimonials } from '../components/Testimonials'
 
 gsap.registerPlugin(ScrollTrigger)
-
-const sectors = ['Hospitality, Retail & eCommerce', 'Medical Software & Supplies', 'Non-Profit & Charity', 'Software-as-a-Service (SaaS)', 'Professional Services (Insurance, Legal, Finance)']
 
 export function Hire() {
   useEffect(() => {
@@ -22,192 +20,189 @@ export function Hire() {
 
   return (
     <>
-      {/* Hero */}
+      {/* ── HERO ── */}
       <section className="page-hero">
         <div className="container">
-          <p className="eyebrow">For Employers</p>
-          <h1>Hire Tech Talent,<br />Done Right</h1>
-          <p>Stop being flooded with irrelevant profiles. Key Partnership presents a tailored shortlist of engaged, fully-qualified technology professionals, fast.</p>
+          <p className="eyebrow">For Our Clients</p>
+          <h1>A more focused approach<br />to hiring</h1>
+          <p>We partner with a select group of businesses to deliver permanent and fixed-term hires across Technology, Data &amp; AI, and Commercial functions. Our model is simple. Fewer clients, more focus, better hires.</p>
           <div className="page-hero-actions">
-            <a href="#submit" className="btn btn-primary">Submit a Vacancy <ArrowRight size={16} /></a>
-            <a href="tel:01327493143" className="btn btn-secondary">Call 01327 493 143</a>
+            <a href="mailto:info@ourkeypartnership.co.uk?subject=New Vacancy Enquiry" className="btn btn-primary">Discuss your hiring needs <ArrowRight size={16} /></a>
           </div>
         </div>
       </section>
 
-      {/* Challenges */}
+      {/* ── WHO WE WORK WITH ── */}
       <section style={{ padding: 'var(--section-pad) 0', background: 'var(--brand-white)' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'start' }}>
             <div data-reveal>
               <div className="section-divider" />
-              <p className="eyebrow">Sound familiar?</p>
-              <h2 className="section-title">Struggling With These Hiring Challenges?</h2>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginTop: 28 }}>
-                {[
-                  'Flooded with unqualified, irrelevant profiles',
-                  'A simple hire taking weeks or months',
-                  'Recruiters who don\'t understand your tech stack',
-                  'Agencies chasing fees, not cultural fit',
-                  'No market data to benchmark salary or availability',
-                ].map((pain, i) => (
-                  <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
-                    <div style={{ width: 20, height: 20, minWidth: 20, borderRadius: '50%', background: 'var(--green-100)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: 2 }}>
-                      <CheckCircle2 size={12} style={{ color: 'var(--brand-green)' }} />
-                    </div>
-                    <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)' }}>{pain}</p>
+              <h2 className="section-title">Who We Work With</h2>
+              <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: 28 }}>We support hiring for:</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 32 }}>
+                {['Start-ups building their first teams', 'Scale-ups in growth mode', 'Established businesses hiring at pace'].map(item => (
+                  <div key={item} className="sign-item" data-reveal>
+                    <CheckCircle2 size={16} style={{ color: 'var(--brand-green)', marginTop: 2, minWidth: 16 }} />
+                    <p>{item}</p>
+                  </div>
+                ))}
+              </div>
+              <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: 16 }}>Across sectors including:</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                {['SaaS', 'Finance & FinTech', 'Hospitality & Retail', 'Healthcare'].map(item => (
+                  <div key={item} className="sign-item" data-reveal>
+                    <CheckCircle2 size={16} style={{ color: 'var(--brand-green)', marginTop: 2, minWidth: 16 }} />
+                    <p>{item}</p>
                   </div>
                 ))}
               </div>
             </div>
             <div data-reveal style={{ background: 'var(--green-50)', borderRadius: 20, padding: 40, border: '1px solid var(--border)' }}>
-              <p className="eyebrow" style={{ marginBottom: 12 }}>The Key Partnership difference</p>
-              <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: 20 }}>
-                We keep a <strong style={{ color: 'var(--text-primary)' }}>small, highly engaged client portfolio</strong> so we understand your business inside out: your culture, your technical requirements, your growth ambitions.
+              <p className="eyebrow" style={{ marginBottom: 16 }}>Our reach</p>
+              <p style={{ fontSize: '1.05rem', fontWeight: 600, marginBottom: 12, lineHeight: 1.5 }}>
+                Our clients are based across the UK and internationally, including the UAE, Australia and New Zealand.
               </p>
               <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: 1.7 }}>
-                Our consultants breathe tech recruiting. Pre-built talent pools mean we respond with the right people quickly. We've filled urgent roles within 7 days.
+                We operate from Milton Keynes, positioned within the UK's tech corridor, giving us strong access to talent and clients across the whole of the UK and into international markets.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Process */}
+      {/* ── HOW WE WORK ── */}
       <section style={{ padding: 'var(--section-pad) 0', background: 'var(--surface-muted)' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', maxWidth: 600, margin: '0 auto 56px' }}>
-            <div className="section-divider" style={{ margin: '0 auto 24px' }} data-reveal />
-            <p className="eyebrow" data-reveal>Our Process</p>
-            <h2 className="section-title" data-reveal>Four Steps to Your Next Hire</h2>
+          <div style={{ maxWidth: 720 }} data-reveal>
+            <div className="section-divider" />
+            <h2 className="section-title">How We Work</h2>
+            <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: 32 }}>
+              We don't rely on job boards or inbound applications. Our time is spent identifying and engaging the right people directly.
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              {[
+                { icon: Search, text: 'Headhunting-led delivery on every role' },
+                { icon: BarChart2, text: 'No reliance on advertising spend' },
+                { icon: Users, text: 'Built networks across Tech, AI and Commercial markets' },
+                { icon: Handshake, text: 'We represent your business properly in the market' },
+              ].map(item => (
+                <div key={item.text} style={{ display: 'flex', gap: 16, alignItems: 'center', padding: '16px 20px', background: 'var(--brand-white)', borderRadius: 'var(--radius)', border: '1px solid var(--border)' }} data-reveal>
+                  <div style={{ width: 40, height: 40, minWidth: 40, background: 'var(--green-100)', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--brand-green)' }}>
+                    <item.icon size={18} />
+                  </div>
+                  <p style={{ fontWeight: 600 }}>{item.text}</p>
+                </div>
+              ))}
+            </div>
+            <p style={{ marginTop: 28, color: 'var(--text-muted)', lineHeight: 1.7, fontStyle: 'italic' }}>
+              We operate as an extension of your team, not an external supplier.
+            </p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24 }}>
+        </div>
+      </section>
+
+      {/* ── WHAT YOU CAN EXPECT ── */}
+      <section style={{ padding: 'var(--section-pad) 0', background: 'var(--brand-white)' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', maxWidth: 600, margin: '0 auto 56px' }} data-reveal>
+            <div className="section-divider" style={{ margin: '0 auto 24px' }} />
+            <h2 className="section-title">What You Can Expect</h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
             {[
-              { num: '01', title: 'Book a call', body: 'Get in touch and we\'ll schedule a conversation with our team, same day if urgent.' },
-              { num: '02', title: 'Understand your needs', body: 'We dig into the role, your stack, your culture, and your growth aspirations. Not just a job description.' },
-              { num: '03', title: 'Agree a strategy', body: 'We agree exactly how we\'ll find your talent, timelines, market data, and pricing. Complete transparency.' },
-              { num: '04', title: 'Start hiring', body: 'Sit back. We handle the search, screening, and shortlisting. You focus on choosing the right person.' },
-            ].map(s => (
-              <div key={s.num} className="card" data-reveal style={{ textAlign: 'center' }}>
-                <div style={{ fontFamily: 'var(--font-display)', fontSize: '3rem', fontWeight: 700, color: 'var(--green-100)', lineHeight: 1, marginBottom: 16 }}>{s.num}</div>
-                <h3 style={{ fontSize: '1.05rem', fontWeight: 700, marginBottom: 10 }}>{s.title}</h3>
-                <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.65 }}>{s.body}</p>
+              { icon: Users, title: '3 candidates per role', body: 'Three of the best suited individuals — not a long list to filter through.' },
+              { icon: Clock, title: '7-day CV delivery SLA', body: 'Qualified, engaged candidates within the first week.' },
+              { icon: Star, title: 'High-quality shortlists', body: 'Less noise, more relevance.' },
+              { icon: Handshake, title: 'On-site time with clients', body: 'We spend time understanding your teams, culture and environment.' },
+              { icon: BarChart2, title: 'Market insight', body: 'Annual salary benchmarking to support hiring decisions.' },
+            ].map(item => (
+              <div key={item.title} className="card" data-reveal style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                <div style={{ width: 44, height: 44, background: 'var(--green-100)', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--brand-green)' }}>
+                  <item.icon size={20} />
+                </div>
+                <h3 style={{ fontSize: '1rem', fontWeight: 700 }}>{item.title}</h3>
+                <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.65 }}>{item.body}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Sectors */}
-      <section id="sectors" style={{ padding: 'var(--section-pad) 0', background: 'var(--brand-white)' }}>
+      {/* ── PARTNERSHIP MODELS ── */}
+      <section style={{ padding: 'var(--section-pad) 0', background: 'var(--green-50)' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center' }}>
-            <div>
-              <div className="section-divider" data-reveal />
-              <p className="eyebrow" data-reveal>Sectors We Serve</p>
-              <h2 className="section-title" data-reveal>Sector Agnostic. Technology Focused.</h2>
-              <p style={{ color: 'var(--text-muted)', marginBottom: 32, lineHeight: 1.7 }} data-reveal>
-                We recruit across industries. What unites our clients is a need for world-class technology talent, and an appreciation for a recruiter who genuinely understands what that means.
+            <div data-reveal>
+              <div className="section-divider" />
+              <h2 className="section-title">Partnership Models</h2>
+              <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: 20 }}>
+                We support clients on both contingent and retained models. For clients hiring regularly or building teams, we also offer fixed-fee retainers.
               </p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                {sectors.map(s => (
-                  <div key={s} className="sign-item" data-reveal>
-                    <CheckCircle2 size={16} style={{ color: 'var(--brand-green)', marginTop: 2 }} />
-                    <p>{s}</p>
-                  </div>
-                ))}
-              </div>
+              <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: 20 }}>
+                This provides a more cost-effective and consistent approach to hiring.
+              </p>
+              <p style={{ color: 'var(--text-muted)', lineHeight: 1.7 }}>
+                Last year, we saved one client over <strong style={{ color: 'var(--text-primary)' }}>£30,000 in recruitment fees</strong> compared to a traditional per-placement model.
+              </p>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-              {[
-                { icon: Clock, title: '7-day placements', body: 'From initial call to signed offer. We\'ve done it repeatedly.' },
-                { icon: Shield, title: 'Money-back guarantee', body: 'Every placement is backed by a replacement guarantee. Quality is non-negotiable.' },
-                { icon: TrendingUp, title: 'Market intelligence', body: 'We share salary benchmarks, availability data, and competitor insight, so you make the right decisions.' },
-              ].map(c => (
-                <div key={c.title} className="card" data-reveal style={{ display: 'flex', gap: 20, alignItems: 'flex-start' }}>
-                  <div style={{ width: 44, height: 44, minWidth: 44, background: 'var(--green-100)', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--brand-green)' }}>
-                    <c.icon size={20} />
-                  </div>
-                  <div>
-                    <h4 style={{ fontWeight: 700, marginBottom: 6 }}>{c.title}</h4>
-                    <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>{c.body}</p>
-                  </div>
-                </div>
-              ))}
+            <div data-reveal>
+              <div className="section-divider" />
+              <h2 className="section-title">Commercially Built</h2>
+              <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: 16 }}>
+                Our model is lean by design, which allows us to offer a more competitive fee structure than most agencies.
+              </p>
+              <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: 16 }}>
+                You're not paying for volume or overhead.
+              </p>
+              <p style={{ color: 'var(--text-muted)', lineHeight: 1.7 }}>
+                You're investing in a focused, high-quality service.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Submit vacancy form */}
-      <section id="submit" className="form-section">
+      {/* ── WHY CLIENTS WORK WITH US ── */}
+      <section style={{ padding: 'var(--section-pad) 0', background: 'var(--brand-white)' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', maxWidth: 600, margin: '0 auto 56px' }} data-reveal>
-            <div className="section-divider" style={{ margin: '0 auto 24px' }} />
-            <h2 className="section-title">Submit a Vacancy</h2>
-            <p style={{ color: 'var(--text-muted)' }}>Tell us about the role and we'll get back to you within one business day.</p>
+          <div style={{ maxWidth: 640 }} data-reveal>
+            <div className="section-divider" />
+            <h2 className="section-title">Why Clients Work With Us</h2>
           </div>
-          <div className="form-grid">
-            <div className="form-card" data-reveal>
-              <h3>Start the conversation</h3>
-              <p className="form-sub">No obligation, no hard sell, just a genuine conversation about how we can help.</p>
-              <form action={`mailto:info@ourkeypartnership.co.uk?subject=New%20Vacancy%20Enquiry`} method="get">
-                <div className="form-row">
-                  <div className="form-field">
-                    <label>First name *</label>
-                    <input type="text" name="firstname" placeholder="Jane" required />
-                  </div>
-                  <div className="form-field">
-                    <label>Last name *</label>
-                    <input type="text" name="lastname" placeholder="Smith" required />
-                  </div>
-                </div>
-                <div className="form-field">
-                  <label>Company *</label>
-                  <input type="text" name="company" placeholder="Acme Tech Ltd" required />
-                </div>
-                <div className="form-field">
-                  <label>Email *</label>
-                  <input type="email" name="email" placeholder="jane@acme.com" required />
-                </div>
-                <div className="form-field">
-                  <label>Phone</label>
-                  <input type="tel" name="phone" placeholder="01234 567 890" />
-                </div>
-                <div className="form-field">
-                  <label>Vacancy title *</label>
-                  <input type="text" name="vacancy" placeholder="e.g. Senior .NET Developer" required />
-                </div>
-                <div className="form-field">
-                  <label>Tell us about the role</label>
-                  <textarea name="body" placeholder="Skills needed, salary range, location, culture..." />
-                </div>
-                <button type="submit" className="btn btn-green form-submit">
-                  Send Enquiry <ArrowRight size={16} />
-                </button>
-              </form>
-            </div>
-            <div className="form-side-info" data-reveal>
-              <p style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: 8 }}>Or just pick up the phone</p>
-              <p style={{ color: 'var(--text-muted)', marginBottom: 32, lineHeight: 1.7 }}>Sometimes the fastest route is a 10-minute call. Our team is here to help.</p>
-              {[
-                { icon: Phone, label: 'Call us', value: '01327 493 143', href: 'tel:01327493143' },
-                { icon: Mail, label: 'Email us', value: 'info@ourkeypartnership.co.uk', href: 'mailto:info@ourkeypartnership.co.uk' },
-              ].map(c => (
-                <div key={c.label} className="form-contact-item">
-                  <div className="form-contact-icon"><c.icon size={18} /></div>
-                  <div>
-                    <h4>{c.label}</h4>
-                    <a href={c.href}>{c.value}</a>
-                  </div>
-                </div>
-              ))}
-              <div style={{ marginTop: 24, padding: 24, background: 'var(--brand-white)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--border)' }}>
-                <p style={{ fontSize: '0.9rem', fontWeight: 700, marginBottom: 8 }}>Replacement guarantee</p>
-                <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>Every hire is backed by our guarantee. If something doesn't work out, we put it right, at no extra cost.</p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginTop: 36, maxWidth: 640 }}>
+            {[
+              'Dedicated, headhunting-led approach',
+              'Select client portfolio',
+              'Strong networks across Tech, AI and Commercial',
+              'Consistent, accountable delivery',
+              'Long-term partnerships over one-off hires',
+            ].map(item => (
+              <div key={item} className="sign-item" data-reveal>
+                <CheckCircle2 size={16} style={{ color: 'var(--brand-green)', marginTop: 2, minWidth: 16 }} />
+                <p style={{ fontWeight: 500 }}>{item}</p>
               </div>
-            </div>
+            ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── TESTIMONIALS ── */}
+      <Testimonials />
+
+      {/* ── LET'S TALK ── */}
+      <section style={{ padding: 'var(--section-pad) 0', background: 'var(--brand-green)' }}>
+        <div className="container" style={{ textAlign: 'center', maxWidth: 600, margin: '0 auto' }}>
+          <p className="eyebrow" style={{ color: 'var(--green-300)' }} data-reveal>Let's Talk</p>
+          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, color: 'var(--brand-white)', letterSpacing: '-0.03em', lineHeight: 1.1, margin: '16px 0 20px' }} data-reveal>
+            Looking for a more focused approach to hiring?
+          </h2>
+          <p style={{ color: 'rgba(255,255,255,0.72)', lineHeight: 1.7, marginBottom: 36 }} data-reveal>
+            If you're looking for a more focused, partnership-led approach to hiring, we should speak.
+          </p>
+          <a href="mailto:info@ourkeypartnership.co.uk?subject=New Vacancy Enquiry" className="btn btn-hero-primary" data-reveal>
+            Discuss your hiring needs <ArrowRight size={16} />
+          </a>
         </div>
       </section>
     </>
