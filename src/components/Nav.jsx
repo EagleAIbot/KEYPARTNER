@@ -60,12 +60,7 @@ export function Nav() {
                 <Link to="/jobs" className={pathname === '/jobs' ? 'active' : ''}>Jobs</Link>
                 <Link to="/hire" className={pathname === '/hire' ? 'active' : ''}>Work With Us</Link>
               </div>
-              <a href="/#contact" className="btn btn-green nav-cta" onClick={e => {
-                if (pathname === '/') {
-                  e.preventDefault()
-                  smoothScrollTo('contact')
-                }
-              }}>Get In Touch</a>
+              <Link to="/contact" className="btn btn-green nav-cta">Get In Touch</Link>
             </nav>
 
             <button type="button" className="nav-menu-btn" onClick={() => setOpen(true)} aria-label="Open menu">
@@ -88,13 +83,7 @@ export function Nav() {
             <Link to="/jobs" onClick={() => setOpen(false)}>Jobs</Link>
             <Link to="/hire" onClick={() => setOpen(false)}>Work With Us</Link>
           </div>
-          <a href="/#contact" className="btn btn-green drawer-cta" onClick={e => {
-            setOpen(false)
-            if (pathname === '/') {
-              e.preventDefault()
-              smoothScrollTo('contact')
-            }
-          }}>Get In Touch</a>
+          <Link to="/contact" className="btn btn-green drawer-cta" onClick={() => setOpen(false)}>Get In Touch</Link>
         </div>
       </div>
     </>

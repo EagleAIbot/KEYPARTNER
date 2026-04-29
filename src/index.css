@@ -242,7 +242,7 @@ button:focus-visible {
   height: 64px;
 }
 .nav-logo img {
-  height: 32px;
+  height: 44px;
   width: auto;
   filter: brightness(0) saturate(100%) invert(21%) sepia(60%) saturate(600%) hue-rotate(110deg) brightness(80%);
   transition: transform 0.3s var(--ease-out);
@@ -1768,7 +1768,7 @@ button:focus-visible {
   display: grid;
   grid-template-columns: 1.5fr 1.5fr 0.8fr;
   gap: 48px;
-  margin-bottom: 40px;
+  margin-bottom: 24px;
   align-items: start;
 }
 .footer-contact-list {
@@ -1804,7 +1804,7 @@ button:focus-visible {
 .footer {
   background: var(--green-900);
   color: rgba(255,255,255,0.65);
-  padding: 64px 0 32px;
+  padding: 40px 0 24px;
 }
 .footer-grid {
   display: grid;
@@ -1812,8 +1812,8 @@ button:focus-visible {
   gap: 48px;
   margin-bottom: 48px;
 }
-.footer-logo { margin-bottom: 16px; }
-.footer-logo img { height: 30px; opacity: 0.9; }
+.footer-logo { margin-bottom: 12px; }
+.footer-logo img { height: 44px; opacity: 0.9; }
 .footer-tagline { font-size: 0.9rem; line-height: 1.6; max-width: 260px; }
 .footer-col h4 { font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; color: rgba(255,255,255,0.35); margin-bottom: 16px; }
 .footer-col ul { display: flex; flex-direction: column; gap: 10px; }
@@ -2181,6 +2181,7 @@ button:focus-visible {
   .form-row { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; align-items: flex-start; }
   .embla__slide { flex: 0 0 min(340px, 85vw); }
+  .contact-grid { grid-template-columns: 1fr !important; }
 
   /* ── Mobile spacing & typography ── */
   :root { --section-pad: 52px; }

@@ -85,20 +85,6 @@ export function Jobs() {
               Submit your CV
             </a>
           </div>
-          <ul className="hero-dark-stats hero-ani-4" aria-label="Key stats">
-            <li className="hero-dark-stat">
-              <span className="hero-dark-stat__num">{jobs.length}</span>
-              <span className="hero-dark-stat__label">Live Roles</span>
-            </li>
-            <li className="hero-dark-stat">
-              <span className="hero-dark-stat__num">10 Days</span>
-              <span className="hero-dark-stat__label">Avg. Placement</span>
-            </li>
-            <li className="hero-dark-stat">
-              <span className="hero-dark-stat__num">100%</span>
-              <span className="hero-dark-stat__label">Client Retention</span>
-            </li>
-          </ul>
         </div>
       </section>
 

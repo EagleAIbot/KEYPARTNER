@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowRight, Phone, Mail, MapPin } from 'lucide-react'
+import { Mail, Phone, MapPin } from 'lucide-react'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -19,84 +19,78 @@ export function Contact() {
 
   return (
     <>
+      {/* ── HERO ── */}
       <section className="page-hero">
         <div className="container">
           <p className="eyebrow">Get In Touch</p>
-          <h1>Let's Have a<br />Conversation</h1>
-          <p>No hard sell. No script. Just a genuine conversation about how we can help, whether you're hiring or looking for your next role.</p>
+          <h1>Let's start a conversation</h1>
+          <p>Whether you're looking to hire, exploring your next move, or just want to find out more — we'd love to hear from you.</p>
         </div>
       </section>
 
-      <section className="form-section">
+      {/* ── CONTACT + MAP ── */}
+      <section style={{ padding: 'var(--section-pad) 0', background: 'var(--brand-white)' }}>
         <div className="container">
-          <div className="form-grid">
-            <div className="form-card" data-reveal>
-              <h3>Send us a message</h3>
-              <p className="form-sub">We respond within one business day.</p>
-              <form action={`mailto:info@ourkeypartnership.co.uk?subject=Website%20Enquiry`} method="get">
-                <div className="form-row">
-                  <div className="form-field">
-                    <label>First name *</label>
-                    <input type="text" placeholder="Jane" required />
+          <div className="contact-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'start' }}>
+
+            {/* Contact details */}
+            <div data-reveal>
+              <div className="section-divider" />
+              <h2 className="section-title" style={{ marginBottom: 40 }}>Contact Us</h2>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+                <div style={{ display: 'flex', gap: 20, alignItems: 'flex-start' }}>
+                  <div style={{ width: 48, height: 48, minWidth: 48, background: 'var(--green-100)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--brand-green)' }}>
+                    <Mail size={20} />
                   </div>
-                  <div className="form-field">
-                    <label>Last name *</label>
-                    <input type="text" placeholder="Smith" required />
+                  <div>
+                    <p style={{ fontWeight: 700, marginBottom: 4 }}>Email</p>
+                    <a href="mailto:info@ourkeypartnership.co.uk" style={{ color: 'var(--brand-green)', fontWeight: 500, fontSize: '1.05rem' }}>
+                      info@ourkeypartnership.co.uk
+                    </a>
                   </div>
                 </div>
-                <div className="form-field">
-                  <label>Email *</label>
-                  <input type="email" placeholder="jane@example.com" required />
+
+                <div style={{ display: 'flex', gap: 20, alignItems: 'flex-start' }}>
+                  <div style={{ width: 48, height: 48, minWidth: 48, background: 'var(--green-100)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--brand-green)' }}>
+                    <Phone size={20} />
+                  </div>
+                  <div>
+                    <p style={{ fontWeight: 700, marginBottom: 4 }}>Phone</p>
+                    <a href="tel:01327493143" style={{ color: 'var(--brand-green)', fontWeight: 500, fontSize: '1.05rem' }}>
+                      01327 493 143
+                    </a>
+                  </div>
                 </div>
-                <div className="form-field">
-                  <label>Phone</label>
-                  <input type="tel" placeholder="07700 900 000" />
+
+                <div style={{ display: 'flex', gap: 20, alignItems: 'flex-start' }}>
+                  <div style={{ width: 48, height: 48, minWidth: 48, background: 'var(--green-100)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--brand-green)' }}>
+                    <MapPin size={20} />
+                  </div>
+                  <div>
+                    <p style={{ fontWeight: 700, marginBottom: 4 }}>Office</p>
+                    <p style={{ color: 'var(--text-muted)', lineHeight: 1.6 }}>
+                      Office 15, 76 High Street<br />
+                      Stony Stratford<br />
+                      Milton Keynes, MK11 1AH
+                    </p>
+                  </div>
                 </div>
-                <div className="form-field">
-                  <label>I am a...</label>
-                  <select>
-                    <option value="">Select...</option>
-                    <option>Hiring manager / employer</option>
-                    <option>Candidate / job seeker</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-                <div className="form-field">
-                  <label>How can we help?</label>
-                  <textarea placeholder="Tell us a bit about what you're looking for..." />
-                </div>
-                <button type="submit" className="btn btn-green form-submit">
-                  Send Message <ArrowRight size={16} />
-                </button>
-              </form>
+              </div>
             </div>
 
-            <div className="form-side-info" data-reveal>
-              <div>
-                <p style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: 24 }}>Contact details</p>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-                  {[
-                    { icon: Phone, label: 'Phone', value: '01327 493 143', href: 'tel:01327493143' },
-                    { icon: Mail, label: 'Email', value: 'info@ourkeypartnership.co.uk', href: 'mailto:info@ourkeypartnership.co.uk' },
-                    { icon: MapPin, label: 'Office', value: 'Office 15, 76 High Street, Stony Stratford, Milton Keynes, MK11 1AH', href: null },
-                  ].map(c => (
-                    <div key={c.label} className="form-contact-item">
-                      <div className="form-contact-icon"><c.icon size={18} /></div>
-                      <div>
-                        <h4>{c.label}</h4>
-                        {c.href
-                          ? <a href={c.href} className="form-contact-item a">{c.value}</a>
-                          : <p>{c.value}</p>
-                        }
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div style={{ background: 'var(--brand-green)', borderRadius: 'var(--radius-lg)', padding: 28, color: 'var(--brand-white)' }}>
-                <p style={{ fontWeight: 700, marginBottom: 10 }}>Company registration</p>
-                <p style={{ fontSize: '0.88rem', opacity: 0.75 }}>Key Partnership Recruitment Ltd<br />Company No. 12733360<br />Registered in England & Wales</p>
-              </div>
+            {/* Google Map */}
+            <div data-reveal style={{ borderRadius: 'var(--radius-lg)', overflow: 'hidden', border: '1px solid var(--border)', boxShadow: '0 8px 32px rgba(0,0,0,0.08)' }}>
+              <iframe
+                title="Key Partnership Recruitment Office"
+                src="https://maps.google.com/maps?q=76+High+Street+Stony+Stratford+Milton+Keynes+MK11+1AH&output=embed&z=16"
+                width="100%"
+                height="420"
+                style={{ border: 0, display: 'block' }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
           </div>
         </div>

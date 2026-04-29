@@ -5,6 +5,7 @@ import { Footer } from './components/Footer'
 import { Home } from './pages/Home'
 import { Jobs } from './pages/Jobs'
 import { Hire } from './pages/Hire'
+import { Contact } from './pages/Contact'
 
 export default function App() {
   return (
@@ -12,10 +13,11 @@ export default function App() {
       <Nav />
       <main>
         <Routes>
-          <Route path="/"      element={<Home />} />
-          <Route path="/jobs"  element={<Jobs />} />
-          <Route path="/hire"  element={<Hire />} />
-          <Route path="*"      element={<Home />} />
+          <Route path="/"         element={<Home />} />
+          <Route path="/jobs"     element={<Jobs />} />
+          <Route path="/hire"     element={<Hire />} />
+          <Route path="/contact"  element={<Contact />} />
+          <Route path="*"         element={<Home />} />
         </Routes>
       </main>
       <Footer />

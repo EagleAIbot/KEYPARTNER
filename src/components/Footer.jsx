@@ -12,7 +12,7 @@ export function Footer() {
             <div className="footer-logo">
               <img src={`${base}logo-white.webp`} alt="Key Partnership Recruitment" />
             </div>
-            <p className="footer-tagline">Award-winning relationship recruiters.</p>
+            <p className="footer-tagline">A Business Built on Relationships.</p>
           </div>
 
           <div className="footer-contact-list">
