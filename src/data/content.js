@@ -116,35 +116,7 @@ export const testimonials = {
   ],
 }
 
-export const jobs = [
-  {
-    id: 1,
-    title: "Senior .NET Developer",
-    discipline: "Software Development",
-    location: "Milton Keynes",
-    type: "Hybrid",
-    salary: "£65,000 – £75,000",
-    posted: "3 days ago",
-  },
-  {
-    id: 2,
-    title: "DevOps Engineer (AWS)",
-    discipline: "Enterprise IT",
-    location: "Remote (UK)",
-    type: "Remote",
-    salary: "£60,000 – £70,000",
-    posted: "5 days ago",
-  },
-  {
-    id: 3,
-    title: "BI Developer, Power BI",
-    discipline: "BI & Data",
-    location: "Northampton",
-    type: "Hybrid",
-    salary: "£50,000 – £58,000",
-    posted: "1 week ago",
-  },
-]
+export const jobs = []
 
 export const team = [
   {

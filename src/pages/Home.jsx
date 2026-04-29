@@ -6,7 +6,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowRight, ArrowDown, Cpu, TrendingUp, Database, MapPin, Clock, Briefcase, Heart, Users, Award, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Testimonials } from '../components/Testimonials'
 import { CoverageMap } from '../components/CoverageMap'
-import { jobs, pillars } from '../data/content'
+import { jobs as hardcodedJobs, pillars } from '../data/content'
+import { supabase } from '../lib/supabase'
 import { useIsMobile } from '../hooks/useIsMobile'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -58,6 +59,36 @@ function CyclingText() {
 
 function JobsCarousel() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'start', dragFree: true })
+  const [liveJobs, setLiveJobs] = useState(null)
+
+  useEffect(() => {
+    if (!supabase) return
+    supabase
+      .from('jobs')
+      .select('*')
+      .eq('is_active', true)
+      .order('created_at', { ascending: false })
+      .then(({ data }) => { if (data) setLiveJobs(data) })
+  }, [])
+
+  const displayJobs = liveJobs ?? hardcodedJobs
+
+  if (displayJobs.length === 0) return (
+    <section className="jobs-carousel-section">
+      <div className="container">
+        <div className="jobs-carousel-header">
+          <div>
+            <h2 className="section-title" data-reveal>Latest Vacancies</h2>
+            <p className="section-subtitle" data-reveal>Find your next role, updated regularly with our latest vacancies.</p>
+          </div>
+          <Link to="/jobs" className="btn btn-outline" data-reveal>View all</Link>
+        </div>
+        <div style={{ padding: '48px 0', textAlign: 'center', color: 'var(--text-muted)', fontSize: '0.95rem' }} data-reveal>
+          No roles live right now — <Link to="/jobs" style={{ color: 'var(--brand-green)' }}>submit your CV</Link> and we'll be in touch when the right role lands.
+        </div>
+      </div>
+    </section>
+  )
 
   return (
     <section className="jobs-carousel-section">
@@ -79,14 +110,14 @@ function JobsCarousel() {
         </div>
         <div className="embla embla--jobs" ref={emblaRef} data-reveal>
           <div className="embla__container">
-            {jobs.map(j => (
+            {displayJobs.map(j => (
               <div key={j.id} className="embla__slide embla__slide--job">
                 <div className="job-card">
                   <div className="job-badge"><Briefcase size={11} />{j.discipline}</div>
                   <div className="job-title">{j.title}</div>
                   <div className="job-meta">
                     <span><MapPin size={12} />{j.location}</span>
-                    <span><Clock size={12} />{j.posted}</span>
+                    <span><Clock size={12} />{j.posted ?? new Date(j.created_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}</span>
                     <span>{j.type}</span>
                   </div>
                   <div className="job-salary">{j.salary}</div>
