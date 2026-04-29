@@ -16,13 +16,8 @@ const BLANK = {
   is_active: true,
 }
 
-function timeAgo(iso) {
-  const d = Math.floor((Date.now() - new Date(iso).getTime()) / 86400000)
-  if (d === 0) return 'Today'
-  if (d === 1) return '1 day ago'
-  if (d < 7) return `${d} days ago`
-  if (d < 14) return '1 week ago'
-  return `${Math.floor(d / 7)} weeks ago`
+function formatDate(iso) {
+  return new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
 }
 
 export function Admin() {
@@ -190,7 +185,7 @@ export function Admin() {
                   <div className="admin-job-card__meta">
                     {job.location && <span><MapPin size={12} />{job.location}</span>}
                     {job.salary && <span>💰 {job.salary}</span>}
-                    <span style={{ opacity: 0.45 }}>Added {timeAgo(job.created_at)}</span>
+                    <span style={{ opacity: 0.45 }}>Published {formatDate(job.created_at)}</span>
                   </div>
                   {job.benefits?.filter(Boolean).length > 0 && (
                     <div className="admin-job-card__benefits">

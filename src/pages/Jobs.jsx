@@ -1,18 +1,13 @@
 import { useState, useEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowRight, MapPin, Clock, Briefcase, Mail, Check } from 'lucide-react'
+import { ArrowRight, MapPin, Calendar, Briefcase, Mail, Check } from 'lucide-react'
 import { jobs as hardcodedJobs } from '../data/content'
 import { supabase } from '../lib/supabase'
 import { useIsMobile } from '../hooks/useIsMobile'
 
-function timeAgo(iso) {
-  const d = Math.floor((Date.now() - new Date(iso).getTime()) / 86400000)
-  if (d === 0) return 'Today'
-  if (d === 1) return '1 day ago'
-  if (d < 7) return `${d} days ago`
-  if (d < 14) return '1 week ago'
-  return `${Math.floor(d / 7)} weeks ago`
+function formatDate(iso) {
+  return new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
 }
 
 gsap.registerPlugin(ScrollTrigger)
@@ -145,7 +140,7 @@ export function Jobs() {
                   <div className="job-listing-card__meta">
                     {j.location && <span><MapPin size={13} />{j.location}</span>}
                     {j.salary && <span>💰 {j.salary}</span>}
-                    <span><Clock size={13} />{j.posted ?? timeAgo(j.created_at)}</span>
+                    <span><Calendar size={13} />{j.posted ?? formatDate(j.created_at)}</span>
                   </div>
                   {j.benefits?.filter(Boolean).length > 0 && (
                     <div className="job-listing-card__benefits">
