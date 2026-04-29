@@ -1822,6 +1822,235 @@ button:focus-visible {
 .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 0.82rem; }
 .footer-legal { display: flex; gap: 24px; }
 
+/* ────────────────────────────────────────
+   ADMIN PAGE
+──────────────────────────────────────── */
+.admin-wrap { min-height: 100vh; background: #f2f5f2; display: flex; flex-direction: column; }
+
+/* Login */
+.admin-login {
+  min-height: 100vh;
+  background: var(--green-900);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.admin-login__card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 48px 40px;
+  width: 100%; max-width: 400px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.25);
+  text-align: center;
+}
+.admin-login__brand { margin-bottom: 24px; }
+.admin-login__brand img {
+  height: 36px;
+  filter: brightness(0) saturate(100%) invert(21%) sepia(60%) saturate(600%) hue-rotate(110deg) brightness(80%);
+}
+.admin-login__title { font-size: 1.5rem; font-weight: 800; color: var(--green-900); margin-bottom: 4px; }
+.admin-login__sub { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 28px; }
+.admin-login__input {
+  width: 100%; padding: 13px 16px; border-radius: 8px;
+  border: 1.5px solid var(--border); font-size: 1rem;
+  outline: none; transition: border-color 0.2s;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+.admin-login__input:focus { border-color: var(--brand-green); }
+.admin-login__input--err { border-color: #dc2626; }
+.admin-login__error { color: #dc2626; font-size: 0.82rem; margin-bottom: 12px; text-align: left; }
+.admin-login__btn { width: 100%; margin-top: 4px; }
+
+/* Header */
+.admin-header {
+  background: var(--green-900);
+  padding: 0 32px;
+  height: 56px;
+  display: flex; align-items: center; gap: 16px;
+  position: sticky; top: 0; z-index: 100;
+}
+.admin-header__title {
+  font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: rgba(255,255,255,0.55); flex: 1;
+}
+.admin-logout-btn {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 0.82rem; color: rgba(255,255,255,0.55);
+  background: none; border: none; cursor: pointer;
+  transition: color 0.2s;
+}
+.admin-logout-btn:hover { color: #fff; }
+
+/* Body */
+.admin-body { flex: 1; padding: 32px; max-width: 900px; width: 100%; margin: 0 auto; }
+
+.admin-notice {
+  border-radius: 10px; padding: 14px 18px; margin-bottom: 24px;
+  font-size: 0.88rem; line-height: 1.5;
+}
+.admin-notice--warn { background: #fff8e1; border: 1px solid #f59e0b; color: #92400e; }
+.admin-notice code { background: rgba(0,0,0,0.07); padding: 1px 5px; border-radius: 4px; font-size: 0.83rem; }
+
+.admin-controls {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 24px;
+}
+.admin-controls__heading { font-size: 1.3rem; font-weight: 800; color: var(--green-900); margin-bottom: 2px; }
+.admin-controls__sub { font-size: 0.82rem; color: var(--text-muted); }
+
+.admin-loading, .admin-empty {
+  text-align: center; padding: 64px 24px;
+  color: var(--text-muted); font-size: 0.95rem;
+}
+.admin-empty { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+
+/* Job cards (admin) */
+.admin-jobs-list { display: flex; flex-direction: column; gap: 12px; }
+
+.admin-job-card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 20px 20px 20px 24px;
+  transition: box-shadow 0.2s;
+}
+.admin-job-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.07); }
+.admin-job-card--draft { opacity: 0.55; }
+
+.admin-job-card__body { flex: 1; }
+.admin-job-card__badges { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+.admin-draft-badge {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+  background: #fef3c7; color: #92400e;
+}
+.admin-job-card__title { font-size: 1rem; font-weight: 700; color: var(--green-900); margin-bottom: 8px; }
+.admin-job-card__meta { display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.8rem; color: var(--text-muted); align-items: center; margin-bottom: 8px; }
+.admin-job-card__meta span { display: flex; align-items: center; gap: 4px; }
+.admin-job-card__benefits { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.admin-job-card__desc-wrap { margin-top: 8px; }
+.admin-desc-toggle {
+  display: flex; align-items: center; gap: 4px;
+  font-size: 0.78rem; color: var(--brand-green); background: none; border: none;
+  cursor: pointer; padding: 0;
+}
+.admin-job-card__desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-top: 8px; }
+
+.admin-job-card__actions { display: flex; flex-direction: column; gap: 6px; }
+.admin-action-btn {
+  width: 34px; height: 34px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--surface-muted); border: 1px solid var(--border);
+  color: var(--text-muted); cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.admin-action-btn:hover { background: var(--green-100); color: var(--brand-green); border-color: var(--brand-green); }
+.admin-action-btn--danger:hover { background: #fee2e2; color: #dc2626; border-color: #dc2626; }
+
+/* Modal */
+.admin-overlay {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(0,0,0,0.55); backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.admin-modal {
+  background: #fff; border-radius: 16px;
+  width: 100%; max-width: 640px; max-height: 90vh;
+  overflow-y: auto; box-shadow: 0 32px 80px rgba(0,0,0,0.25);
+}
+.admin-modal--sm { max-width: 380px; padding: 36px 32px; }
+
+.admin-modal__hdr {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 24px 28px 0;
+}
+.admin-modal__hdr h3 { font-size: 1.15rem; font-weight: 800; color: var(--green-900); }
+.admin-modal__close {
+  width: 32px; height: 32px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--surface-muted); border: none; cursor: pointer; color: var(--text-muted);
+  transition: background 0.15s;
+}
+.admin-modal__close:hover { background: #fee2e2; color: #dc2626; }
+
+/* Form */
+.admin-form { padding: 20px 28px 28px; display: flex; flex-direction: column; gap: 16px; }
+.admin-form__error { color: #dc2626; font-size: 0.82rem; background: #fee2e2; padding: 10px 14px; border-radius: 8px; }
+
+.af-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.af-field { display: flex; flex-direction: column; gap: 6px; }
+.af-field--full { grid-column: 1 / -1; }
+.af-field label { font-size: 0.78rem; font-weight: 700; color: var(--green-900); letter-spacing: 0.04em; display: flex; align-items: center; gap: 4px; }
+.af-field input, .af-field select, .af-field textarea {
+  padding: 10px 14px; border-radius: 8px;
+  border: 1.5px solid var(--border); font-size: 0.92rem;
+  outline: none; transition: border-color 0.2s; font-family: inherit;
+  background: #fff;
+}
+.af-field input:focus, .af-field select:focus, .af-field textarea:focus { border-color: var(--brand-green); }
+.af-field textarea { resize: vertical; }
+
+.af-benefits { display: flex; flex-direction: column; gap: 8px; }
+.af-benefit-row { display: flex; gap: 8px; align-items: center; }
+.af-benefit-row input { flex: 1; padding: 9px 12px; border-radius: 8px; border: 1.5px solid var(--border); font-size: 0.88rem; outline: none; }
+.af-benefit-row input:focus { border-color: var(--brand-green); }
+.af-benefit-del {
+  width: 30px; height: 30px; flex-shrink: 0; border-radius: 6px;
+  background: #fee2e2; border: none; color: #dc2626;
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+}
+.af-add-benefit {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 0.8rem; color: var(--brand-green); background: none;
+  border: 1.5px dashed var(--green-300); border-radius: 8px;
+  padding: 8px 14px; cursor: pointer; width: fit-content;
+  transition: background 0.15s;
+}
+.af-add-benefit:hover { background: var(--green-100); }
+
+.af-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 8px; border-top: 1px solid var(--border); gap: 12px; flex-wrap: wrap;
+}
+.af-publish-toggle { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer; }
+.af-publish-toggle input { width: 16px; height: 16px; accent-color: var(--brand-green); }
+.af-footer__actions { display: flex; gap: 10px; }
+.admin-btn-cancel { background: var(--surface-muted); color: var(--green-900); border: 1px solid var(--border); }
+.admin-btn-delete { background: #dc2626; color: #fff; }
+
+/* Benefit pills (shared between admin + public) */
+.benefit-pill {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 0.72rem; font-weight: 600;
+  background: var(--green-100); color: var(--brand-green);
+  padding: 3px 10px; border-radius: 20px;
+}
+
+/* ────────────────────────────────────────
+   UPDATED JOB LISTING CARD (public)
+──────────────────────────────────────── */
+.job-listing-card {
+  display: flex; flex-direction: column; gap: 12px;
+}
+.job-listing-card__top { display: flex; flex-direction: column; gap: 8px; }
+.job-listing-card__desc {
+  font-size: 0.88rem; color: rgba(255,255,255,0.65);
+  line-height: 1.65; max-width: 680px;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+.job-listing-card__mid { display: flex; flex-direction: column; gap: 10px; }
+.job-listing-card__benefits { display: flex; gap: 6px; flex-wrap: wrap; }
+.job-listing-card__apply-row { display: flex; }
+.job-listing-card__apply { display: inline-flex; align-items: center; gap: 8px; }
+
+.jobs-empty {
+  text-align: center; padding: 48px 24px;
+  color: rgba(255,255,255,0.55); font-size: 0.95rem; line-height: 1.6;
+}
+.jobs-empty a { color: var(--green-300); }
+
 /* ---- Specialism page ---- */
 .spec-hero { padding: calc(72px + var(--section-pad)) 0 var(--section-pad); background: var(--brand-green); }
 .spec-hero .eyebrow { color: var(--green-300); }

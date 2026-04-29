@@ -1,9 +1,19 @@
 import { useState, useEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowRight, MapPin, Clock, Briefcase, Mail } from 'lucide-react'
-import { jobs } from '../data/content'
+import { ArrowRight, MapPin, Clock, Briefcase, Mail, Check } from 'lucide-react'
+import { jobs as hardcodedJobs } from '../data/content'
+import { supabase } from '../lib/supabase'
 import { useIsMobile } from '../hooks/useIsMobile'
+
+function timeAgo(iso) {
+  const d = Math.floor((Date.now() - new Date(iso).getTime()) / 86400000)
+  if (d === 0) return 'Today'
+  if (d === 1) return '1 day ago'
+  if (d < 7) return `${d} days ago`
+  if (d < 14) return '1 week ago'
+  return `${Math.floor(d / 7)} weeks ago`
+}
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -26,11 +36,24 @@ export function Jobs() {
   const isMobile = useIsMobile()
   const JOBS_HERO_VIDEOS = isMobile ? JOBS_HERO_VIDEOS_MOBILE : JOBS_HERO_VIDEOS_DESKTOP
   const [activeVid, setActiveVid] = useState(0)
+  const [liveJobs, setLiveJobs] = useState(null)
 
   useEffect(() => {
     const id = setInterval(() => setActiveVid(i => (i + 1) % JOBS_HERO_VIDEOS.length), 8000)
     return () => clearInterval(id)
   }, [])
+
+  useEffect(() => {
+    if (!supabase) return
+    supabase
+      .from('jobs')
+      .select('*')
+      .eq('is_active', true)
+      .order('created_at', { ascending: false })
+      .then(({ data }) => { if (data) setLiveJobs(data) })
+  }, [])
+
+  const displayJobs = liveJobs ?? hardcodedJobs
 
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -101,26 +124,43 @@ export function Jobs() {
           </div>
 
           <div className="jobs-list">
-            {jobs.map(j => (
+            {displayJobs.length === 0 && (
+              <div className="jobs-empty" data-reveal>
+                <p>No roles live right now — check back soon, or <a href="mailto:info@ourkeypartnership.co.uk?subject=CV Submission">submit your CV</a> for future opportunities.</p>
+              </div>
+            )}
+            {displayJobs.map(j => (
               <div key={j.id} className="job-listing-card" data-reveal>
-                <div className="job-listing-card__left">
+                <div className="job-listing-card__top">
                   <div className="job-listing-card__badges">
                     <span className="job-badge"><Briefcase size={11} />{j.discipline}</span>
                     <span className="job-listing-type">{j.type}</span>
                   </div>
                   <h3 className="job-listing-card__title">{j.title}</h3>
-                  <div className="job-listing-card__meta">
-                    <span><MapPin size={13} />{j.location}</span>
-                    <span><Clock size={13} />{j.posted}</span>
-                  </div>
+                  {j.description && (
+                    <p className="job-listing-card__desc">{j.description}</p>
+                  )}
                 </div>
-                <div className="job-listing-card__right">
-                  <div className="job-listing-card__salary">{j.salary}</div>
+                <div className="job-listing-card__mid">
+                  <div className="job-listing-card__meta">
+                    {j.location && <span><MapPin size={13} />{j.location}</span>}
+                    {j.salary && <span>💰 {j.salary}</span>}
+                    <span><Clock size={13} />{j.posted ?? timeAgo(j.created_at)}</span>
+                  </div>
+                  {j.benefits?.filter(Boolean).length > 0 && (
+                    <div className="job-listing-card__benefits">
+                      {j.benefits.filter(Boolean).map((b, i) => (
+                        <span key={i} className="benefit-pill"><Check size={10} />{b}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                <div className="job-listing-card__apply-row">
                   <a
-                    href={`mailto:info@ourkeypartnership.co.uk?subject=Application: ${j.title}`}
+                    href={`mailto:info@ourkeypartnership.co.uk?subject=Application: ${encodeURIComponent(j.title)}`}
                     className="btn btn-green job-listing-card__apply"
                   >
-                    Apply <ArrowRight size={14} />
+                    Apply Now <ArrowRight size={14} />
                   </a>
                 </div>
               </div>
