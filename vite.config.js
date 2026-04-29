@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// Production build targets GitHub Pages project site: /KEYPARTNER/
-export default defineConfig(({ mode }) => ({
+// Custom domain — site lives at root /
+export default defineConfig({
   plugins: [react()],
-  base: mode === 'production' ? '/KEYPARTNER/' : '/',
-}))
+  base: '/',
+})
