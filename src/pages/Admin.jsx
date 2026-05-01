@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import { Plus, Edit2, Trash2, Eye, EyeOff, X, Check, LogOut, MapPin, ChevronDown, ChevronUp } from 'lucide-react'
+import { useState, useEffect, useRef } from 'react'
+import { Plus, Edit2, Trash2, Eye, EyeOff, X, Check, LogOut, MapPin, ChevronDown, ChevronUp, Bold, Italic, List } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 
 const base = import.meta.env.BASE_URL
@@ -104,6 +104,28 @@ export function Admin() {
     if (!supabase) return
     await supabase.from('jobs').update({ is_active: !job.is_active }).eq('id', job.id)
     load()
+  }
+
+  const descRef = useRef(null)
+  const wrapDesc = (marker) => {
+    const el = descRef.current
+    if (!el) return
+    const s = el.selectionStart, e = el.selectionEnd
+    const selected = form.description.slice(s, e) || 'text'
+    const next = form.description.slice(0, s) + marker + selected + marker + form.description.slice(e)
+    setForm(f => ({ ...f, description: next }))
+    setTimeout(() => { el.focus(); el.setSelectionRange(s + marker.length, s + marker.length + selected.length) }, 0)
+  }
+  const insertBullet = () => {
+    const el = descRef.current
+    if (!el) return
+    const s = el.selectionStart
+    const before = form.description.slice(0, s)
+    const after = form.description.slice(s)
+    const prefix = before.length === 0 || before.endsWith('\n') ? '• ' : '\n• '
+    const next = before + prefix + after
+    setForm(f => ({ ...f, description: next }))
+    setTimeout(() => { el.focus(); el.setSelectionRange(s + prefix.length, s + prefix.length) }, 0)
   }
 
   const setBenefit = (i, val) => {
@@ -268,7 +290,13 @@ export function Admin() {
 
               <div className="af-field af-field--full">
                 <label>Job Description</label>
-                <textarea rows={5} value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} placeholder="Describe the role, responsibilities, and ideal candidate..." />
+                <div className="af-desc-toolbar">
+                  <button type="button" className="af-fmt-btn" onClick={() => wrapDesc('**')} title="Bold"><Bold size={13} /></button>
+                  <button type="button" className="af-fmt-btn" onClick={() => wrapDesc('*')} title="Italic"><Italic size={13} /></button>
+                  <button type="button" className="af-fmt-btn" onClick={insertBullet} title="Bullet point"><List size={13} /></button>
+                  <span className="af-fmt-hint">Select text then click Bold/Italic</span>
+                </div>
+                <textarea ref={descRef} rows={10} value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} placeholder="Describe the role, responsibilities, and ideal candidate..." style={{ fontFamily: 'monospace', fontSize: '0.88rem', lineHeight: 1.7 }} />
               </div>
 
               <div className="af-field af-field--full">

@@ -121,7 +121,7 @@ function JobsCarousel() {
                     <span>{j.type}</span>
                   </div>
                   <div className="job-salary">{j.salary}</div>
-                  <Link to="/jobs" className="job-cta">Apply now <ArrowRight size={14} /></Link>
+                  <Link to={`/jobs/${j.id}`} className="job-cta">View role <ArrowRight size={14} /></Link>
                 </div>
               </div>
             ))}

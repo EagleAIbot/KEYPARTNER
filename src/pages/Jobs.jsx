@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowRight, MapPin, Calendar, Briefcase, Mail, Check } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { jobs as hardcodedJobs } from '../data/content'
 import { supabase } from '../lib/supabase'
 import { useIsMobile } from '../hooks/useIsMobile'
@@ -151,12 +152,12 @@ export function Jobs() {
                   )}
                 </div>
                 <div className="job-listing-card__apply-row">
-                  <a
-                    href={`mailto:info@ourkeypartnership.co.uk?subject=Application: ${encodeURIComponent(j.title)}`}
+                  <Link
+                    to={`/jobs/${j.id}`}
                     className="btn btn-green job-listing-card__apply"
                   >
-                    Apply Now <ArrowRight size={14} />
-                  </a>
+                    View & Apply <ArrowRight size={14} />
+                  </Link>
                 </div>
               </div>
             ))}

@@ -6,6 +6,7 @@ import { Home } from './pages/Home'
 import { Jobs } from './pages/Jobs'
 import { Hire } from './pages/Hire'
 import { Contact } from './pages/Contact'
+import { Job } from './pages/Job'
 import { Admin } from './pages/Admin'
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
               <Routes>
                 <Route path="/"         element={<Home />} />
                 <Route path="/jobs"     element={<Jobs />} />
+              <Route path="/jobs/:id" element={<Job />} />
                 <Route path="/hire"     element={<Hire />} />
                 <Route path="/contact"  element={<Contact />} />
                 <Route path="*"         element={<Home />} />
