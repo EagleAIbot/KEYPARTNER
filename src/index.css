@@ -2037,7 +2037,7 @@ button:focus-visible {
 }
 .job-listing-card__top { display: flex; flex-direction: column; gap: 8px; }
 .job-listing-card__desc {
-  font-size: 0.88rem; color: rgba(255,255,255,0.65);
+  font-size: 0.88rem; color: var(--text-muted);
   line-height: 1.65; max-width: 680px;
   display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
 }
