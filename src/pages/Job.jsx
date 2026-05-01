@@ -1,9 +1,16 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { MapPin, Briefcase, Calendar, ArrowLeft, Mail, Check } from 'lucide-react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { MapPin, Briefcase, Calendar, ArrowLeft, ArrowRight, Mail, Check } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 import { jobs as hardcodedJobs } from '../data/content'
 
+gsap.registerPlugin(ScrollTrigger)
+
+const JOB_HERO_VIDEO = 'https://assets.mixkit.co/videos/6779/6779-720.mp4'
+
+/* ── description renderer ── */
 function parseInline(text) {
   const parts = []
   const regex = /(\*\*(.+?)\*\*)|(\*(.+?)\*)/g
@@ -28,7 +35,7 @@ function renderDesc(text) {
   }
   lines.forEach((raw, i) => {
     const t = raw.trim()
-    if (!t) { flush(`br${i}`); result.push(<br key={i} />); return }
+    if (!t) { flush(`br${i}`); return }
     const isBullet = t.startsWith('•') || t.startsWith('-')
     const content = isBullet ? t.replace(/^[•\-]\s*/, '') : t
     const inline = parseInline(content)
@@ -54,8 +61,24 @@ export function Job() {
     }
   }, [id])
 
+  useEffect(() => {
+    if (!job) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      gsap.set('[data-reveal]', { opacity: 1, y: 0 }); return
+    }
+    const els = gsap.utils.toArray('[data-reveal]')
+    els.forEach(el => {
+      gsap.from(el, {
+        opacity: 0, y: 28, duration: 0.75, ease: 'power3.out',
+        immediateRender: false,
+        scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
+      })
+    })
+    return () => ScrollTrigger.getAll().forEach(t => t.kill())
+  }, [job])
+
   if (loading) return (
-    <div className="job-page-loading">Loading...</div>
+    <div className="job-page-loading">Loading role...</div>
   )
 
   if (!job) return (
@@ -71,34 +94,54 @@ export function Job() {
 
   return (
     <>
-      {/* ── HERO ── */}
-      <section className="job-page-hero">
-        <div className="container">
-          <Link to="/jobs" className="job-page-back">
-            <ArrowLeft size={14} /> Back to all roles
+      {/* ── HERO — matches site hero style ── */}
+      <section className="hero hero--dark">
+        <div className="hero-video-bg" aria-hidden>
+          <video autoPlay muted loop playsInline preload="auto" className="hero-video-bg__vid">
+            <source src={JOB_HERO_VIDEO} type="video/mp4" />
+          </video>
+          <div className="hero-video-bg__overlay" />
+        </div>
+        <div className="hero-dark-grain" aria-hidden />
+
+        <div className="container hero-dark-content">
+          <Link to="/jobs" className="job-page-back hero-ani-1">
+            <ArrowLeft size={14} /> All roles
           </Link>
-          <div className="job-page-badges">
+          <div className="job-page-badges hero-ani-1">
             <span className="job-badge"><Briefcase size={11} />{job.discipline}</span>
             <span className="job-listing-type">{job.type}</span>
           </div>
-          <h1 className="job-page-title">{job.title}</h1>
-          <div className="job-page-meta">
+          <h1 className="hero-dark-title hero-ani-2" style={{ fontSize: 'clamp(2rem, 4.5vw, 3.6rem)' }}>
+            {job.title}
+          </h1>
+          <div className="job-page-meta hero-ani-3">
             {job.location && <span><MapPin size={14} />{job.location}</span>}
             {job.salary && <span>💰 {job.salary}</span>}
             <span><Calendar size={14} />{postedDate}</span>
+          </div>
+          <div className="hero-actions hero-ani-4">
+            <a href={applyHref} className="btn btn-hero-primary">
+              Apply for this Role <ArrowRight size={15} />
+            </a>
+            <Link to="/jobs" className="btn btn-dark-outline">
+              View all roles
+            </Link>
           </div>
         </div>
       </section>
 
       {/* ── BODY ── */}
-      <section className="job-page-body">
+      <section style={{ padding: 'var(--section-pad) 0', background: 'var(--brand-white)' }}>
         <div className="container job-page-grid">
 
           {/* ── LEFT: description + benefits ── */}
           <div className="job-page-main">
+
             {job.description && (
-              <div className="job-page-section">
-                <h2 className="job-page-section-title">About the Role</h2>
+              <div data-reveal>
+                <div className="section-divider" />
+                <h2 className="section-title" style={{ marginBottom: 28 }}>About the Role</h2>
                 <div className="job-desc-rendered">
                   {renderDesc(job.description)}
                 </div>
@@ -106,8 +149,9 @@ export function Job() {
             )}
 
             {job.benefits?.filter(Boolean).length > 0 && (
-              <div className="job-page-section">
-                <h2 className="job-page-section-title">Benefits</h2>
+              <div data-reveal style={{ marginTop: 48 }}>
+                <div className="section-divider" />
+                <h2 className="section-title" style={{ marginBottom: 28 }}>Benefits</h2>
                 <ul className="job-page-benefits-list">
                   {job.benefits.filter(Boolean).map((b, i) => (
                     <li key={i}><Check size={14} />{b}</li>
@@ -116,8 +160,10 @@ export function Job() {
               </div>
             )}
 
-            <div className="job-page-section job-page-section--cta">
-              <p>Sound like the right fit?</p>
+            <div data-reveal style={{ marginTop: 48, padding: '32px', background: 'var(--green-100)', borderRadius: 'var(--radius-lg)', display: 'flex', alignItems: 'center', gap: 24, flexWrap: 'wrap' }}>
+              <p style={{ fontWeight: 700, color: 'var(--green-900)', fontSize: '1.05rem', flex: 1, margin: 0 }}>
+                Sound like the right fit?
+              </p>
               <a href={applyHref} className="btn btn-green">
                 <Mail size={14} /> Apply for this Role
               </a>
@@ -126,7 +172,8 @@ export function Job() {
 
           {/* ── RIGHT: apply card + map ── */}
           <aside className="job-page-sidebar">
-            <div className="job-apply-card">
+            <div className="job-apply-card" data-reveal>
+              <p className="eyebrow" style={{ color: 'var(--green-300)', marginBottom: 8 }}>Ready to apply?</p>
               <h3>Interested in this role?</h3>
               <p>Send your CV and we'll be in touch within 24 hours.</p>
               <a href={applyHref} className="btn btn-green job-apply-card__btn">
@@ -142,11 +189,11 @@ export function Job() {
             </div>
 
             {job.location && (
-              <div className="job-page-map">
+              <div className="job-page-map" data-reveal>
                 <iframe
                   title={`Map for ${job.location}`}
                   src={`https://maps.google.com/maps?q=${mapQuery}&output=embed&z=12`}
-                  width="100%" height="200"
+                  width="100%" height="220"
                   style={{ border: 0, display: 'block' }}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
