@@ -112,7 +112,7 @@ function JobsCarousel() {
           <div className="embla__container">
             {displayJobs.map(j => (
               <div key={j.id} className="embla__slide embla__slide--job">
-                <div className="job-card">
+                <Link to={`/jobs/${j.id}`} className="job-card job-card--link">
                   <div className="job-badge"><Briefcase size={11} />{j.discipline}</div>
                   <div className="job-title">{j.title}</div>
                   <div className="job-meta">
@@ -121,8 +121,8 @@ function JobsCarousel() {
                     <span>{j.type}</span>
                   </div>
                   <div className="job-salary">{j.salary}</div>
-                  <Link to={`/jobs/${j.id}`} className="job-cta">View role <ArrowRight size={14} /></Link>
-                </div>
+                  <span className="job-cta">View role <ArrowRight size={14} /></span>
+                </Link>
               </div>
             ))}
           </div>

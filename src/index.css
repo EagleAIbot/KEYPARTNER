@@ -1124,6 +1124,9 @@ button:focus-visible {
   padding: 28px 26px;
   display: flex;
   flex-direction: column;
+}
+.job-card--link {
+  text-decoration: none; color: inherit; cursor: pointer;
   gap: 14px;
   transition: box-shadow 0.3s var(--ease-out), transform 0.3s var(--ease-out), border-color 0.3s;
 }
