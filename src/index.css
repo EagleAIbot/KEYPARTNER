@@ -1475,11 +1475,10 @@ button:focus-visible {
 .jobs-filter-bar {
   display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
   margin-bottom: 28px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.11);
+  border: 1px solid rgba(255,255,255,0.18);
   border-radius: var(--radius-lg);
   padding: 14px 16px;
-  backdrop-filter: blur(8px);
 }
 .jobs-filter-search {
   flex: 1; min-width: 200px;
