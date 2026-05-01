@@ -8,7 +8,9 @@ import { supabase } from '../lib/supabase'
 import { useIsMobile } from '../hooks/useIsMobile'
 
 function formatDate(iso) {
-  return new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
+  if (!iso) return null
+  const d = new Date(iso)
+  return isNaN(d) ? null : d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
 }
 
 gsap.registerPlugin(ScrollTrigger)
@@ -37,7 +39,7 @@ export function Jobs() {
   useEffect(() => {
     const id = setInterval(() => setActiveVid(i => (i + 1) % JOBS_HERO_VIDEOS.length), 8000)
     return () => clearInterval(id)
-  }, [])
+  }, [JOBS_HERO_VIDEOS.length])
 
   useEffect(() => {
     if (!supabase) return

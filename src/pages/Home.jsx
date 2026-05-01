@@ -84,7 +84,7 @@ function JobsCarousel() {
           <Link to="/jobs" className="btn btn-outline" data-reveal>View all</Link>
         </div>
         <div style={{ padding: '48px 0', textAlign: 'center', color: 'var(--text-muted)', fontSize: '0.95rem' }} data-reveal>
-          No roles live right now — <Link to="/jobs" style={{ color: 'var(--brand-green)' }}>submit your CV</Link> and we'll be in touch when the right role lands.
+          No roles live right now — <a href="mailto:info@ourkeypartnership.co.uk?subject=CV%20Submission" style={{ color: 'var(--brand-green)' }}>submit your CV</a> and we'll be in touch when the right role lands.
         </div>
       </div>
     </section>

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { MapPin, Briefcase, Calendar, ArrowLeft, ArrowRight, Mail, Check, Banknote } from 'lucide-react'
+import { MapPin, Briefcase, Calendar, ArrowLeft, Mail, Check, Banknote } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 import { jobs as hardcodedJobs } from '../data/content'
 
@@ -90,7 +90,8 @@ export function Job() {
 
   const applyHref = `mailto:info@ourkeypartnership.co.uk?subject=Application: ${encodeURIComponent(job.title)}&body=Hi Matt,%0D%0A%0D%0AI'd like to apply for the ${encodeURIComponent(job.title)} role.%0D%0A%0D%0APlease find my CV attached.%0D%0A%0D%0AKind regards`
   const mapQuery = encodeURIComponent(job.location || 'Milton Keynes, UK')
-  const postedDate = job.posted ?? new Date(job.created_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+  const rawDate = job.created_at ? new Date(job.created_at) : null
+  const postedDate = job.posted ?? (rawDate && !isNaN(rawDate) ? rawDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) : null)
 
   return (
     <>
