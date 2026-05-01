@@ -1471,6 +1471,72 @@ button:focus-visible {
 }
 /* job-listing-card styles moved to UPDATED JOB LISTING CARD block below */
 
+/* ---- Jobs Page: filter bar ---- */
+.jobs-filter-bar {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  margin-bottom: 28px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+  backdrop-filter: blur(8px);
+}
+.jobs-filter-search {
+  flex: 1; min-width: 200px;
+  position: relative; display: flex; align-items: center;
+}
+.jobs-filter-search-icon {
+  position: absolute; left: 12px;
+  color: rgba(255,255,255,0.5); pointer-events: none;
+}
+.jobs-filter-input {
+  width: 100%; background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 8px; padding: 9px 36px 9px 36px;
+  font-size: 0.88rem; color: #fff;
+  outline: none; transition: border-color 0.2s, background 0.2s;
+}
+.jobs-filter-input::placeholder { color: rgba(255,255,255,0.45); }
+.jobs-filter-input:focus {
+  border-color: rgba(52,168,101,0.6);
+  background: rgba(255,255,255,0.14);
+}
+.jobs-filter-clear {
+  position: absolute; right: 10px;
+  background: none; border: none; cursor: pointer;
+  color: rgba(255,255,255,0.5); padding: 2px;
+  display: flex; align-items: center;
+  transition: color 0.15s;
+}
+.jobs-filter-clear:hover { color: #fff; }
+.jobs-filter-select {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 8px; padding: 9px 14px;
+  font-size: 0.88rem; color: #fff;
+  outline: none; cursor: pointer; min-width: 140px;
+  transition: border-color 0.2s, background 0.2s;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.5)' stroke-width='2.5'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 30px;
+}
+.jobs-filter-select:focus { border-color: rgba(52,168,101,0.6); background-color: rgba(255,255,255,0.14); }
+.jobs-filter-select option { background: #1a3d2a; color: #fff; }
+.jobs-filter-reset {
+  background: none; border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 8px; padding: 9px 14px;
+  font-size: 0.82rem; color: rgba(255,255,255,0.7);
+  cursor: pointer; white-space: nowrap;
+  transition: border-color 0.15s, color 0.15s;
+}
+.jobs-filter-reset:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+@media (max-width: 640px) {
+  .jobs-filter-bar { flex-direction: column; align-items: stretch; }
+  .jobs-filter-select { min-width: unset; }
+}
+
 /* ---- Jobs Page: bottom CTA ---- */
 .jobs-cta-section {
   padding: var(--section-pad) 0;

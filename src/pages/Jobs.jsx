@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowRight, MapPin, Calendar, Briefcase, Mail, Check, Banknote } from 'lucide-react'
+import { ArrowRight, MapPin, Calendar, Briefcase, Mail, Check, Banknote, Search, X } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { jobs as hardcodedJobs } from '../data/content'
 import { supabase } from '../lib/supabase'
@@ -35,6 +35,9 @@ export function Jobs() {
   const JOBS_HERO_VIDEOS = isMobile ? JOBS_HERO_VIDEOS_MOBILE : JOBS_HERO_VIDEOS_DESKTOP
   const [activeVid, setActiveVid] = useState(0)
   const [liveJobs, setLiveJobs] = useState(null)
+  const [search, setSearch] = useState('')
+  const [filterLocation, setFilterLocation] = useState('')
+  const [filterType, setFilterType] = useState('')
 
   useEffect(() => {
     const id = setInterval(() => setActiveVid(i => (i + 1) % JOBS_HERO_VIDEOS.length), 8000)
@@ -52,6 +55,32 @@ export function Jobs() {
   }, [])
 
   const displayJobs = liveJobs ?? hardcodedJobs
+
+  const locations = useMemo(() => {
+    const raw = displayJobs.map(j => j.location).filter(Boolean)
+    return [...new Set(raw)].sort()
+  }, [displayJobs])
+
+  const types = useMemo(() => {
+    const raw = displayJobs.map(j => j.type).filter(Boolean)
+    return [...new Set(raw)].sort()
+  }, [displayJobs])
+
+  const filteredJobs = useMemo(() => {
+    const q = search.toLowerCase().trim()
+    return displayJobs.filter(j => {
+      const matchSearch = !q ||
+        j.title?.toLowerCase().includes(q) ||
+        j.description?.toLowerCase().includes(q) ||
+        j.location?.toLowerCase().includes(q) ||
+        j.discipline?.toLowerCase().includes(q)
+      const matchLocation = !filterLocation || j.location === filterLocation
+      const matchType = !filterType || j.type === filterType
+      return matchSearch && matchLocation && matchType
+    })
+  }, [displayJobs, search, filterLocation, filterType])
+
+  const hasFilters = search || filterLocation || filterType
 
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -121,13 +150,60 @@ export function Jobs() {
             <h2 className="section-title" style={{textAlign:'center'}}>Latest Vacancies</h2>
           </div>
 
+          {/* ── Search & filter bar ── */}
+          {displayJobs.length > 0 && (
+            <div className="jobs-filter-bar" data-reveal>
+              <div className="jobs-filter-search">
+                <Search size={15} className="jobs-filter-search-icon" />
+                <input
+                  type="text"
+                  placeholder="Search roles, skills, keywords…"
+                  value={search}
+                  onChange={e => setSearch(e.target.value)}
+                  className="jobs-filter-input"
+                />
+                {search && (
+                  <button className="jobs-filter-clear" onClick={() => setSearch('')} aria-label="Clear search">
+                    <X size={13} />
+                  </button>
+                )}
+              </div>
+              <select
+                className="jobs-filter-select"
+                value={filterLocation}
+                onChange={e => setFilterLocation(e.target.value)}
+              >
+                <option value="">All Locations</option>
+                {locations.map(l => <option key={l} value={l}>{l}</option>)}
+              </select>
+              <select
+                className="jobs-filter-select"
+                value={filterType}
+                onChange={e => setFilterType(e.target.value)}
+              >
+                <option value="">All Types</option>
+                {types.map(t => <option key={t} value={t}>{t}</option>)}
+              </select>
+              {hasFilters && (
+                <button className="jobs-filter-reset" onClick={() => { setSearch(''); setFilterLocation(''); setFilterType('') }}>
+                  Clear filters
+                </button>
+              )}
+            </div>
+          )}
+
           <div className="jobs-list">
+            {filteredJobs.length === 0 && displayJobs.length > 0 && (
+              <div className="jobs-empty" data-reveal>
+                <p>No roles match your filters — <button className="jobs-filter-reset" onClick={() => { setSearch(''); setFilterLocation(''); setFilterType('') }}>clear filters</button> to see all.</p>
+              </div>
+            )}
             {displayJobs.length === 0 && (
               <div className="jobs-empty" data-reveal>
                 <p>No roles live right now — check back soon, or <a href="mailto:info@ourkeypartnership.co.uk?subject=CV Submission">submit your CV</a> for future opportunities.</p>
               </div>
             )}
-            {displayJobs.map(j => (
+            {filteredJobs.map(j => (
               <Link key={j.id} to={`/jobs/${j.id}`} className="job-listing-card" data-reveal>
                 <div className="job-listing-card__top">
                   <div className="job-listing-card__badges">
