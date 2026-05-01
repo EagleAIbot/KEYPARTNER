@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowRight, MapPin, Calendar, Briefcase, Mail, Check } from 'lucide-react'
+import { ArrowRight, MapPin, Calendar, Briefcase, Mail, Check, Banknote } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { jobs as hardcodedJobs } from '../data/content'
 import { supabase } from '../lib/supabase'
@@ -140,7 +140,7 @@ export function Jobs() {
                 <div className="job-listing-card__mid">
                   <div className="job-listing-card__meta">
                     {j.location && <span><MapPin size={13} />{j.location}</span>}
-                    {j.salary && <span>💰 {j.salary}</span>}
+                    {j.salary && <span><Banknote size={13} />{j.salary}</span>}
                     <span><Calendar size={13} />{j.posted ?? formatDate(j.created_at)}</span>
                   </div>
                   {j.benefits?.filter(Boolean).length > 0 && (

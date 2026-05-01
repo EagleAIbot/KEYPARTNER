@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { MapPin, Briefcase, Calendar, ArrowLeft, ArrowRight, Mail, Check } from 'lucide-react'
+import { MapPin, Briefcase, Calendar, ArrowLeft, ArrowRight, Mail, Check, Banknote } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 import { jobs as hardcodedJobs } from '../data/content'
 
@@ -94,8 +94,8 @@ export function Job() {
 
   return (
     <>
-      {/* ── HERO — matches site hero style ── */}
-      <section className="hero hero--dark">
+      {/* ── HERO — compact banner ── */}
+      <section className="job-page-hero-banner">
         <div className="hero-video-bg" aria-hidden>
           <video autoPlay muted loop playsInline preload="auto" className="hero-video-bg__vid">
             <source src={JOB_HERO_VIDEO} type="video/mp4" />
@@ -104,7 +104,7 @@ export function Job() {
         </div>
         <div className="hero-dark-grain" aria-hidden />
 
-        <div className="container hero-dark-content">
+        <div className="container job-page-banner-content">
           <Link to="/jobs" className="job-page-back hero-ani-1">
             <ArrowLeft size={14} /> All roles
           </Link>
@@ -112,21 +112,11 @@ export function Job() {
             <span className="job-badge"><Briefcase size={11} />{job.discipline}</span>
             <span className="job-listing-type">{job.type}</span>
           </div>
-          <h1 className="hero-dark-title hero-ani-2" style={{ fontSize: 'clamp(2rem, 4.5vw, 3.6rem)' }}>
-            {job.title}
-          </h1>
+          <h1 className="job-page-banner-title hero-ani-2">{job.title}</h1>
           <div className="job-page-meta hero-ani-3">
-            {job.location && <span><MapPin size={14} />{job.location}</span>}
-            {job.salary && <span>💰 {job.salary}</span>}
-            <span><Calendar size={14} />{postedDate}</span>
-          </div>
-          <div className="hero-actions hero-ani-4">
-            <a href={applyHref} className="btn btn-hero-primary">
-              Apply for this Role <ArrowRight size={15} />
-            </a>
-            <Link to="/jobs" className="btn btn-dark-outline">
-              View all roles
-            </Link>
+            {job.location && <span><MapPin size={13} />{job.location}</span>}
+            {job.salary && <span><Banknote size={13} />{job.salary}</span>}
+            <span><Calendar size={13} />{postedDate}</span>
           </div>
         </div>
       </section>

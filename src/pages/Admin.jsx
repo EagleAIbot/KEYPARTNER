@@ -206,7 +206,7 @@ export function Admin() {
                   <h3 className="admin-job-card__title">{job.title}</h3>
                   <div className="admin-job-card__meta">
                     {job.location && <span><MapPin size={12} />{job.location}</span>}
-                    {job.salary && <span>💰 {job.salary}</span>}
+                    {job.salary && <span>{job.salary}</span>}
                     <span style={{ opacity: 0.45 }}>Published {formatDate(job.created_at)}</span>
                   </div>
                   {job.benefits?.filter(Boolean).length > 0 && (
@@ -283,7 +283,7 @@ export function Admin() {
                   <input value={form.location} onChange={e => setForm(f => ({ ...f, location: e.target.value }))} placeholder="e.g. London (Hybrid)" />
                 </div>
                 <div className="af-field">
-                  <label>💰 Salary</label>
+                  <label>Salary</label>
                   <input value={form.salary} onChange={e => setForm(f => ({ ...f, salary: e.target.value }))} placeholder="e.g. £60,000 – £75,000" />
                 </div>
               </div>
