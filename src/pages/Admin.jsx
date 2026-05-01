@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { Plus, Edit2, Trash2, Eye, EyeOff, X, Check, LogOut, MapPin, ChevronDown, ChevronUp, Bold, Italic, List } from 'lucide-react'
+import { Plus, Edit2, Trash2, Eye, EyeOff, X, Check, LogOut, MapPin, ChevronLeft, Bold, Italic, List, Save } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 
 const base = import.meta.env.BASE_URL
@@ -20,93 +20,10 @@ function formatDate(iso) {
   return new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
 }
 
-export function Admin() {
-  const [authed, setAuthed] = useState(() => sessionStorage.getItem('kpr-admin') === '1')
-  const [pw, setPw] = useState('')
-  const [pwErr, setPwErr] = useState(false)
-  const [jobs, setJobs] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [showForm, setShowForm] = useState(false)
-  const [editing, setEditing] = useState(null)
-  const [form, setForm] = useState(BLANK)
-  const [saving, setSaving] = useState(false)
-  const [deleteTarget, setDeleteTarget] = useState(null)
-  const [saveErr, setSaveErr] = useState(null)
-  const [expandedDesc, setExpandedDesc] = useState(null)
-
-  const load = async () => {
-    if (!supabase) { setLoading(false); return }
-    setLoading(true)
-    const { data } = await supabase.from('jobs').select('*').order('created_at', { ascending: false })
-    setJobs(data || [])
-    setLoading(false)
-  }
-
-  useEffect(() => { if (authed) load() }, [authed])
-
-  const login = (e) => {
-    e.preventDefault()
-    if (pw === ADMIN_PASSWORD) {
-      sessionStorage.setItem('kpr-admin', '1')
-      setAuthed(true)
-    } else {
-      setPwErr(true)
-    }
-  }
-
-  const logout = () => {
-    sessionStorage.removeItem('kpr-admin')
-    setAuthed(false)
-  }
-
-  const openAdd = () => { setForm(BLANK); setEditing(null); setShowForm(true); setSaveErr(null) }
-
-  const openEdit = (job) => {
-    setForm({
-      title: job.title || '',
-      description: job.description || '',
-      discipline: job.discipline || 'Technology',
-      type: job.type || 'Hybrid',
-      location: job.location || '',
-      salary: job.salary || '',
-      benefits: job.benefits?.length ? job.benefits : [''],
-      is_active: job.is_active ?? true,
-    })
-    setEditing(job.id)
-    setShowForm(true)
-    setSaveErr(null)
-  }
-
-  const closeForm = () => { setShowForm(false); setEditing(null); setForm(BLANK) }
-
-  const save = async (e) => {
-    e.preventDefault()
-    if (!supabase) return
-    setSaving(true)
-    const payload = { ...form, benefits: form.benefits.filter(b => b.trim()) }
-    const result = editing
-      ? await supabase.from('jobs').update(payload).eq('id', editing)
-      : await supabase.from('jobs').insert(payload)
-    if (result.error) { setSaveErr(result.error.message); setSaving(false); return }
-    closeForm()
-    load()
-    setSaving(false)
-  }
-
-  const confirmDelete = async () => {
-    if (!supabase || !deleteTarget) return
-    await supabase.from('jobs').delete().eq('id', deleteTarget)
-    setDeleteTarget(null)
-    load()
-  }
-
-  const toggleActive = async (job) => {
-    if (!supabase) return
-    await supabase.from('jobs').update({ is_active: !job.is_active }).eq('id', job.id)
-    load()
-  }
-
+/* ── Full-page document editor ── */
+function JobEditor({ form, setForm, editing, saving, saveErr, onSave, onCancel }) {
   const descRef = useRef(null)
+
   const wrapDesc = (marker) => {
     const el = descRef.current
     if (!el) return
@@ -116,6 +33,7 @@ export function Admin() {
     setForm(f => ({ ...f, description: next }))
     setTimeout(() => { el.focus(); el.setSelectionRange(s + marker.length, s + marker.length + selected.length) }, 0)
   }
+
   const insertBullet = () => {
     const el = descRef.current
     if (!el) return
@@ -131,6 +49,202 @@ export function Admin() {
   const setBenefit = (i, val) => {
     const b = [...form.benefits]; b[i] = val
     setForm(f => ({ ...f, benefits: b }))
+  }
+
+  return (
+    <div className="admin-editor-wrap">
+      {/* ── Sticky doc toolbar ── */}
+      <div className="admin-editor-toolbar">
+        <button className="admin-editor-back" type="button" onClick={onCancel}>
+          <ChevronLeft size={16} /> All Roles
+        </button>
+        <span className="admin-editor-toolbar__title">
+          {editing ? 'Edit Role' : 'New Role'}
+        </span>
+        <div className="admin-editor-toolbar__right">
+          <label className="af-publish-toggle">
+            <input type="checkbox" checked={form.is_active} onChange={e => setForm(f => ({ ...f, is_active: e.target.checked }))} />
+            <span>{form.is_active ? 'Live' : 'Draft'}</span>
+          </label>
+          <button className="btn btn-green admin-editor-save" onClick={onSave} disabled={saving}>
+            <Save size={14} /> {saving ? 'Saving...' : 'Save Role'}
+          </button>
+        </div>
+      </div>
+
+      {saveErr && <div className="admin-editor-error">{saveErr}</div>}
+
+      <div className="admin-editor-body">
+        {/* ── Left: Title + Description ── */}
+        <div className="admin-editor-main">
+
+          {/* Title */}
+          <div className="admin-editor-title-wrap">
+            <input
+              className="admin-editor-title-input"
+              value={form.title}
+              onChange={e => setForm(f => ({ ...f, title: e.target.value }))}
+              placeholder="Job title..."
+              autoFocus
+            />
+          </div>
+
+          {/* Description */}
+          <div className="admin-editor-section">
+            <div className="admin-editor-section__label">Job Description</div>
+            <div className="af-desc-toolbar">
+              <button type="button" className="af-fmt-btn" onClick={() => wrapDesc('**')} title="Bold"><Bold size={13} /></button>
+              <button type="button" className="af-fmt-btn" onClick={() => wrapDesc('*')} title="Italic"><Italic size={13} /></button>
+              <button type="button" className="af-fmt-btn" onClick={insertBullet} title="Bullet"><List size={13} /></button>
+              <span className="af-fmt-hint">Select text → Bold / Italic · or insert bullet</span>
+            </div>
+            <textarea
+              ref={descRef}
+              className="admin-editor-desc"
+              value={form.description}
+              onChange={e => setForm(f => ({ ...f, description: e.target.value }))}
+              placeholder="Write the full job description here. Use • for bullet points, **bold**, *italic*..."
+            />
+          </div>
+        </div>
+
+        {/* ── Right: Meta + Benefits ── */}
+        <aside className="admin-editor-sidebar">
+
+          <div className="admin-editor-meta-card">
+            <div className="admin-editor-meta-title">Role Details</div>
+
+            <div className="af-field">
+              <label>Discipline</label>
+              <select value={form.discipline} onChange={e => setForm(f => ({ ...f, discipline: e.target.value }))}>
+                <option>Technology</option>
+                <option>Commercial</option>
+                <option>Data & AI</option>
+              </select>
+            </div>
+
+            <div className="af-field">
+              <label>Work Type</label>
+              <select value={form.type} onChange={e => setForm(f => ({ ...f, type: e.target.value }))}>
+                <option>Remote</option>
+                <option>Hybrid</option>
+                <option>Onsite</option>
+              </select>
+            </div>
+
+            <div className="af-field">
+              <label><MapPin size={11} style={{ display:'inline', marginRight:4 }} />Location</label>
+              <input value={form.location} onChange={e => setForm(f => ({ ...f, location: e.target.value }))} placeholder="e.g. Milton Keynes (Hybrid)" />
+            </div>
+
+            <div className="af-field">
+              <label>Salary</label>
+              <input value={form.salary} onChange={e => setForm(f => ({ ...f, salary: e.target.value }))} placeholder="e.g. £60,000 – £75,000" />
+            </div>
+          </div>
+
+          <div className="admin-editor-meta-card">
+            <div className="admin-editor-meta-title">Benefits</div>
+            <div className="af-benefits">
+              {form.benefits.map((b, i) => (
+                <div key={i} className="af-benefit-row">
+                  <input value={b} onChange={e => setBenefit(i, e.target.value)} placeholder="e.g. 25 days holiday" />
+                  {form.benefits.length > 1 && (
+                    <button type="button" className="af-benefit-del" onClick={() => setForm(f => ({ ...f, benefits: f.benefits.filter((_, x) => x !== i) }))}>
+                      <X size={13} />
+                    </button>
+                  )}
+                </div>
+              ))}
+              {form.benefits.length < 8 && (
+                <button type="button" className="af-add-benefit" onClick={() => setForm(f => ({ ...f, benefits: [...f.benefits, ''] }))}>
+                  <Plus size={12} /> Add benefit
+                </button>
+              )}
+            </div>
+          </div>
+
+          <button className="btn btn-green" style={{ width: '100%', justifyContent: 'center' }} onClick={onSave} disabled={saving}>
+            <Save size={14} /> {saving ? 'Saving...' : 'Save Role'}
+          </button>
+        </aside>
+      </div>
+    </div>
+  )
+}
+
+export function Admin() {
+  const [authed, setAuthed] = useState(() => sessionStorage.getItem('kpr-admin') === '1')
+  const [pw, setPw] = useState('')
+  const [pwErr, setPwErr] = useState(false)
+  const [jobs, setJobs] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [view, setView] = useState('list') // 'list' | 'editor'
+  const [editing, setEditing] = useState(null)
+  const [form, setForm] = useState(BLANK)
+  const [saving, setSaving] = useState(false)
+  const [deleteTarget, setDeleteTarget] = useState(null)
+  const [saveErr, setSaveErr] = useState(null)
+
+  const load = async () => {
+    if (!supabase) { setLoading(false); return }
+    setLoading(true)
+    const { data } = await supabase.from('jobs').select('*').order('created_at', { ascending: false })
+    setJobs(data || [])
+    setLoading(false)
+  }
+
+  useEffect(() => { if (authed) load() }, [authed])
+
+  const login = (e) => {
+    e.preventDefault()
+    if (pw === ADMIN_PASSWORD) { sessionStorage.setItem('kpr-admin', '1'); setAuthed(true) }
+    else setPwErr(true)
+  }
+  const logout = () => { sessionStorage.removeItem('kpr-admin'); setAuthed(false) }
+
+  const openAdd = () => { setForm(BLANK); setEditing(null); setSaveErr(null); setView('editor') }
+  const openEdit = (job) => {
+    setForm({
+      title: job.title || '',
+      description: job.description || '',
+      discipline: job.discipline || 'Technology',
+      type: job.type || 'Hybrid',
+      location: job.location || '',
+      salary: job.salary || '',
+      benefits: job.benefits?.length ? job.benefits : [''],
+      is_active: job.is_active ?? true,
+    })
+    setEditing(job.id)
+    setSaveErr(null)
+    setView('editor')
+  }
+  const closeEditor = () => { setView('list'); setEditing(null); setForm(BLANK) }
+
+  const save = async () => {
+    if (!supabase || !form.title.trim()) { setSaveErr('Job title is required.'); return }
+    setSaving(true)
+    const payload = { ...form, benefits: form.benefits.filter(b => b.trim()) }
+    const result = editing
+      ? await supabase.from('jobs').update(payload).eq('id', editing)
+      : await supabase.from('jobs').insert(payload)
+    if (result.error) { setSaveErr(result.error.message); setSaving(false); return }
+    closeEditor()
+    load()
+    setSaving(false)
+  }
+
+  const confirmDelete = async () => {
+    if (!supabase || !deleteTarget) return
+    await supabase.from('jobs').delete().eq('id', deleteTarget)
+    setDeleteTarget(null)
+    load()
+  }
+
+  const toggleActive = async (job) => {
+    if (!supabase) return
+    await supabase.from('jobs').update({ is_active: !job.is_active }).eq('id', job.id)
+    load()
   }
 
   /* ── LOGIN ── */
@@ -158,9 +272,24 @@ export function Admin() {
     </div>
   )
 
+  /* ── FULL-PAGE EDITOR ── */
+  if (view === 'editor') return (
+    <div className="admin-wrap">
+      <JobEditor
+        form={form}
+        setForm={setForm}
+        editing={editing}
+        saving={saving}
+        saveErr={saveErr}
+        onSave={save}
+        onCancel={closeEditor}
+      />
+    </div>
+  )
+
+  /* ── DASHBOARD LIST ── */
   const liveCount = jobs.filter(j => j.is_active).length
 
-  /* ── DASHBOARD ── */
   return (
     <div className="admin-wrap">
       <header className="admin-header">
@@ -172,7 +301,7 @@ export function Admin() {
       <div className="admin-body">
         {!supabase && (
           <div className="admin-notice admin-notice--warn">
-            <strong>Setup required:</strong> Add <code>VITE_SUPABASE_URL</code> and <code>VITE_SUPABASE_ANON_KEY</code> to your environment variables and redeploy.
+            <strong>Setup required:</strong> Add <code>VITE_SUPABASE_URL</code> and <code>VITE_SUPABASE_ANON_KEY</code> to your environment to enable job management.
           </div>
         )}
 
@@ -197,7 +326,7 @@ export function Admin() {
           <div className="admin-jobs-list">
             {jobs.map(job => (
               <div key={job.id} className={`admin-job-card${job.is_active ? '' : ' admin-job-card--draft'}`}>
-                <div className="admin-job-card__body">
+                <div className="admin-job-card__body" style={{ cursor: 'pointer' }} onClick={() => openEdit(job)}>
                   <div className="admin-job-card__badges">
                     <span className="job-badge" style={{ fontSize: '0.7rem', padding: '2px 8px' }}>{job.discipline}</span>
                     <span className="job-listing-type" style={{ fontSize: '0.7rem' }}>{job.type}</span>
@@ -214,14 +343,6 @@ export function Admin() {
                       {job.benefits.filter(Boolean).map((b, i) => (
                         <span key={i} className="benefit-pill"><Check size={10} />{b}</span>
                       ))}
-                    </div>
-                  )}
-                  {job.description && (
-                    <div className="admin-job-card__desc-wrap">
-                      <button className="admin-desc-toggle" type="button" onClick={() => setExpandedDesc(expandedDesc === job.id ? null : job.id)}>
-                        {expandedDesc === job.id ? <><ChevronUp size={13} /> Hide description</> : <><ChevronDown size={13} /> Show description</>}
-                      </button>
-                      {expandedDesc === job.id && <p className="admin-job-card__desc">{job.description}</p>}
                     </div>
                   )}
                 </div>
@@ -241,99 +362,6 @@ export function Admin() {
           </div>
         )}
       </div>
-
-      {/* ── ADD / EDIT MODAL ── */}
-      {showForm && (
-        <div className="admin-overlay" onClick={closeForm}>
-          <div className="admin-modal" onClick={e => e.stopPropagation()}>
-            <div className="admin-modal__hdr">
-              <h3>{editing ? 'Edit Role' : 'Add New Role'}</h3>
-              <button className="admin-modal__close" onClick={closeForm}><X size={20} /></button>
-            </div>
-            <form className="admin-form" onSubmit={save}>
-              {saveErr && <p className="admin-form__error">{saveErr}</p>}
-
-              <div className="af-field af-field--full">
-                <label>Job Title *</label>
-                <input required value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} placeholder="e.g. Senior Software Engineer" />
-              </div>
-
-              <div className="af-row">
-                <div className="af-field">
-                  <label>Discipline</label>
-                  <select value={form.discipline} onChange={e => setForm(f => ({ ...f, discipline: e.target.value }))}>
-                    <option>Technology</option>
-                    <option>Commercial</option>
-                    <option>Data & AI</option>
-                  </select>
-                </div>
-                <div className="af-field">
-                  <label>Work Type</label>
-                  <select value={form.type} onChange={e => setForm(f => ({ ...f, type: e.target.value }))}>
-                    <option>Remote</option>
-                    <option>Hybrid</option>
-                    <option>Onsite</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="af-row">
-                <div className="af-field">
-                  <label><MapPin size={12} style={{ display: 'inline', marginRight: 4 }} />Location</label>
-                  <input value={form.location} onChange={e => setForm(f => ({ ...f, location: e.target.value }))} placeholder="e.g. London (Hybrid)" />
-                </div>
-                <div className="af-field">
-                  <label>Salary</label>
-                  <input value={form.salary} onChange={e => setForm(f => ({ ...f, salary: e.target.value }))} placeholder="e.g. £60,000 – £75,000" />
-                </div>
-              </div>
-
-              <div className="af-field af-field--full">
-                <label>Job Description</label>
-                <div className="af-desc-toolbar">
-                  <button type="button" className="af-fmt-btn" onClick={() => wrapDesc('**')} title="Bold"><Bold size={13} /></button>
-                  <button type="button" className="af-fmt-btn" onClick={() => wrapDesc('*')} title="Italic"><Italic size={13} /></button>
-                  <button type="button" className="af-fmt-btn" onClick={insertBullet} title="Bullet point"><List size={13} /></button>
-                  <span className="af-fmt-hint">Select text then click Bold/Italic</span>
-                </div>
-                <textarea ref={descRef} rows={10} value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} placeholder="Describe the role, responsibilities, and ideal candidate..." style={{ fontFamily: 'monospace', fontSize: '0.88rem', lineHeight: 1.7 }} />
-              </div>
-
-              <div className="af-field af-field--full">
-                <label>Benefits</label>
-                <div className="af-benefits">
-                  {form.benefits.map((b, i) => (
-                    <div key={i} className="af-benefit-row">
-                      <input value={b} onChange={e => setBenefit(i, e.target.value)} placeholder={`e.g. 25 days holiday`} />
-                      {form.benefits.length > 1 && (
-                        <button type="button" className="af-benefit-del" onClick={() => setForm(f => ({ ...f, benefits: f.benefits.filter((_, x) => x !== i) }))}>
-                          <X size={14} />
-                        </button>
-                      )}
-                    </div>
-                  ))}
-                  {form.benefits.length < 8 && (
-                    <button type="button" className="af-add-benefit" onClick={() => setForm(f => ({ ...f, benefits: [...f.benefits, ''] }))}>
-                      <Plus size={13} /> Add benefit
-                    </button>
-                  )}
-                </div>
-              </div>
-
-              <div className="af-footer">
-                <label className="af-publish-toggle">
-                  <input type="checkbox" checked={form.is_active} onChange={e => setForm(f => ({ ...f, is_active: e.target.checked }))} />
-                  <span>Publish live now</span>
-                </label>
-                <div className="af-footer__actions">
-                  <button type="button" className="btn admin-btn-cancel" onClick={closeForm}>Cancel</button>
-                  <button type="submit" className="btn btn-green" disabled={saving}>{saving ? 'Saving...' : editing ? 'Save Changes' : 'Add Role'}</button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
 
       {/* ── DELETE CONFIRM ── */}
       {deleteTarget && (

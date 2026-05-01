@@ -126,7 +126,7 @@ export function Jobs() {
               </div>
             )}
             {displayJobs.map(j => (
-              <div key={j.id} className="job-listing-card" data-reveal>
+              <Link key={j.id} to={`/jobs/${j.id}`} className="job-listing-card" data-reveal>
                 <div className="job-listing-card__top">
                   <div className="job-listing-card__badges">
                     <span className="job-badge"><Briefcase size={11} />{j.discipline}</span>
@@ -152,14 +152,11 @@ export function Jobs() {
                   )}
                 </div>
                 <div className="job-listing-card__apply-row">
-                  <Link
-                    to={`/jobs/${j.id}`}
-                    className="btn btn-green job-listing-card__apply"
-                  >
+                  <span className="btn btn-green job-listing-card__apply">
                     View & Apply <ArrowRight size={14} />
-                  </Link>
+                  </span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
